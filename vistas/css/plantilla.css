@@ -1,0 +1,157 @@
+.nav-panel-usuario{
+    display: block !important;
+    padding: .1rem 0.5rem !important;
+}
+
+.has-treeview .nav-treeview{
+    padding-left: 20px !important;
+}
+
+/* Back to top button */
+.modalVerNegocio{
+    position: relative;
+}
+
+.modalVerNegocio .back-to-top-modal {
+    /*position: absolute;*/
+    position: fixed;
+    /*display: none; */   
+    background: #1bb1dc;
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    text-align: center;
+    line-height: 1;
+    font-size: 16px;
+    border-radius: 50%;
+    right: 200px;
+    bottom: 41px;
+    transition: background 0.5s;
+    z-index: 11;
+}
+  
+.modalVerNegocio .back-to-top-modal i {
+    padding-top: 12px;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .back-to-top-modal {
+      bottom: 15px;
+    }
+}
+
+/*PARA EL WHATSAPP*/
+.popup-body-chat-p{
+	overflow: hidden;
+}
+
+.popup-header-chat-p {
+	background: rgb(45, 183, 66);
+	color: #fff;
+	display: flex;
+	justify-content: space-around;
+	border-radius: 8px 8px 0 0;
+	-webkit-border-radius: 8px 8px 0 0;
+	-moz-border-radius: 8px 8px 0 0;
+}
+
+.popup-title-p{
+	padding: 20px 20px 20px 0;
+   
+}
+
+.popup-icon-p, .popup-body-chat-p {
+	padding: 20px;
+}
+
+.popup-msg-intro-p{
+	text-align: center;
+	font-size: 14px;
+	padding: 0 0 10px;
+	color: #43474e;
+}
+
+.popup_content_item-d{
+	position:relative ;
+	bottom: -30px;
+	transition: all .4s ease;
+   
+}
+
+.popup-link-p{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	text-decoration: none;
+	color: #43474e;
+	background-color: #f6f8ff;
+	margin: 10px 0;
+	border-radius: 8px;
+	transition: all .5s;  
+	
+	transition: all .4s ease;
+}
+
+.watssapp-p{
+	font-size: 3em;
+	color: rgb(45, 183, 66);
+	border-radius: 50%;
+	padding: 5px 20px;
+}
+
+.popup-link-p:hover{
+	box-shadow: 0 10px 10px 4px rgba(0,0,0,.04);
+	-webkit-box-shadow: 0 10px 10px 4px rgba(0,0,0,.04);
+	-moz-box-shadow: 0 10px 10px 4px rgba(0,0,0,.04);
+	background-color: #fff;
+	transition: all .5s;
+}
+
+.popup_txt{
+	width: 120px;
+}
+
+.popup_txt .nombre-asesor-p{
+	font-size: 14px;
+}
+
+.popup_txt .cargo-asesor-p{
+	font-size: 12px;
+	color: #7d8188;
+}
+
+.active-popup-whatsapp-p {
+	bottom: 150px;
+	opacity: 1;
+	visibility: visible;
+	transition: all .4s ease;
+}
+
+.active-popup-whatsapp-p  .popup_content_item-d{
+	
+	transition: all .4s ease;
+	transition-delay: .4s;
+	bottom: 0px;
+
+}
+
+.active-popup-whatsapp-msg-p{
+	top:50%;
+	opacity: 1;
+	visibility: visible;
+	transition: all .4s ease;
+}
+
+.active-button-whatsapp-p {
+	transform: rotate(180deg);
+	transition: all .4s ease;
+   
+}
+
+.active-button-whatsapp-p > .fa{
+	font-size: 1.8em;
+	padding: 13px 0 0;
+}
+
+/*FIN DE WHATSAPP*/
