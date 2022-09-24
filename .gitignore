@@ -15,7 +15,7 @@
 #.sass-cache
 
 # Ignora la carpeta db del proyecto
-db
+#db
 
 # Ignora archivos individuales
-ideas.sql
+#ideas.sql
