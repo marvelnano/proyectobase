@@ -37,7 +37,7 @@
 		<type label="SET" length="1" sql="SET" quote=""/>
 		<type label="Bit" length="0" sql="bit" quote=""/>
 	</group>
-</datatypes><table x="926" y="15" name="negocio">
+</datatypes><table x="586" y="43" name="negocio">
 <row name="idnegocio" null="0" autoincrement="0">
 <datatype>VARCHAR(8)</datatype>
 </row>
@@ -87,7 +87,7 @@
 </key>
 <comment>negocios que darán comisiones por conseguir usuarios.</comment>
 </table>
-<table x="918" y="395" name="rubro_negocio">
+<table x="330" y="287" name="rubro_negocio">
 <row name="idrubronegocio" null="0" autoincrement="0">
 <datatype>VARCHAR(8)</datatype>
 </row>
@@ -114,7 +114,7 @@
 </key>
 <comment>Sector del mercado en el que se desempeña el negocio.</comment>
 </table>
-<table x="18" y="29" name="nivel_usuario">
+<table x="26" y="463" name="nivel_usuario">
 <row name="idnivelusuario" null="0" autoincrement="0">
 <datatype>VARCHAR(8)</datatype>
 </row>
@@ -140,7 +140,7 @@
 <part>idnivelusuario</part>
 </key>
 </table>
-<table x="282" y="16" name="usuario">
+<table x="26" y="22" name="usuario">
 <row name="idusuario" null="0" autoincrement="0">
 <datatype>VARCHAR(8)</datatype>
 </row>
@@ -197,7 +197,7 @@
 <part>idusuario</part>
 </key>
 </table>
-<table x="567" y="15" name="codigo_usuario_negocio">
+<table x="280" y="40" name="codigo_usuario_negocio">
 <row name="idcodigousuarionegocio" null="0" autoincrement="0">
 <datatype>VARCHAR(8)</datatype>
 </row>
@@ -232,7 +232,7 @@
 </key>
 <comment>código único generado para que usuario le de a conocer a la empresa que viene de parte de nosotros.</comment>
 </table>
-<table x="108" y="470" name="plantilla_web_area_portfolio">
+<table x="265" y="780" name="plantilla_web_area_portfolio">
 <row name="idplantillawebareaportfolio" null="0" autoincrement="0">
 <datatype>VARCHAR(8)</datatype>
 </row>
@@ -258,7 +258,7 @@
 <part>idplantillawebareaportfolio</part>
 </key>
 </table>
-<table x="119" y="677" name="plantilla_web_seccion">
+<table x="837" y="739" name="plantilla_web_seccion">
 <row name="idplantillawebseccion" null="0" autoincrement="0">
 <datatype>VARCHAR(8)</datatype>
 </row>
@@ -284,7 +284,7 @@
 <part>idplantillawebseccion</part>
 </key>
 </table>
-<table x="624" y="629" name="plantilla_web">
+<table x="560" y="481" name="plantilla_web">
 <row name="idplantillaweb" null="0" autoincrement="0">
 <datatype>VARCHAR(8)</datatype>
 </row>
@@ -318,7 +318,7 @@
 <part>idplantillaweb</part>
 </key>
 </table>
-<table x="577" y="339" name="plantilla_web_portfolio">
+<table x="268" y="497" name="plantilla_web_portfolio">
 <row name="idplantillawebportfolio" null="0" autoincrement="0">
 <datatype>VARCHAR(8)</datatype>
 </row>
@@ -355,7 +355,7 @@
 <part>idplantillawebportfolio</part>
 </key>
 </table>
-<table x="211" y="949" name="ubigeo">
+<table x="856" y="42" name="ubigeo">
 <row name="idubigeo" null="0" autoincrement="0">
 <datatype>CHAR(10)</datatype>
 </row>
@@ -387,7 +387,7 @@
 <part>idubigeo</part>
 </key>
 </table>
-<table x="655" y="920" name="proyecto">
+<table x="857" y="289" name="proyecto">
 <row name="idproyecto" null="0" autoincrement="0">
 <datatype>VARCHAR(8)</datatype>
 </row>
@@ -445,6 +445,68 @@
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>idproyecto</part>
+</key>
+</table>
+<table x="209" y="1056" name="categoria">
+<row name="idcategoria" null="0" autoincrement="1">
+<datatype>VARCHAR(6)</datatype>
+</row>
+<row name="descripcion" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="logo" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idcategoria</part>
+</key>
+</table>
+<table x="509" y="1075" name="subcategoria">
+<row name="idsubcategoria" null="0" autoincrement="1">
+<datatype>VARCHAR(6)</datatype>
+</row>
+<row name="idcategoria" null="0" autoincrement="0">
+<datatype>VARCHAR(6)</datatype>
+<relation table="categoria" row="idcategoria" />
+</row>
+<row name="descripcion" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="logo" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idsubcategoria</part>
 </key>
 </table>
 </sql>
