@@ -10,7 +10,7 @@ PÁGINA DE INICIO
           <div class="col-sm-6">
             
             <h1 class="m-0 text-dark">
-              Alissa Bazar.<!--Conócenos-->
+              Alissa Bazar<!--Conócenos-->
               <!--<small class="text-sm">Acerca de nosotros</small>-->
             </h1>
             
