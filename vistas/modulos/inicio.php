@@ -36,7 +36,7 @@ PÁGINA DE INICIO
                 <h5 class="card-title" style="box-sizing: border-box; margin: 20px 0px 10px; font-weight: 700; line-height: 1.1; font-size: 28px; font-family: Helvetica, Arial, sans-serif; padding: 0px; letter-spacing: 1.05px;">NOSOTROS</h5>
 
                 <p class="card-text" style="text-align: justify; box-sizing: border-box; margin: 0px 0px 10px; padding: 0px; font-family: Helvetica, Arial, sans-serif; font-size: 14px; letter-spacing: 1.05px;">
-                  Somos una plataforma digital únicamente para usuarios autorizados cuyo objetivo es Satisfacer las necesidades de nuestros clientes, haciendo de su viaje momentos y experiencias inolvidables, cumpliendo con los estándares de calidad y seguridad por parte de un equipo con actitud de servicio.
+                  Somos una tienda virtual únicamente para usuarios autorizados cuyo objetivo es Satisfacer las necesidades de nuestros clientes, haciendo de su viaje momentos y experiencias inolvidables, cumpliendo con los estándares de calidad y seguridad por parte de un equipo con actitud de servicio.
                 </p>
                 <!--<a href="#" class="card-link">Card link</a>
                 <a href="#" class="card-link">Another link</a>-->
