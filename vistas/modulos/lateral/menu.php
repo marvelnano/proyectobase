@@ -221,6 +221,57 @@
                     </p>
                 </a>
             </li> -->
+
+            <?php
+                if($_SESSION["perfil"] == "Administrador"){
+                    echo    
+                        '<li class="nav-item has-treeview">				
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-th"></i>
+                                <p>
+                                    Gestor Tienda Virtual
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="webseccion" class="nav-link">
+                                    <i class="fa fa-th-list nav-icon"></i>
+                                    <p>Categorías</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="webareaportfolio" class="nav-link">
+                                    <i class="fa fa-folder-open nav-icon"></i>
+                                    <p>Consumidores</p>
+                                    </a>
+                                </li>
+                            </ul> 
+                            
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="webplantilla" class="nav-link">
+                                    <i class="fa fa-cloud nav-icon"></i>
+                                    <p>Medidas</p>
+                                    </a>
+                                </li>
+                            </ul> 
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="webportfolio" class="nav-link">
+                                    <i class="nav-icon fab fa-product-hunt"></i>
+                                    <p>Productos</p>
+                                    </a>
+                                </li>
+                            </ul> 
+                        </li>';
+                }
+            ?>
             
         </ul>
     </nav>
