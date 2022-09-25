@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 13-06-2022 a las 21:07:32
--- Versión del servidor: 8.0.18
--- Versión de PHP: 7.4.5
+-- Servidor: localhost
+-- Tiempo de generación: 25-09-2022 a las 03:28:01
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,8 +18,43 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `dbbase`
+-- Base de datos: `alissabazar`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categoria`
+--
+
+CREATE TABLE `categoria` (
+  `idcategoria` varchar(6) NOT NULL,
+  `descripcion` varchar(200) NOT NULL,
+  `imagen` varchar(200) DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL,
+  `usuariocrea` varchar(8) NOT NULL,
+  `fechacrea` datetime NOT NULL,
+  `usuariomodifica` varchar(8) DEFAULT NULL,
+  `fechamodifica` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Polo, short, pantalón, saco, abrigo, perfume, colonia, crema';
+
+--
+-- RELACIONES PARA LA TABLA `categoria`:
+--
+
+--
+-- Disparadores `categoria`
+--
+DELIMITER $$
+CREATE TRIGGER `tg_insert_categoria` BEFORE INSERT ON `categoria` FOR EACH ROW BEGIN
+    if (SELECT COUNT(*) FROM categoria) = 0   THEN
+        SET NEW.idcategoria = CONCAT(YEAR(NOW()),'01');
+    else
+        SET NEW.idcategoria = (SELECT MAX(idcategoria)+1 FROM categoria);
+  END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -40,6 +75,14 @@ CREATE TABLE `codigo_usuario_negocio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='código único generado para que usuario le de a conocer a la ';
 
 --
+-- RELACIONES PARA LA TABLA `codigo_usuario_negocio`:
+--   `idusuario`
+--       `usuario` -> `idusuario`
+--   `idnegocio`
+--       `negocio` -> `idnegocio`
+--
+
+--
 -- Disparadores `codigo_usuario_negocio`
 --
 DELIMITER $$
@@ -56,12 +99,81 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `consumidor`
+--
+
+CREATE TABLE `consumidor` (
+  `idconsumidor` varchar(6) NOT NULL,
+  `descripcion` varchar(200) NOT NULL,
+  `imagen` varchar(200) DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL,
+  `usuariocrea` varchar(8) NOT NULL,
+  `fechacrea` datetime NOT NULL,
+  `usuariomodifica` varchar(8) DEFAULT NULL,
+  `fechamodifica` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Hombre, mujer, niño(a), embaraza, perro, gato, etc.';
+
+--
+-- RELACIONES PARA LA TABLA `consumidor`:
+--
+
+--
+-- Disparadores `consumidor`
+--
+DELIMITER $$
+CREATE TRIGGER `tg_insert_consumidor` BEFORE INSERT ON `consumidor` FOR EACH ROW BEGIN
+    if (SELECT COUNT(*) FROM consumidor) = 0   THEN
+        SET NEW.idconsumidor = CONCAT(YEAR(NOW()),'01');
+    else
+        SET NEW.idconsumidor = (SELECT MAX(idconsumidor)+1 FROM consumidor);
+  END IF;
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `medida`
+--
+
+CREATE TABLE `medida` (
+  `idmedida` varchar(6) NOT NULL,
+  `descripcion` varchar(200) NOT NULL,
+  `estado` tinyint(1) NOT NULL,
+  `usuariocrea` varchar(8) NOT NULL,
+  `fechacrea` datetime NOT NULL,
+  `usuariomodifica` varchar(8) DEFAULT NULL,
+  `fechamodifica` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='S, X, L, XL, 250ml, 500ml, 750ml, 1Lt, etc.';
+
+--
+-- RELACIONES PARA LA TABLA `medida`:
+--
+
+--
+-- Disparadores `medida`
+--
+DELIMITER $$
+CREATE TRIGGER `tg_insert_medida` BEFORE INSERT ON `medida` FOR EACH ROW BEGIN
+    if (SELECT COUNT(*) FROM medida) = 0   THEN
+        SET NEW.idmedida = CONCAT(YEAR(NOW()),'01');
+    else
+        SET NEW.idmedida = (SELECT MAX(idmedida)+1 FROM medida);
+  END IF;
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `negocio`
 --
 
 CREATE TABLE `negocio` (
   `idnegocio` varchar(8) NOT NULL,
-  `idubigeo` char(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `idubigeo` char(10) DEFAULT NULL,
   `idrubronegocio` varchar(8) NOT NULL,
   `ruc` varchar(11) NOT NULL,
   `razon_social` varchar(250) NOT NULL,
@@ -75,6 +187,14 @@ CREATE TABLE `negocio` (
   `usuariomodifica` varchar(8) DEFAULT NULL,
   `fechamodifica` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='negocios que darán comisiones por conseguir usuarios.';
+
+--
+-- RELACIONES PARA LA TABLA `negocio`:
+--   `idrubronegocio`
+--       `rubro_negocio` -> `idrubronegocio`
+--   `idubigeo`
+--       `ubigeo` -> `idubigeo`
+--
 
 --
 -- Disparadores `negocio`
@@ -107,13 +227,18 @@ CREATE TABLE `nivel_usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- RELACIONES PARA LA TABLA `nivel_usuario`:
+--
+
+--
 -- Volcado de datos para la tabla `nivel_usuario`
 --
 
 INSERT INTO `nivel_usuario` (`idnivelusuario`, `descripcion`, `estado`, `usuariocrea`, `fechacrea`, `usuariomodifica`, `fechamodifica`) VALUES
 ('20220001', 'Administrador', 1, '20220001', '2022-05-18 17:46:01', NULL, NULL),
 ('20220002', 'Editor', 1, '20220001', '2022-06-05 01:33:43', '20220002', '2022-06-05 01:34:03'),
-('20220003', 'Usuario', 1, '20220001', '2022-06-12 02:30:35', NULL, NULL);
+('20220003', 'Usuario', 1, '20220001', '2022-06-12 02:30:35', '20220002', '2022-09-23 20:45:14'),
+('20220004', 'Tienda', 1, '20220001', '2022-09-23 21:29:24', NULL, NULL);
 
 --
 -- Disparadores `nivel_usuario`
@@ -137,26 +262,30 @@ DELIMITER ;
 
 CREATE TABLE `plantilla` (
   `id` int(11) NOT NULL,
-  `barraSuperior` text CHARACTER SET utf8 COLLATE utf8_spanish_ci,
-  `textoSuperior` text CHARACTER SET utf8 COLLATE utf8_spanish_ci,
-  `colorFondo` text CHARACTER SET utf8 COLLATE utf8_spanish_ci,
-  `colorTexto` text CHARACTER SET utf8 COLLATE utf8_spanish_ci,
-  `logo` text CHARACTER SET utf8 COLLATE utf8_spanish_ci,
-  `icono` text CHARACTER SET utf8 COLLATE utf8_spanish_ci,
-  `categoria` text CHARACTER SET utf8 COLLATE utf8_spanish_ci,
-  `redesSociales` text CHARACTER SET utf8 COLLATE utf8_spanish_ci,
-  `apiFacebook` text CHARACTER SET utf8 COLLATE utf8_spanish_ci,
-  `pixelFacebook` text CHARACTER SET utf8 COLLATE utf8_spanish_ci,
-  `googleAnalytics` text CHARACTER SET utf8 COLLATE utf8_spanish_ci,
-  `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `barraSuperior` text COLLATE utf8_spanish_ci DEFAULT NULL,
+  `textoSuperior` text COLLATE utf8_spanish_ci DEFAULT NULL,
+  `colorFondo` text COLLATE utf8_spanish_ci DEFAULT NULL,
+  `colorTexto` text COLLATE utf8_spanish_ci DEFAULT NULL,
+  `logo` text COLLATE utf8_spanish_ci DEFAULT NULL,
+  `icono` text COLLATE utf8_spanish_ci DEFAULT NULL,
+  `categoria` text COLLATE utf8_spanish_ci DEFAULT NULL,
+  `redesSociales` text COLLATE utf8_spanish_ci DEFAULT NULL,
+  `apiFacebook` text COLLATE utf8_spanish_ci DEFAULT NULL,
+  `pixelFacebook` text COLLATE utf8_spanish_ci DEFAULT NULL,
+  `googleAnalytics` text COLLATE utf8_spanish_ci DEFAULT NULL,
+  `fecha` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- RELACIONES PARA LA TABLA `plantilla`:
+--
 
 --
 -- Volcado de datos para la tabla `plantilla`
 --
 
-INSERT INTO `plantilla` (`id`, `barraSuperior`, `textoSuperior`, `colorFondo`, `colorTexto`, `logo`, `icono`, `categoria`, `redesSociales`, `apiFacebook`, `pixelFacebook`, `googleAnalytics`) VALUES
-(1, NULL, NULL, NULL, NULL, 'vistas/img/plantilla/logo.png', 'vistas/img/plantilla/icono.png', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `plantilla` (`id`, `barraSuperior`, `textoSuperior`, `colorFondo`, `colorTexto`, `logo`, `icono`, `categoria`, `redesSociales`, `apiFacebook`, `pixelFacebook`, `googleAnalytics`, `fecha`) VALUES
+(1, NULL, NULL, NULL, NULL, 'vistas/img/plantilla/logo.png', 'vistas/img/plantilla/icono.png', NULL, NULL, NULL, NULL, NULL, '2022-09-24 01:37:19');
 
 -- --------------------------------------------------------
 
@@ -168,13 +297,21 @@ CREATE TABLE `plantilla_web` (
   `idplantillaweb` varchar(8) NOT NULL,
   `idnegocio` varchar(8) NOT NULL,
   `idplantillawebseccion` varchar(8) NOT NULL,
-  `contenido` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `contenido` text DEFAULT NULL,
   `estado` tinyint(1) NOT NULL,
   `usuariocrea` varchar(8) NOT NULL,
   `fechacrea` datetime NOT NULL,
   `usuariomodifica` varchar(8) DEFAULT NULL,
   `fechamodifica` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELACIONES PARA LA TABLA `plantilla_web`:
+--   `idnegocio`
+--       `negocio` -> `idnegocio`
+--   `idplantillawebseccion`
+--       `plantilla_web_seccion` -> `idplantillawebseccion`
+--
 
 --
 -- Disparadores `plantilla_web`
@@ -205,6 +342,10 @@ CREATE TABLE `plantilla_web_area_portfolio` (
   `usuariomodifica` varchar(8) DEFAULT NULL,
   `fechamodifica` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELACIONES PARA LA TABLA `plantilla_web_area_portfolio`:
+--
 
 --
 -- Disparadores `plantilla_web_area_portfolio`
@@ -240,6 +381,14 @@ CREATE TABLE `plantilla_web_portfolio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- RELACIONES PARA LA TABLA `plantilla_web_portfolio`:
+--   `idplantillaweb`
+--       `plantilla_web` -> `idplantillaweb`
+--   `idplantillawebareaportfolio`
+--       `plantilla_web_area_portfolio` -> `idplantillawebareaportfolio`
+--
+
+--
 -- Disparadores `plantilla_web_portfolio`
 --
 DELIMITER $$
@@ -270,6 +419,10 @@ CREATE TABLE `plantilla_web_seccion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- RELACIONES PARA LA TABLA `plantilla_web_seccion`:
+--
+
+--
 -- Disparadores `plantilla_web_seccion`
 --
 DELIMITER $$
@@ -278,6 +431,57 @@ CREATE TRIGGER `tg_insert_plantilla_web_seccion` BEFORE INSERT ON `plantilla_web
         SET NEW.idplantillawebseccion = CONCAT(YEAR(NOW()),'0001');
     else
         SET NEW.idplantillawebseccion = (SELECT MAX(idplantillawebseccion)+1 FROM plantilla_web_seccion);
+  END IF;
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `producto`
+--
+
+CREATE TABLE `producto` (
+  `idproducto` varchar(8) NOT NULL,
+  `idnegocio` varchar(8) NOT NULL,
+  `idcategoria` varchar(6) NOT NULL,
+  `idconsumidor` varchar(6) NOT NULL,
+  `idmedida` varchar(6) NOT NULL,
+  `titulo` varchar(100) NOT NULL,
+  `descripcion` varchar(250) NOT NULL,
+  `costo` decimal(10,0) NOT NULL,
+  `precio` decimal(10,0) NOT NULL,
+  `stock` decimal(4,0) NOT NULL,
+  `imagen` varchar(200) DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL,
+  `usuariocrea` varchar(8) NOT NULL,
+  `fechacrea` datetime NOT NULL,
+  `usuariomodifica` varchar(8) DEFAULT NULL,
+  `fechamodifica` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELACIONES PARA LA TABLA `producto`:
+--   `idnegocio`
+--       `negocio` -> `idnegocio`
+--   `idcategoria`
+--       `categoria` -> `idcategoria`
+--   `idconsumidor`
+--       `consumidor` -> `idconsumidor`
+--   `idmedida`
+--       `medida` -> `idmedida`
+--
+
+--
+-- Disparadores `producto`
+--
+DELIMITER $$
+CREATE TRIGGER `tg_insert_producto` BEFORE INSERT ON `producto` FOR EACH ROW BEGIN
+    if (SELECT COUNT(*) FROM producto) = 0   THEN
+        SET NEW.idproducto = CONCAT(YEAR(NOW()),'0001');
+    else
+        SET NEW.idproducto = (SELECT MAX(idproducto)+1 FROM producto);
   END IF;
 END
 $$
@@ -311,6 +515,12 @@ CREATE TABLE `proyecto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- RELACIONES PARA LA TABLA `proyecto`:
+--   `idubigeo`
+--       `ubigeo` -> `idubigeo`
+--
+
+--
 -- Disparadores `proyecto`
 --
 DELIMITER $$
@@ -339,6 +549,10 @@ CREATE TABLE `rubro_negocio` (
   `usuariomodifica` varchar(8) DEFAULT NULL,
   `fechamodifica` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sector del mercado en el que se desempeña el negocio.';
+
+--
+-- RELACIONES PARA LA TABLA `rubro_negocio`:
+--
 
 --
 -- Disparadores `rubro_negocio`
@@ -371,6 +585,10 @@ CREATE TABLE `ubigeo` (
   `usuariomodifica` varchar(8) DEFAULT NULL,
   `fechamodifica` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELACIONES PARA LA TABLA `ubigeo`:
+--
 
 --
 -- Volcado de datos para la tabla `ubigeo`
@@ -3265,8 +3483,8 @@ INSERT INTO `ubigeo` (`idubigeo`, `idpais`, `parent`, `descripcion`, `estado`, `
 
 CREATE TABLE `usuario` (
   `idusuario` varchar(8) NOT NULL,
-  `idnivelusuario` varchar(8) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `dni` varchar(8) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `idnivelusuario` varchar(8) NOT NULL,
+  `dni` varchar(8) DEFAULT NULL,
   `nombre_completo` varchar(200) NOT NULL,
   `foto` varchar(200) DEFAULT NULL,
   `direccion` varchar(200) DEFAULT NULL,
@@ -3282,6 +3500,12 @@ CREATE TABLE `usuario` (
   `usuariomodifica` varchar(8) DEFAULT NULL,
   `fechamodifica` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELACIONES PARA LA TABLA `usuario`:
+--   `idnivelusuario`
+--       `nivel_usuario` -> `idnivelusuario`
+--
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -3310,12 +3534,30 @@ DELIMITER ;
 --
 
 --
+-- Indices de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  ADD PRIMARY KEY (`idcategoria`);
+
+--
 -- Indices de la tabla `codigo_usuario_negocio`
 --
 ALTER TABLE `codigo_usuario_negocio`
   ADD PRIMARY KEY (`idcodigousuarionegocio`),
   ADD KEY `idusuario` (`idusuario`),
   ADD KEY `idnegocio` (`idnegocio`);
+
+--
+-- Indices de la tabla `consumidor`
+--
+ALTER TABLE `consumidor`
+  ADD PRIMARY KEY (`idconsumidor`);
+
+--
+-- Indices de la tabla `medida`
+--
+ALTER TABLE `medida`
+  ADD PRIMARY KEY (`idmedida`);
 
 --
 -- Indices de la tabla `negocio`
@@ -3364,6 +3606,16 @@ ALTER TABLE `plantilla_web_portfolio`
 --
 ALTER TABLE `plantilla_web_seccion`
   ADD PRIMARY KEY (`idplantillawebseccion`);
+
+--
+-- Indices de la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD PRIMARY KEY (`idproducto`),
+  ADD KEY `idnegocio` (`idnegocio`),
+  ADD KEY `idcategoria` (`idcategoria`),
+  ADD KEY `idconsumidor` (`idconsumidor`),
+  ADD KEY `idmedida` (`idmedida`);
 
 --
 -- Indices de la tabla `proyecto`
@@ -3417,7 +3669,7 @@ ALTER TABLE `codigo_usuario_negocio`
 --
 ALTER TABLE `negocio`
   ADD CONSTRAINT `negocio_ibfk_1` FOREIGN KEY (`idrubronegocio`) REFERENCES `rubro_negocio` (`idrubronegocio`),
-  ADD CONSTRAINT `negocio_ibfk_2` FOREIGN KEY (`idubigeo`) REFERENCES `ubigeo` (`idubigeo`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `negocio_ibfk_2` FOREIGN KEY (`idubigeo`) REFERENCES `ubigeo` (`idubigeo`);
 
 --
 -- Filtros para la tabla `plantilla_web`
@@ -3432,6 +3684,15 @@ ALTER TABLE `plantilla_web`
 ALTER TABLE `plantilla_web_portfolio`
   ADD CONSTRAINT `plantilla_web_portfolio_ibfk_1` FOREIGN KEY (`idplantillaweb`) REFERENCES `plantilla_web` (`idplantillaweb`),
   ADD CONSTRAINT `plantilla_web_portfolio_ibfk_2` FOREIGN KEY (`idplantillawebareaportfolio`) REFERENCES `plantilla_web_area_portfolio` (`idplantillawebareaportfolio`);
+
+--
+-- Filtros para la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`idnegocio`) REFERENCES `negocio` (`idnegocio`),
+  ADD CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`idcategoria`) REFERENCES `categoria` (`idcategoria`),
+  ADD CONSTRAINT `producto_ibfk_3` FOREIGN KEY (`idconsumidor`) REFERENCES `consumidor` (`idconsumidor`),
+  ADD CONSTRAINT `producto_ibfk_4` FOREIGN KEY (`idmedida`) REFERENCES `medida` (`idmedida`);
 
 --
 -- Filtros para la tabla `proyecto`

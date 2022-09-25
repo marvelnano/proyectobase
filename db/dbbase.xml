@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
-<!-- Active URL: http://localhost:83/sqldesigner/ -->
+<!-- Active URL: http://localhost/sqldesigner/ -->
 <sql>
 <datatypes db="mysql">
 	<group label="Numeric" color="rgb(238,238,170)">
@@ -447,14 +447,14 @@
 <part>idproyecto</part>
 </key>
 </table>
-<table x="209" y="1056" name="categoria">
-<row name="idcategoria" null="0" autoincrement="1">
+<table x="300" y="997" name="categoria">
+<row name="idcategoria" null="0" autoincrement="0">
 <datatype>VARCHAR(6)</datatype>
 </row>
 <row name="descripcion" null="0" autoincrement="0">
 <datatype>VARCHAR(200)</datatype>
 </row>
-<row name="logo" null="1" autoincrement="0">
+<row name="imagen" null="1" autoincrement="0">
 <datatype>VARCHAR(200)</datatype>
 <default>NULL</default></row>
 <row name="estado" null="0" autoincrement="0">
@@ -475,19 +475,16 @@
 <key type="PRIMARY" name="">
 <part>idcategoria</part>
 </key>
+<comment>Polo, short, pantalón, saco, abrigo, perfume, colonia, crema, etc. </comment>
 </table>
-<table x="509" y="1075" name="subcategoria">
-<row name="idsubcategoria" null="0" autoincrement="1">
+<table x="303" y="1219" name="consumidor">
+<row name="idconsumidor" null="0" autoincrement="0">
 <datatype>VARCHAR(6)</datatype>
-</row>
-<row name="idcategoria" null="0" autoincrement="0">
-<datatype>VARCHAR(6)</datatype>
-<relation table="categoria" row="idcategoria" />
 </row>
 <row name="descripcion" null="0" autoincrement="0">
 <datatype>VARCHAR(200)</datatype>
 </row>
-<row name="logo" null="1" autoincrement="0">
+<row name="imagen" null="1" autoincrement="0">
 <datatype>VARCHAR(200)</datatype>
 <default>NULL</default></row>
 <row name="estado" null="0" autoincrement="0">
@@ -506,7 +503,92 @@
 <datatype>DATETIME</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
-<part>idsubcategoria</part>
+<part>idconsumidor</part>
+</key>
+<comment>Hombre, mujer, niño(a), embaraza, perro, gato, etc.</comment>
+</table>
+<table x="296" y="1445" name="medida">
+<row name="idmedida" null="0" autoincrement="0">
+<datatype>VARCHAR(6)</datatype>
+</row>
+<row name="descripcion" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idmedida</part>
+</key>
+<comment>S, X, L, XL, 250ml, 500ml, 750ml, 1Lt, etc.</comment>
+</table>
+<table x="683" y="1176" name="producto">
+<row name="idproducto" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="idnegocio" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<relation table="negocio" row="idnegocio" />
+</row>
+<row name="idcategoria" null="0" autoincrement="0">
+<datatype>VARCHAR(6)</datatype>
+<relation table="categoria" row="idcategoria" />
+</row>
+<row name="idconsumidor" null="0" autoincrement="0">
+<datatype>VARCHAR(6)</datatype>
+<relation table="consumidor" row="idconsumidor" />
+</row>
+<row name="idmedida" null="0" autoincrement="0">
+<datatype>VARCHAR(6)</datatype>
+<relation table="medida" row="idmedida" />
+</row>
+<row name="titulo" null="0" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+</row>
+<row name="descripcion" null="0" autoincrement="0">
+<datatype>VARCHAR(250)</datatype>
+</row>
+<row name="costo" null="0" autoincrement="0">
+<datatype>DECIMAL(10)</datatype>
+</row>
+<row name="precio" null="0" autoincrement="0">
+<datatype>DECIMAL(10)</datatype>
+</row>
+<row name="stock" null="0" autoincrement="0">
+<datatype>DECIMAL(4)</datatype>
+</row>
+<row name="imagen" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idproducto</part>
 </key>
 </table>
 </sql>
