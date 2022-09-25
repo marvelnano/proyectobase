@@ -174,6 +174,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       $_GET["ruta"] == "webplantilla" ||
       $_GET["ruta"] == "webportfolio" ||  
       $_GET["ruta"] == "listanegocios" ||    
+      /*$_GET["ruta"] == "categoria" ||  
+      $_GET["ruta"] == "consumidor" ||  
+      $_GET["ruta"] == "medida" ||  
+      $_GET["ruta"] == "producto" ||*/ 
       $_GET["ruta"]== "salir"){
         include "modulos/".$_GET["ruta"].".php";
       }
@@ -216,6 +220,10 @@ JS PERSONALIZADO
 <script src="vistas/js/gestorWebAreaPortfolio.js"></script>
 <script src="vistas/js/gestorWebPlantilla.js"></script>
 <script src="vistas/js/gestorWebPortfolio.js"></script>
+<!--<script src="vistas/js/gestorCategoria.js"></script>
+<script src="vistas/js/gestorConsumidor.js"></script>
+<script src="vistas/js/gestorMedida.js"></script>
+<script src="vistas/js/gestorProducto.js"></script>-->
 <script src="vistas/js/toastr.min.js"></script>
 
 </body>

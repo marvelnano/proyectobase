@@ -109,7 +109,7 @@ return;
 </div>
 
 <!--=====================================
-MODAL AGREGAR USUARIO
+MODAL AGREGAR Administrador
 ======================================-->
 
 <div id="modalAgregarPerfil" class="modal fade">
@@ -233,7 +233,7 @@ MODAL AGREGAR USUARIO
 </div>
 
 <!--=====================================
-MODAL EDITAR USUARIO
+MODAL EDITAR Administrador
 ======================================-->
 
 <div id="modalEditarPerfil" class="modal fade">
