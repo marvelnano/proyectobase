@@ -1,0 +1,27 @@
+* GITHUB
+	-)Establecer tu nombre de usuario y dirección de correo electrónico:
+		git config --global user.name "John Doe"
+		git config --global user.email johndoe@example.com
+
+	-)Comprobando tu Configuración:
+		git config --list
+
+* XAMPP
+	-)https://www.apachefriends.org/download.html#download-linux
+
+	-)descargar e instalar xampp:
+		https://www.apachefriends.org/download.html#download-linux
+		abrir terminal -> cd Downloads(Descargas)
+		sudo chmod +x xampp-linux-x64-8.1.6-0-installer.run	
+		sudo ./xampp-linux-x64-8.1.6-0-installer.run
+
+	-)ejecutar xampp:
+		cd /opt/lampp
+		sudo ./manager-linux-x64.run
+
+* OTROS
+	-)para dar permso a archivos bash:
+		chmod u+x nombrearchivo.sh
+
+	-)para cambiar usuario:
+		sudo chown -R marvel /opt/lampp/htdocs -> con -R se cambia a todas las subcarpetas
