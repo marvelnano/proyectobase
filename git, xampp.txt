@@ -24,4 +24,4 @@
 		chmod u+x nombrearchivo.sh
 
 	-)para cambiar usuario:
-		sudo chown -R marvel /opt/lampp/htdocs -> con -R se cambia a todas las subcarpetas
+		sudo chown -R usuariolinux /opt/lampp/htdocs -> con -R se cambia a todas las subcarpetas
