@@ -10,25 +10,23 @@
 
 <body style="background: #fff;">
     <div class="container">
-        <div class="row">
+        <div class="row" style="border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: 20px; padding: 20px;">
             <legend>Crear Módulo</legend>
             <label class="col col-3">Módulo</label>
-            <input class="col col-5 modulo" type="text" />
-            <span class="col col-3">Ingrese nombre de módulo en minúsculas</span>            
-        </div>
-        <div class="row">
-            <button class="btn-primary crearModulo">Grabar</button>
+            <div class="col col-5">            
+                <input class="modulo" type="text" style="width: 100%;" />
+            </div>
+            <span class="col col-3">Ingrese nombre de módulo en minúsculas</span>  
+            <button class="btn-primary crearModulo">Grabar</button>          
         </div>
 
-        <div class="row"></div>
-
-        <div class="row">
+        <div class="row" style="border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: 20px; padding: 20px;">
             <legend>Crear Controlador</legend>
             <label class="col col-3">Controlador</label>
-            <input class="col col-5 controlador" type="text" />
+            <div class="col col-5">            
+                <input class="controlador" type="text" style="width: 100%;" />
+            </div>
             <span class="col col-3">Ingrese nombre de controlador sin espacios y la primera palabra en mayúscula</span>
-        </div>
-        <div class="row">
             <button class="btn-primary crearControlador">Grabar</button>
         </div>
     <div>
