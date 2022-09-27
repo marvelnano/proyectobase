@@ -5,7 +5,7 @@
         CREAR MÓDULO
         =============================================*/
         static public function ctrCrearModulo($datos){
-            //echo ", módulo: ".$datos["modulo"];
+            //echo " módulo: ".$datos["modulo"];
             if(isset($datos["modulo"])){
 
                 //primera letra en mayúscula: ucfirst($datos["controlador"])

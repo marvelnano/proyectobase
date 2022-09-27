@@ -144,53 +144,58 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   if(isset($_SESSION["validarSesionBackend"]) && $_SESSION["validarSesionBackend"] === "ok"){
 
-    echo '<body class="hold-transition sidebar-mini">';
-    echo '<div class="wrapper">';
-
-    /*=============================================
-     HEADER
-     =============================================*/
-     include "modulos/header.php";
-
-    /*=============================================
-     LATERAL
-     =============================================*/
-     include "modulos/lateral.php";
-
-     /*=============================================
-     CONTENIDO
-     =============================================*/
-    if(isset($_GET["ruta"])){
-      if($_GET["ruta"] == "inicio" ||      
-      $_GET["ruta"] == "usuario" ||
-      $_GET["ruta"] == "design" ||
-      $_GET["ruta"] == "proyecto" ||
-      $_GET["ruta"] == "administrador" ||
-      $_GET["ruta"] == "nivelusuario" ||
-      $_GET["ruta"] == "rubronegocio" ||
-      $_GET["ruta"] == "negocio" ||
-      $_GET["ruta"] == "webseccion" ||
-      $_GET["ruta"] == "webareaportfolio" ||
-      $_GET["ruta"] == "webplantilla" ||
-      $_GET["ruta"] == "webportfolio" ||  
-      $_GET["ruta"] == "listanegocios" ||    
-      /*$_GET["ruta"] == "categoria" ||  
-      $_GET["ruta"] == "consumidor" ||  
-      $_GET["ruta"] == "medida" ||  
-      $_GET["ruta"] == "producto" ||*/
-      $_GET["ruta"]== "salir"){
-        include "modulos/".$_GET["ruta"].".php";
-      }
+    if($_GET["ruta"] == "crear"){
+      echo '<body class="hold-transition login-page">';
+      include "modulos/".$_GET["ruta"].".php";
     }else{
-      include "modulos/inicio.php";
+      echo '<body class="hold-transition sidebar-mini">';
+      echo '<div class="wrapper">';
+
+      /*=============================================
+      HEADER
+      =============================================*/
+      include "modulos/header.php";
+
+      /*=============================================
+      LATERAL
+      =============================================*/
+      include "modulos/lateral.php";
+
+      /*=============================================
+      CONTENIDO
+      =============================================*/
+      if(isset($_GET["ruta"])){
+        if($_GET["ruta"] == "inicio" ||      
+        $_GET["ruta"] == "usuario" ||
+        $_GET["ruta"] == "design" ||
+        $_GET["ruta"] == "proyecto" ||
+        $_GET["ruta"] == "administrador" ||
+        $_GET["ruta"] == "nivelusuario" ||
+        $_GET["ruta"] == "rubronegocio" ||
+        $_GET["ruta"] == "negocio" ||
+        $_GET["ruta"] == "webseccion" ||
+        $_GET["ruta"] == "webareaportfolio" ||
+        $_GET["ruta"] == "webplantilla" ||
+        $_GET["ruta"] == "webportfolio" ||  
+        $_GET["ruta"] == "listanegocios" ||    
+        /*$_GET["ruta"] == "categoria" ||  
+        $_GET["ruta"] == "consumidor" ||  
+        $_GET["ruta"] == "medida" ||  
+        $_GET["ruta"] == "producto" ||*/
+        $_GET["ruta"]== "salir"){
+          include "modulos/".$_GET["ruta"].".php";
+        }
+      }else{
+        include "modulos/inicio.php";
+      }
+      
+      /*=============================================
+      FOOTER
+      =============================================*/
+      include 'modulos/footer.php';
+      echo '</div>';
     }
 
-    /*=============================================
-     FOOTER
-     =============================================*/
-    include 'modulos/footer.php';
-
-    echo '</div>';
   }else{
     if(isset($_GET["ruta"])){
       if($_GET["ruta"] == "registro"){
