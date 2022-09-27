@@ -160,7 +160,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
      /*=============================================
      CONTENIDO
      =============================================*/
-     if(isset($_GET["ruta"])){
+    if(isset($_GET["ruta"])){
       if($_GET["ruta"] == "inicio" ||      
       $_GET["ruta"] == "usuario" ||
       $_GET["ruta"] == "design" ||
@@ -177,7 +177,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       /*$_GET["ruta"] == "categoria" ||  
       $_GET["ruta"] == "consumidor" ||  
       $_GET["ruta"] == "medida" ||  
-      $_GET["ruta"] == "producto" ||*/ 
+      $_GET["ruta"] == "producto" ||*/
       $_GET["ruta"]== "salir"){
         include "modulos/".$_GET["ruta"].".php";
       }
@@ -192,9 +192,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     echo '</div>';
   }else{
-    if($_GET["ruta"] == "registro"){
-      echo '<body class="hold-transition login-page">';
-      include "modulos/registro.php";
+    if(isset($_GET["ruta"])){
+      if($_GET["ruta"] == "registro"){
+        echo '<body class="hold-transition login-page">';
+        include "modulos/".$_GET["ruta"].".php";    
+      }if($_GET["ruta"] == "ingreso"){
+        echo '<body class="hold-transition login-page">';
+        include "modulos/login.php";
+      }if($_GET["ruta"] == "crear"){
+        echo '<body class="hold-transition login-page">';
+        include "modulos/".$_GET["ruta"].".php";
+      }
     }else{
       echo '<body class="hold-transition login-page">';
       include "modulos/login.php";

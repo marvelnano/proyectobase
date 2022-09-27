@@ -3,7 +3,6 @@
 require_once "../controladores/negocio.controlador.php";
 require_once "../modelos/negocio.modelo.php";
 
-
 class AjaxNegocio{
 
 	/*=============================================

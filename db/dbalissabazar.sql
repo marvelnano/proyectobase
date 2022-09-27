@@ -6,6 +6,8 @@
 -- Tiempo de generación: 25-09-2022 a las 03:40:18
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
+CREATE DATABASE alissabazar;
+USE alissabazar;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
