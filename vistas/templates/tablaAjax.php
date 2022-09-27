@@ -14,37 +14,33 @@ class Tabla{CONTROLADOR}{
 		$item = null;
 		$valor = null;
 
-		${CONTROLADORMIN}s = Controlador{CONTROLADOR}::ctrMostrar{CONTROLADOR}($item, $valor);
-		//echo "total de detalle: ".count(${CONTROLADORMIN}s);
+		${CONTROLADORMIN} = Controlador{CONTROLADOR}::ctrMostrar{CONTROLADOR}($item, $valor);
+		//echo "total de detalle: ".count(${CONTROLADORMIN});
 		$datosJson = '{ 
 			"data": [ ';
 
-			for($i = 0; $i < count(${CONTROLADORMIN}s); $i++){ 
+			for($i = 0; $i < count(${CONTROLADORMIN}); $i++){ 
 
 				/*=============================================
 				AGREGAR ETIQUETAS DE ESTADO
 				=============================================*/
 
-				if(${CONTROLADORMIN}s[$i]["estado"] == 0){
-
+				if(${CONTROLADORMIN}[$i]["estado"] == 0){
 					$colorEstado = "btn-danger";
 					$textoEstado = "Desactivado";
 					$estado{CONTROLADOR} = 1;
-
 				}else{
-
 					$colorEstado = "btn-success";
 					$textoEstado = "Activado";
 					$estado{CONTROLADOR} = 0;
-
 				}
 
-				$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' id{CONTROLADOR}='".${CONTROLADORMIN}s[$i]["id{CONTROLADORMIN}"]."' estado{CONTROLADOR}='".$estado{CONTROLADOR}."'>".$textoEstado."</button>";
+				$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' id{CONTROLADOR}='".${CONTROLADORMIN}[$i]["id{CONTROLADORMIN}"]."' estado{CONTROLADOR}='".$estado{CONTROLADOR}."'>".$textoEstado."</button>";
 
 				/*=============================================
 				TRAER LAS ACCIONES
 				=============================================*/
-				$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditar{CONTROLADOR} center' id{CONTROLADOR}='".${CONTROLADORMIN}s[$i]["id{CONTROLADORMIN}"]."' data-toggle='modal' data-target='#modalEditar{CONTROLADOR}'><i class='fa fa-edit'></i></button></div>";
+				$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditar{CONTROLADOR} center' id{CONTROLADOR}='".${CONTROLADORMIN}[$i]["id{CONTROLADORMIN}"]."' data-toggle='modal' data-target='#modalEditar{CONTROLADOR}'><i class='fa fa-edit'></i></button></div>";
 
 				/*=============================================
 				DEVOLVER DATOS JSON
@@ -52,7 +48,7 @@ class Tabla{CONTROLADOR}{
 				
 				$datosJson	 .= '[
 					"'.($i+1).'",
-					"'.${CONTROLADORMIN}s[$i]["descripcion"].'",
+					"'.${CONTROLADORMIN}[$i]["descripcion"].'",
 					"'.$estado.'",
 					"'.$acciones.'"		
 					],';
@@ -66,9 +62,7 @@ class Tabla{CONTROLADOR}{
 		}'; 
 		
 		echo $datosJson; 
-
 	}
-
 }
 
 /*=============================================

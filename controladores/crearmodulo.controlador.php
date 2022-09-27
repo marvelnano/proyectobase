@@ -21,8 +21,8 @@
                     //echo "<p>El archivo no se ha encontrado</p>";
                     $archivo = fopen($modulo, "w+b");    // Abrir el archivo, creándolo si no existe
                     $archivo = fopen($ajax, "w+b"); 
-                    //$archivo = fopen($controlador, "w+b"); 
-                    //$archivo = fopen($modelo, "w+b"); 
+                    $archivo = fopen($controlador, "w+b"); 
+                    $archivo = fopen($modelo, "w+b"); 
                     
                     if( $archivo == false ){
                         //echo "Error al crear el archivo";
@@ -48,6 +48,26 @@
                         $cadenaajax = str_replace("{CONTROLADORMAY}", strtoupper($datos["modulo"]), $cadenaajax);
                         //$cadena .= "\r\nMe encanta PHP!";
                         file_put_contents($ajax, $cadenaajax, FILE_APPEND);
+
+                        //CREAR CONTROLADOR
+                        $templatecontrolador = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/vistas/templates/controlador.php";
+
+                        $cadenacontrolador = file_get_contents($templatecontrolador);
+                        $cadenacontrolador = str_replace("{CONTROLADOR}", ucfirst($datos["modulo"]), $cadenacontrolador);
+                        $cadenacontrolador = str_replace("{CONTROLADORMIN}", strtolower($datos["modulo"]), $cadenacontrolador);
+                        $cadenacontrolador = str_replace("{CONTROLADORMAY}", strtoupper($datos["modulo"]), $cadenacontrolador);
+                        //$cadena .= "\r\nMe encanta PHP!";
+                        file_put_contents($controlador, $cadenacontrolador, FILE_APPEND);
+
+                        //CREAR MODELO
+                        $templatemodelo = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/vistas/templates/modelo.php";
+
+                        $cadenamodelo = file_get_contents($templatemodelo);
+                        $cadenamodelo = str_replace("{CONTROLADOR}", ucfirst($datos["modulo"]), $cadenamodelo);
+                        $cadenamodelo = str_replace("{CONTROLADORMIN}", strtolower($datos["modulo"]), $cadenamodelo);
+                        $cadenamodelo = str_replace("{CONTROLADORMAY}", strtoupper($datos["modulo"]), $cadenamodelo);
+                        //$cadena .= "\r\nMe encanta PHP!";
+                        file_put_contents($modelo, $cadenamodelo, FILE_APPEND);
                     }
 
                     fclose($archivo);   // Cerrar el archivo

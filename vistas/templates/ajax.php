@@ -16,7 +16,7 @@ class Ajax{CONTROLADOR}{
 		$item = "descripcion";
 		$valor = $this->validar{CONTROLADOR};
 
-		$respuesta = Controlador{CONTROLADOR}::ctrMostrar{CONTROLADOR}s($item, $valor);
+		$respuesta = Controlador{CONTROLADOR}::ctrMostrar{CONTROLADOR}($item, $valor);
 		echo json_encode($respuesta);
 	}
 
@@ -67,7 +67,7 @@ class Ajax{CONTROLADOR}{
 		$item = "id{CONTROLADORMIN}";
 		$valor = $this->id{CONTROLADOR};
 
-		$respuesta = Controlador{CONTROLADOR}::ctrMostrar{CONTROLADOR}s($item, $valor);
+		$respuesta = Controlador{CONTROLADOR}::ctrMostrar{CONTROLADOR}($item, $valor);
 		echo json_encode($respuesta);
 	}
 

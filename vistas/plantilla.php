@@ -144,7 +144,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   if(isset($_SESSION["validarSesionBackend"]) && $_SESSION["validarSesionBackend"] === "ok"){
 
-    if($_GET["ruta"] == "crear"){
+    if(isset($_GET["ruta"]) && $_GET["ruta"] == "crear"){
       echo '<body class="hold-transition login-page">';
       include "modulos/".$_GET["ruta"].".php";
     }else{

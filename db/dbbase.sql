@@ -6,6 +6,8 @@
 -- Tiempo de generación: 25-09-2022 a las 03:28:01
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
+CREATE DATABASE dbbase;
+USE dbbase;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
