@@ -46,7 +46,7 @@ $(".modulo").keyup(function(event) {
 
 function crearModulo(){
 	var modulo = $(".modulo").val().toLowerCase();
-
+	
 	if(modulo !== ''){
 		var datosModulo = new FormData();
 		datosModulo.append("modulo", modulo);

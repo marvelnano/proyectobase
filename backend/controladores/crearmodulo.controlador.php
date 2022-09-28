@@ -9,10 +9,10 @@
             if(isset($datos["modulo"])){
 
                 //primera letra en mayúscula: ucfirst($datos["controlador"])
-                $modulo = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/vistas/modulos/".$datos["modulo"].".php";
-                $ajax = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/ajax/".$datos["modulo"].".ajax.php";
-                $controlador = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/controladores/".$datos["modulo"].".controlador.php";
-                $modelo = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/modelos/".$datos["modulo"].".modelo.php";		
+                $modulo = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/backend/vistas/modulos/".$datos["modulo"].".php";
+                $ajax = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/backend/ajax/".$datos["modulo"].".ajax.php";
+                $controlador = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/backend/controladores/".$datos["modulo"].".controlador.php";
+                $modelo = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/backend/modelos/".$datos["modulo"].".modelo.php";		
                 
                 if( file_exists($modulo) == true){
                     //echo "<p>El archivo existe</p>";
@@ -27,7 +27,7 @@
                     }else{
                         //echo "El archivo ha sido creado";
                         
-                        $templatemodulo = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/vistas/templates/modulo.php";
+                        $templatemodulo = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/backend/vistas/templates/modulo.php";
 
                         $cadenamodulo = file_get_contents($templatemodulo);
                         $cadenamodulo = str_replace("{CONTROLADOR}", ucfirst($datos["modulo"]), $cadenamodulo);
@@ -45,7 +45,7 @@
                     }else{
                         //echo "El archivo ha sido creado";
                         
-                        $templateajax = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/vistas/templates/ajax.php";
+                        $templateajax = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/backend/vistas/templates/ajax.php";
 
                         $cadenaajax = file_get_contents($templateajax);
                         $cadenaajax = str_replace("{CONTROLADOR}", ucfirst($datos["modulo"]), $cadenaajax);
@@ -63,7 +63,7 @@
                     }else{
                         //echo "El archivo ha sido creado";
                         
-                        $templatecontrolador = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/vistas/templates/controlador.php";
+                        $templatecontrolador = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/backend/vistas/templates/controlador.php";
 
                         $cadenacontrolador = file_get_contents($templatecontrolador);
                         $cadenacontrolador = str_replace("{CONTROLADOR}", ucfirst($datos["modulo"]), $cadenacontrolador);
@@ -81,7 +81,7 @@
                     }else{
                         //echo "El archivo ha sido creado";
                         
-                        $templatemodelo = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/vistas/templates/modelo.php";
+                        $templatemodelo = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/backend/vistas/templates/modelo.php";
 
                         $cadenamodelo = file_get_contents($templatemodelo);
                         $cadenamodelo = str_replace("{CONTROLADOR}", ucfirst($datos["modulo"]), $cadenamodelo);
@@ -105,8 +105,8 @@
         static public function ctrCrearControlador($datos){
             //echo ", controlador: ".$datos["controlador"];
             if(isset($datos["controlador"])){
-                $js = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/vistas/js/gestor".$datos["controlador"].".js";
-                $tablaAjax = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/ajax/tabla".$datos["controlador"].".ajax.php";		
+                $js = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/backend/vistas/js/gestor".$datos["controlador"].".js";
+                $tablaAjax = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/backend/ajax/tabla".$datos["controlador"].".ajax.php";		
                 
                 if( file_exists($js) == true ){
                     //echo "<p>El archivo existe</p>";
@@ -121,7 +121,7 @@
                     }else{
                         //echo "El archivo ha sido creado";
                         
-                        $templatejs = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/vistas/templates/javascript.js";
+                        $templatejs = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/backend/vistas/templates/javascript.js";
 
                         $cadenajs = file_get_contents($templatejs);
                         $cadenajs = str_replace("{CONTROLADOR}", ucfirst($datos["controlador"]), $cadenajs);
@@ -139,7 +139,7 @@
                     }else{
                         //echo "El archivo ha sido creado";
                         
-                        $templatetablaajax = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/vistas/templates/tablaAjax.php";
+                        $templatetablaajax = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/backend/vistas/templates/tablaAjax.php";
 
                         $cadenatajax = file_get_contents($templatetablaajax);
                         $cadenatajax = str_replace("{CONTROLADOR}", ucfirst($datos["controlador"]), $cadenatajax);
