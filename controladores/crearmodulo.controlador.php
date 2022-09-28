@@ -19,84 +19,81 @@
                     $respuesta = "EXISTE";
                 }else{
                     //echo "<p>El archivo no se ha encontrado</p>";
-                    $archivo = fopen($modulo, "w+b");    // Abrir el archivo, creándolo si no existe
-                    $archivo = fopen($ajax, "w+b"); 
-                    $archivo = fopen($controlador, "w+b"); 
-                    $archivo = fopen($modelo, "w+b"); 
-                    
-                    if( $archivo == false ){
+
+                    //CREAR MODULO
+                    $archivomodulo = fopen($modulo, "w+b");    // Abrir el archivo, creándolo si no existe                    
+                    if( $archivomodulo == false ){
                         //echo "Error al crear el archivo";
                     }else{
                         //echo "El archivo ha sido creado";
-
-                        //CREAR MODULO
+                        
                         $templatemodulo = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/vistas/templates/modulo.php";
 
                         $cadenamodulo = file_get_contents($templatemodulo);
                         $cadenamodulo = str_replace("{CONTROLADOR}", ucfirst($datos["modulo"]), $cadenamodulo);
                         $cadenamodulo = str_replace("{CONTROLADORMIN}", strtolower($datos["modulo"]), $cadenamodulo);
                         $cadenamodulo = str_replace("{CONTROLADORMAY}", strtoupper($datos["modulo"]), $cadenamodulo);
-                        //$cadena .= "\r\nMe encanta PHP!";
-                        file_put_contents($modulo, $cadenamodulo, FILE_APPEND);
+                        
+                        file_put_contents($modulo, $cadenamodulo, FILE_APPEND);                        
+                    }
+                    fclose($archivomodulo);   // Cerrar el archivo
 
-                        //CREAR AJAX
+                    //CREAR AJAX
+                    $archivoajax = fopen($ajax, "w+b");    // Abrir el archivo, creándolo si no existe                    
+                    if( $archivoajax == false ){
+                        //echo "Error al crear el archivo";
+                    }else{
+                        //echo "El archivo ha sido creado";
+                        
                         $templateajax = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/vistas/templates/ajax.php";
 
                         $cadenaajax = file_get_contents($templateajax);
                         $cadenaajax = str_replace("{CONTROLADOR}", ucfirst($datos["modulo"]), $cadenaajax);
                         $cadenaajax = str_replace("{CONTROLADORMIN}", strtolower($datos["modulo"]), $cadenaajax);
                         $cadenaajax = str_replace("{CONTROLADORMAY}", strtoupper($datos["modulo"]), $cadenaajax);
-                        //$cadena .= "\r\nMe encanta PHP!";
-                        file_put_contents($ajax, $cadenaajax, FILE_APPEND);
+                        
+                        file_put_contents($ajax, $cadenaajax, FILE_APPEND);                       
+                    }
+                    fclose($archivoajax);   // Cerrar el archivo
 
-                        //CREAR CONTROLADOR
+                    //CREAR CONTROLADOR
+                    $archivocontrolador = fopen($controlador, "w+b");    // Abrir el archivo, creándolo si no existe                    
+                    if( $archivocontrolador == false ){
+                        //echo "Error al crear el archivo";
+                    }else{
+                        //echo "El archivo ha sido creado";
+                        
                         $templatecontrolador = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/vistas/templates/controlador.php";
 
                         $cadenacontrolador = file_get_contents($templatecontrolador);
                         $cadenacontrolador = str_replace("{CONTROLADOR}", ucfirst($datos["modulo"]), $cadenacontrolador);
                         $cadenacontrolador = str_replace("{CONTROLADORMIN}", strtolower($datos["modulo"]), $cadenacontrolador);
                         $cadenacontrolador = str_replace("{CONTROLADORMAY}", strtoupper($datos["modulo"]), $cadenacontrolador);
-                        //$cadena .= "\r\nMe encanta PHP!";
-                        file_put_contents($controlador, $cadenacontrolador, FILE_APPEND);
+                        
+                        file_put_contents($controlador, $cadenacontrolador, FILE_APPEND);                       
+                    }
+                    fclose($archivocontrolador);   // Cerrar el archivo
 
-                        //CREAR MODELO
+                    //CREAR MODELO
+                    $archivomodelo = fopen($modelo, "w+b");    // Abrir el archivo, creándolo si no existe                    
+                    if( $archivomodelo == false ){
+                        //echo "Error al crear el archivo";
+                    }else{
+                        //echo "El archivo ha sido creado";
+                        
                         $templatemodelo = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/vistas/templates/modelo.php";
 
                         $cadenamodelo = file_get_contents($templatemodelo);
                         $cadenamodelo = str_replace("{CONTROLADOR}", ucfirst($datos["modulo"]), $cadenamodelo);
                         $cadenamodelo = str_replace("{CONTROLADORMIN}", strtolower($datos["modulo"]), $cadenamodelo);
                         $cadenamodelo = str_replace("{CONTROLADORMAY}", strtoupper($datos["modulo"]), $cadenamodelo);
-                        //$cadena .= "\r\nMe encanta PHP!";
-                        file_put_contents($modelo, $cadenamodelo, FILE_APPEND);
+                        
+                        file_put_contents($modelo, $cadenamodelo, FILE_APPEND);                       
                     }
-
-                    fclose($archivo);   // Cerrar el archivo
-
-                    /*
-                    $cadena = file_get_contents("datos.txt");
-                    $cadena .= "\r\nMe encanta PHP!";
-                    file_put_contents("datos.txt", $cadena, FILE_APPEND);
-                    */
+                    fclose($archivomodelo);   // Cerrar el archivo
 
                     $respuesta = "ok";
                 }
-
-                //para crear carpetas y subcarpetas                
-                /*if( file_exists($this->modulo) == true ){
-                    //echo "<p>El directorio existe</p>";
-                    $respuesta = "EXISTE";
-                }else{
-                    //echo "<p>El directorio no existe</p>";
-                    $respuesta = "ok";
-                }
-
-                if( file_exists("./".$this->modulo."/") == true ){
-                    //echo "<p>El directorio existe</p>";
-                    $respuesta = "EXISTE";
-                }else{
-                    //echo "<p>El directorio no existe</p>";
-                    $respuesta = "ok";
-                }*/
                 
                 return $respuesta;		
             }
@@ -116,63 +113,46 @@
                     $respuesta = "EXISTE";
                 }else{
                     //echo "<p>El archivo no se ha encontrado</p>";
-                    $archivo = fopen($js, "w+b");    // Abrir el archivo, creándolo si no existe
-                    $archivo = fopen($tablaAjax, "w+b"); 
-                    
-                    if( $archivo == false ){
+
+                    //CREAR JAVASCRIPT
+                    $archivojs = fopen($js, "w+b");    // Abrir el archivo, creándolo si no existe                    
+                    if( $archivojs == false ){
                         //echo "Error al crear el archivo";
                     }else{
                         //echo "El archivo ha sido creado";
-
-                        //CREAR JAVASCRIPT
+                        
                         $templatejs = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/vistas/templates/javascript.js";
 
                         $cadenajs = file_get_contents($templatejs);
                         $cadenajs = str_replace("{CONTROLADOR}", ucfirst($datos["controlador"]), $cadenajs);
                         $cadenajs = str_replace("{CONTROLADORMIN}", strtolower($datos["controlador"]), $cadenajs);
                         $cadenajs = str_replace("{CONTROLADORMAY}", strtoupper($datos["controlador"]), $cadenajs);
-                        //$cadena .= "\r\nMe encanta PHP!";
+                        
                         file_put_contents($js, $cadenajs, FILE_APPEND);
+                    }
+                    fclose($archivojs);   // Cerrar el archivo
 
-                        //CREAR TABLA AJAX
+                    //CREAR TABLA AJAX
+                    $archivotablajax = fopen($tablaAjax, "w+b");                     
+                    if( $archivotablajax == false ){
+                        //echo "Error al crear el archivo";
+                    }else{
+                        //echo "El archivo ha sido creado";
+                        
                         $templatetablaajax = $_SERVER["DOCUMENT_ROOT"]."/proyectobase/vistas/templates/tablaAjax.php";
 
                         $cadenatajax = file_get_contents($templatetablaajax);
                         $cadenatajax = str_replace("{CONTROLADOR}", ucfirst($datos["controlador"]), $cadenatajax);
                         $cadenatajax = str_replace("{CONTROLADORMIN}", strtolower($datos["controlador"]), $cadenatajax);
                         $cadenatajax = str_replace("{CONTROLADORMAY}", strtoupper($datos["controlador"]), $cadenatajax);
-                        //$cadena .= "\r\nMe encanta PHP!";
+                        
                         file_put_contents($tablaAjax, $cadenatajax, FILE_APPEND);
 
                     }
-
-                    fclose($archivo);   // Cerrar el archivo
-
-                    /*
-                    $cadena = file_get_contents("datos.txt");
-                    $cadena .= "\r\nMe encanta PHP!";
-                    file_put_contents("datos.txt", $cadena, FILE_APPEND);
-                    */
+                    fclose($archivotablajax);   // Cerrar el archivo
 
                     $respuesta = "ok";
                 }
-
-                //para crear carpetas y subcarpetas                
-                /*if( file_exists($this->modulo) == true ){
-                    //echo "<p>El directorio existe</p>";
-                    $respuesta = "EXISTE";
-                }else{
-                    //echo "<p>El directorio no existe</p>";
-                    $respuesta = "ok";
-                }
-
-                if( file_exists("./".$this->modulo."/") == true ){
-                    //echo "<p>El directorio existe</p>";
-                    $respuesta = "EXISTE";
-                }else{
-                    //echo "<p>El directorio no existe</p>";
-                    $respuesta = "ok";
-                }*/
                 
                 return $respuesta;		
             }

@@ -10,7 +10,7 @@
 
 <body style="background: #fff;">
     <div class="container">
-        <div class="row" style="border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: 20px; padding: 20px;">
+        <div class="row" style="border-radius: 8px; margin: 20px; padding: 20px; box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;">
             <legend>Crear Módulo</legend>
             <label class="col col-3">Módulo</label>
             <div class="col col-4">            
@@ -24,7 +24,7 @@
             </div>          
         </div>
 
-        <div class="row" style="border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: 20px; padding: 20px;">
+        <div class="row" style="border-radius: 8px; margin: 20px; padding: 20px; box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;">
             <legend>Crear Controlador</legend>
             <label class="col col-3">Controlador</label>
             <div class="col col-4">            

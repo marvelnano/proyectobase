@@ -1,13 +1,11 @@
 <?php
+  if($_SESSION["perfil"] != "Administrador"){
+  echo '<script>
+  window.location = "inicio";
+  </script>';
 
-    if($_SESSION["perfil"] != "Administrador"){
-    echo '<script>
-    window.location = "inicio";
-    </script>';
-
-    return;
-    }
-
+  return;
+  }
 ?> 
 
 <!-- Content Wrapper. Contains page content -->
