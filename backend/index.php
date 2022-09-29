@@ -13,11 +13,10 @@
     require_once 'controladores/webareaportfolio.controlador.php';
     require_once 'controladores/webplantilla.controlador.php';
     require_once 'controladores/webportfolio.controlador.php';
-    //fixme: Falta agregar
-    /*require_once 'controladores/categoria.controlador.php';
+    require_once 'controladores/categoria.controlador.php';
     require_once 'controladores/consumidor.controlador.php';
     require_once 'controladores/medida.controlador.php';
-    require_once 'controladores/producto.controlador.php';*/
+    require_once 'controladores/producto.controlador.php';
 
     //tag: Modelos
     require_once "modelos/rutas.php";
@@ -31,11 +30,10 @@
     require_once 'modelos/webareaportfolio.modelo.php';
     require_once 'modelos/webplantilla.modelo.php';
     require_once 'modelos/webportfolio.modelo.php';
-    //fixme: Falta agregar
-    /*require_once 'modelos/categoria.modelo.php';
+    require_once 'modelos/categoria.modelo.php';
     require_once 'modelos/consumidor.modelo.php';
     require_once 'modelos/medida.modelo.php';
-    require_once 'modelos/producto.modelo.php';*/
+    require_once 'modelos/producto.modelo.php';
 
     $plantilla = new ControladorPlantilla();
     $plantilla -> ctrPlantilla();
