@@ -19,7 +19,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <?php echo '<link rel="icon" href="'.$design["icono"].'">'; ?>
 
-  <!-- Plantilla style -->
+  <!--tag:  PLANTILLA STYLE -->
   <link rel="stylesheet" href="vistas/css/plantilla.css">
 
   <link rel="stylesheet" type="text/css" href="vistas/css/toastr.min.css">
@@ -64,7 +64,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-  <!-- REQUIRED SCRIPTS -->
+  <!--tag: REQUIRED SCRIPTS -->
 
   <!-- jQuery -->
   <script src="vistas/plugins/jquery/jquery.min.js"></script>
@@ -104,7 +104,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="vistas/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
   <script src="vistas/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
-  <!-- Ckeditor -->
+  <!--tag:Subir Imágenes Ckeditor -->
   <script src="vistas/plugins/ckeditor/ckeditor.js"></script>
   <script>
     var roxyFileman = 'vistas/plugins/ckeditor/plugins/fileman/index.html';
@@ -144,6 +144,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   if(isset($_SESSION["validarSesionBackend"]) && $_SESSION["validarSesionBackend"] === "ok"){
 
+    //note: CREAR ESTRUTURA DE ARCHIVOS
     if(isset($_GET["ruta"]) && $_GET["ruta"] == "crear"){
       echo '<body class="hold-transition login-page">';
       include "modulos/".$_GET["ruta"].".php";
@@ -152,17 +153,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
       echo '<div class="wrapper">';
 
       /*=============================================
-      HEADER
+      //note: HEADER
       =============================================*/
       include "modulos/header.php";
 
       /*=============================================
-      LATERAL
+      //note: LATERAL
       =============================================*/
       include "modulos/lateral.php";
 
       /*=============================================
-      CONTENIDO
+      //note: CONTENIDO
       =============================================*/
       if(isset($_GET["ruta"])){
         if($_GET["ruta"] == "inicio" ||      
@@ -190,7 +191,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       }
       
       /*=============================================
-      FOOTER
+      //note: FOOTER
       =============================================*/
       include 'modulos/footer.php';
       echo '</div>';
@@ -219,7 +220,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ./wrapper -->
 
 <!--=====================================
-JS PERSONALIZADO
+//tag: JS DE MÓDULOS
 ======================================-->
 <script src="vistas/js/plantilla.js"></script>
 <script src="vistas/js/gestorAdministradores.js"></script>
@@ -233,7 +234,8 @@ JS PERSONALIZADO
 <script src="vistas/js/gestorWebAreaPortfolio.js"></script>
 <script src="vistas/js/gestorWebPlantilla.js"></script>
 <script src="vistas/js/gestorWebPortfolio.js"></script>
-<!--<script src="vistas/js/gestorCategoria.js"></script>
+<!--fixme: Falta agregar
+<script src="vistas/js/gestorCategoria.js"></script>
 <script src="vistas/js/gestorConsumidor.js"></script>
 <script src="vistas/js/gestorMedida.js"></script>
 <script src="vistas/js/gestorProducto.js"></script>-->

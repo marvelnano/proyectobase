@@ -1,4 +1,5 @@
 <?php
+  //TODO: Template Módulo
   if($_SESSION["perfil"] != "Administrador"){
   echo '<script>
   window.location = "inicio";
@@ -10,7 +11,7 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
+  <!-- tag: Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -27,7 +28,7 @@
     </div><!-- /.container-fluid -->
   </section>
 
-  <!-- Main content -->
+  <!-- tag: Main content -->
   <section class="content">
     <!-- Default box -->
     <div class="card">
@@ -59,7 +60,7 @@
 </div>
 
 <!--=====================================
-MODAL AGREGAR {CONTROLADORMAY}
+// tag: MODAL AGREGAR {CONTROLADORMAY}
 ======================================-->
 
 <div id="modalAgregar{CONTROLADOR}" class="modal fade">
@@ -67,7 +68,7 @@ MODAL AGREGAR {CONTROLADORMAY}
     <div class="modal-content">
 
         <!--=====================================
-        CABEZA DEL MODAL
+        //note: CABEZA DEL MODAL
         ======================================-->
         <div class="modal-header" style="background-color: #3c8dbc; color:white">
           <h4 class="modal-title">Agregar {CONTROLADOR}</h4>
@@ -77,7 +78,7 @@ MODAL AGREGAR {CONTROLADORMAY}
         </div>
 
         <!--=====================================
-        CUERPO DEL MODAL
+        //note: CUERPO DEL MODAL
         ======================================-->
         <div class="modal-body">          
           <div class="card-body">
@@ -95,7 +96,7 @@ MODAL AGREGAR {CONTROLADORMAY}
         </div>
 
         <!--=====================================
-        PIE DEL MODAL
+        //note: PIE DEL MODAL
         ======================================-->
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
@@ -107,7 +108,7 @@ MODAL AGREGAR {CONTROLADORMAY}
 </div>
 
 <!--=====================================
-MODAL EDITAR {CONTROLADORMAY}
+//tag: MODAL EDITAR {CONTROLADORMAY}
 ======================================-->
 
 <div id="modalEditar{CONTROLADOR}" class="modal fade">
@@ -115,7 +116,7 @@ MODAL EDITAR {CONTROLADORMAY}
     <div class="modal-content">
 
         <!--=====================================
-        CABEZA DEL MODAL
+        //note: CABEZA DEL MODAL
         ======================================-->
         <div class="modal-header" style="background-color: #3c8dbc; color:white">
           <h4 class="modal-title">Editar {CONTROLADOR}</h4>
@@ -125,7 +126,7 @@ MODAL EDITAR {CONTROLADORMAY}
         </div>
 
         <!--=====================================
-        CUERPO DEL MODAL
+        //note: CUERPO DEL MODAL
         ======================================-->
         <div class="modal-body">          
           <div class="card-body">
@@ -144,7 +145,7 @@ MODAL EDITAR {CONTROLADORMAY}
         </div>
 
         <!--=====================================
-        PIE DEL MODAL
+        //note: PIE DEL MODAL
         ======================================-->
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>

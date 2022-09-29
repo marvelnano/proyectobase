@@ -1,5 +1,6 @@
+//TODO: Template Javascript
 /*=============================================
-CARGAR LA TABLA DINÁMICA DE {CONTROLADORMAY}	
+//tag: CARGAR LA TABLA DINÁMICA DE {CONTROLADORMAY}	
 =============================================*/
 $(".tabla{CONTROLADOR}").DataTable({
     "ajax": "ajax/tabla{CONTROLADOR}.ajax.php",
@@ -33,7 +34,7 @@ $(".tabla{CONTROLADOR}").DataTable({
 });
 
 /*=============================================
-ACTIVAR {CONTROLADORMAY}
+//tag: ACTIVAR {CONTROLADORMAY}
 =============================================*/
 $('.tabla{CONTROLADOR} tbody').on("click", ".btnActivar", function(){
    var id{CONTROLADOR} = $(this).attr("id{CONTROLADOR}");
@@ -71,7 +72,7 @@ $('.tabla{CONTROLADOR} tbody').on("click", ".btnActivar", function(){
 });
 
 /*=============================================
-REVISAR SI {CONTROLADORMAY} YA EXISTE
+//tag: REVISAR SI {CONTROLADORMAY} YA EXISTE
 =============================================*/
 function validar{CONTROLADOR}(mi{CONTROLADORMIN}){
    $(".alert").remove();
@@ -105,13 +106,13 @@ function validar{CONTROLADOR}(mi{CONTROLADORMIN}){
 };
 
 /*=============================================
-GUARDAR {CONTROLADORMAY}
+//tag: GUARDAR {CONTROLADORMAY}
 =============================================*/
 $(".guardar{CONTROLADOR}").click(function(){
    //validar{CONTROLADOR}($(".descripcion").val());	
 
    /*=============================================
-   PREGUNTAMOS SI LOS CAMPOS OBLIGATORIOS ESTÁN LLENOS
+   //note: PREGUNTAMOS SI LOS CAMPOS OBLIGATORIOS ESTÁN LLENOS
    =============================================*/
    //alert("llegó a guardar");
    if($(".descripcion").val() != "" ){
@@ -124,7 +125,7 @@ $(".guardar{CONTROLADOR}").click(function(){
 
 function agregarMi{CONTROLADOR}(){
    /*=============================================
-   ALMACENAMOS TODOS LOS CAMPOS DEL {CONTROLADORMAY}
+   //note: ALMACENAMOS TODOS LOS CAMPOS DE {CONTROLADORMAY}
    =============================================*/
    var descripcion = $(".descripcion").val();//.toUpperCase()
    var datos{CONTROLADOR} = new FormData();
@@ -149,7 +150,7 @@ function agregarMi{CONTROLADOR}(){
 };
 
 /*=============================================
-EDITAR {CONTROLADORMAY}
+//tag: EDITAR {CONTROLADORMAY}
 =============================================*/
 $('.tabla{CONTROLADOR} tbody').on("click", ".btnEditar{CONTROLADOR}", function(){	
    var id{CONTROLADOR} = $(this).attr("id{CONTROLADOR}");
@@ -174,14 +175,14 @@ $('.tabla{CONTROLADOR} tbody').on("click", ".btnEditar{CONTROLADOR}", function()
            $("#modalEditar{CONTROLADOR} .descripcion").val(respuesta[0]["descripcion"]);
            
            /*=============================================
-           GUARDAR CAMBIOS DEL {CONTROLADOR}
+           //note: CAPTURAMOS CAMBIOS DE {CONTROLADOR}
            =============================================*/	
            $(".guardarCambios{CONTROLADOR}").click(function(){
                //validar{CONTROLADOR}($("#modalEditar{CONTROLADOR} .descripcion").val());
 
                //alert("llego a editar todo: "+$("#modalEditar{CONTROLADOR} .id{CONTROLADOR}").val());
                /*=============================================
-               PREGUNTAMOS SI LOS CAMPOS OBLIGATORIOS ESTÁN LLENOS
+               //note: PREGUNTAMOS SI LOS CAMPOS OBLIGATORIOS ESTÁN LLENOS
                =============================================*/
                if($("#modalEditar{CONTROLADOR} .descripcion").val() != "" ){
                    editarMi{CONTROLADOR}();	
@@ -195,27 +196,30 @@ $('.tabla{CONTROLADOR} tbody').on("click", ".btnEditar{CONTROLADOR}", function()
 });
 
 function editarMi{CONTROLADOR}(){
-   //alert("editar: "+$("#modalEditar{CONTROLADOR} .id{CONTROLADOR}").val());
-   var id{CONTROLADOR} = $("#modalEditar{CONTROLADOR} .id{CONTROLADOR}").val();
-   var descripcion{CONTROLADOR} = $("#modalEditar{CONTROLADOR} .descripcion").val();//.toUpperCase()
+    /*=============================================
+    //note: GUARDAR CAMBIOS DE {CONTROLADOR}
+    =============================================*/
+    //alert("editar: "+$("#modalEditar{CONTROLADOR} .id{CONTROLADOR}").val());
+    var id{CONTROLADOR} = $("#modalEditar{CONTROLADOR} .id{CONTROLADOR}").val();
+    var descripcion{CONTROLADOR} = $("#modalEditar{CONTROLADOR} .descripcion").val();//.toUpperCase()
 
-   var datos{CONTROLADOR}Ed = new FormData();
-   datos{CONTROLADOR}Ed.append("id{CONTROLADOR}Ed", id{CONTROLADOR});
-   datos{CONTROLADOR}Ed.append("descripcion{CONTROLADOR}Ed", descripcion{CONTROLADOR});
+    var datos{CONTROLADOR}Ed = new FormData();
+    datos{CONTROLADOR}Ed.append("id{CONTROLADOR}Ed", id{CONTROLADOR});
+    datos{CONTROLADOR}Ed.append("descripcion{CONTROLADOR}Ed", descripcion{CONTROLADOR});
 
-   $.ajax({
-       url:"ajax/{CONTROLADORMIN}.ajax.php",
-       method: "POST",
-       data: datos{CONTROLADOR}Ed,
-       cache: false,
-       contentType: false,
-       processData: false,
-       success: function(respuesta){									
-           if(respuesta === "ok"){
-               toastr.success("Datos se actualizaron correctamente.","Aviso del Sistema:");
-               $(".tabla{CONTROLADOR}").DataTable().ajax.reload();
-               $("#modalEditar{CONTROLADOR}").modal('hide');
-           }
-       }
-   })	
+    $.ajax({
+        url:"ajax/{CONTROLADORMIN}.ajax.php",
+        method: "POST",
+        data: datos{CONTROLADOR}Ed,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(respuesta){									
+            if(respuesta === "ok"){
+                toastr.success("Datos se actualizaron correctamente.","Aviso del Sistema:");
+                $(".tabla{CONTROLADOR}").DataTable().ajax.reload();
+                $("#modalEditar{CONTROLADOR}").modal('hide');
+            }
+        }
+    })	
 };

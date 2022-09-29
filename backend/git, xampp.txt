@@ -1,4 +1,11 @@
-* GITHUB
+*note: Etiquetas TODO
+	*todo
+	*fixme
+	*tag
+	*done
+	*note
+
+*tag: GITHUB
 	-)Establecer tu nombre de usuario y dirección de correo electrónico:
 		git config --global user.name "John Doe"
 		git config --global user.email johndoe@example.com
@@ -6,7 +13,7 @@
 	-)Comprobando tu Configuración:
 		git config --list
 
-* XAMPP
+*tag: XAMPP
 	-)https://www.apachefriends.org/download.html#download-linux
 
 	-)descargar e instalar xampp:
@@ -19,7 +26,7 @@
 		cd /opt/lampp
 		sudo ./manager-linux-x64.run
 
-* OTROS
+*tag: OTROS
 	-)para dar permso a archivos bash:
 		chmod u+x nombrearchivo.sh
 
