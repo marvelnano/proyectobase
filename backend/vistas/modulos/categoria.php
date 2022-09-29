@@ -88,7 +88,7 @@
             ======================================-->
             <div class="form-group row">
               <label for="descripcion" class="col-sm-3 col-form-label">Descripcion</label>
-              <input type="text" name="descripcion" class="col-sm-9 form-control form-control-sm validarnivel descripcion" placeholder="Ingresar Descripción">
+              <input type="text" name="descripcion" class="col-sm-9 form-control form-control-sm validarcategoria descripcion" placeholder="Ingresar Descripción">
 			  
             </div>
 
@@ -136,7 +136,7 @@
             ======================================-->
             <div class="form-group row">
               <label for="descripcion" class="col-sm-3 col-form-label">Descripcion</label>
-              <input type="text" name="descripcion" class="col-sm-9 form-control form-control-sm validarnivel descripcion" placeholder="Ingresar Descripción">
+              <input type="text" name="descripcion" class="col-sm-9 form-control form-control-sm validarcategoria descripcion" placeholder="Ingresar Descripción">
               <input type="hidden" class="idCategoria">
 			  
             </div>

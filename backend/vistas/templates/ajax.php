@@ -142,7 +142,7 @@
 	/*=============================================
 	//note: EDITAR {CONTROLADORMAY}
 	=============================================*/
-	if(isset($_POST["idRubroEd"])){
+	if(isset($_POST["id{CONTROLADOR}Ed"])){
 
 		$editar{CONTROLADOR} = new Ajax{CONTROLADOR}();
 		$editar{CONTROLADOR} -> id{CONTROLADOR}Ed = $_POST["id{CONTROLADOR}Ed"];

@@ -142,7 +142,7 @@
 	/*=============================================
 	//note: EDITAR MEDIDA
 	=============================================*/
-	if(isset($_POST["idRubroEd"])){
+	if(isset($_POST["idMedidaEd"])){
 
 		$editarMedida = new AjaxMedida();
 		$editarMedida -> idMedidaEd = $_POST["idMedidaEd"];

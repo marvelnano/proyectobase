@@ -142,7 +142,7 @@
 	/*=============================================
 	//note: EDITAR CATEGORIA
 	=============================================*/
-	if(isset($_POST["idRubroEd"])){
+	if(isset($_POST["idCategoriaEd"])){
 
 		$editarCategoria = new AjaxCategoria();
 		$editarCategoria -> idCategoriaEd = $_POST["idCategoriaEd"];

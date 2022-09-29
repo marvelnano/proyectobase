@@ -142,7 +142,7 @@
 	/*=============================================
 	//note: EDITAR CONSUMIDOR
 	=============================================*/
-	if(isset($_POST["idRubroEd"])){
+	if(isset($_POST["idConsumidorEd"])){
 
 		$editarConsumidor = new AjaxConsumidor();
 		$editarConsumidor -> idConsumidorEd = $_POST["idConsumidorEd"];
