@@ -139,9 +139,9 @@
 
 					if(!empty($_POST["imagenActual"])){
 						unlink($_POST["imagenActual"]);
-					}else{
+					}/*else{
 						mkdir($directorio, 0755);
-					}
+					}*/
 
 					/*=============================================
 					//note: DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
