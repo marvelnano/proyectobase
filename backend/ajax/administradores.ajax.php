@@ -6,7 +6,7 @@ require_once "../modelos/administradores.modelo.php";
 class AjaxAdministradores{
 
 	/*=============================================
-	ACTIVAR PERFIL
+	//tag: ACTIVAR PERFIL
 	=============================================*/	
 	public $activarPerfil;
 	public $activarId;
@@ -21,7 +21,7 @@ class AjaxAdministradores{
 	}
 
 	/*=============================================
-	EDITAR PERFIL
+	//tag: EDITAR PERFIL
 	=============================================*/	
 	public $idPerfil;
 	public function ajaxEditarPerfil(){
@@ -32,7 +32,7 @@ class AjaxAdministradores{
 	}
 
 	/*=============================================
-	ACTIVAR USUARIO
+	//tag: ACTIVAR USUARIO
 	=============================================*/	
 	public $activarUsuario;
 	public $activarIdUsuario;
@@ -47,7 +47,7 @@ class AjaxAdministradores{
 	}
 
 	/*=============================================
-	EDITAR USUARIO
+	//tag: EDITAR USUARIO
 	=============================================*/	
 	public $idUsuario;
 	public function ajaxEditarUsuario(){
@@ -60,7 +60,7 @@ class AjaxAdministradores{
 }
 
 /*=============================================
-ACTIVAR PERFIL
+//note: ACTIVAR PERFIL
 =============================================*/	
 if(isset($_POST["activarPerfil"])){
 	$activarPerfil = new AjaxAdministradores();
@@ -70,7 +70,7 @@ if(isset($_POST["activarPerfil"])){
 }
 
 /*=============================================
-EDITAR PERFIL
+//note: EDITAR PERFIL
 =============================================*/
 if(isset($_POST["idPerfil"])){
 	$editar = new AjaxAdministradores();
@@ -79,7 +79,7 @@ if(isset($_POST["idPerfil"])){
 }
 
 /*=============================================
-ACTIVAR USUARIO
+//note: ACTIVAR USUARIO
 =============================================*/	
 if(isset($_POST["activarUsuario"])){
 	$activarUsuario = new AjaxAdministradores();
@@ -89,7 +89,7 @@ if(isset($_POST["activarUsuario"])){
 }
 
 /*=============================================
-EDITAR USUARIO
+//note: EDITAR USUARIO
 =============================================*/
 if(isset($_POST["idUsuario"])){
 	$editarUsuario = new AjaxAdministradores();

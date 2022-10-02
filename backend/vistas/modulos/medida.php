@@ -89,7 +89,6 @@
             <div class="form-group row">
               <label for="descripcion" class="col-sm-3 col-form-label">Descripcion</label>
               <input type="text" name="descripcion" class="col-sm-9 form-control form-control-sm validarmedida descripcion" placeholder="Ingresar Descripción">
-			  
             </div>
 
           </div>
@@ -138,7 +137,6 @@
               <label for="descripcion" class="col-sm-3 col-form-label">Descripcion</label>
               <input type="text" name="descripcion" class="col-sm-9 form-control form-control-sm validarmedida descripcion" placeholder="Ingresar Descripción">
               <input type="hidden" class="idMedida">
-			  
             </div>
 
           </div>

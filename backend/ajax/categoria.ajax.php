@@ -42,24 +42,7 @@
 		}
 
 		/*=============================================
-		//tag: GUARDAR Y EDITAR CATEGORIA
-		=============================================*/	
-
-		public $descripcion;
-
-		public function  ajaxCrearCategoria(){
-			//echo "antes de ir al controlador: ".$this->descripcion;
-			$datosCab = array(
-				"descripcion"=>$this->descripcion
-				);
-
-			$respuesta = ControladorCategoria::ctrCrearCategoria($datosCab);
-
-			echo $respuesta;
-		}
-
-		/*=============================================
-		//tag: TRAER CATEGORIA
+		//note: TRAER CATEGORIA
 		=============================================*/	
 
 		public $idCategoria;
@@ -118,25 +101,12 @@
 	}
 
 	/*=============================================
-	//note: CREAR CATEGORIA
-	=============================================*/
-	if(isset($_POST["descripcion"])){
-		//echo "ruc: ".$_POST["descripcion"];
-		$categoria = new AjaxCategoria();
-		$categoria -> descripcion = $_POST["descripcion"];
-
-		$categoria -> ajaxCrearCategoria();
-	}
-
-	/*=============================================
 	//note: TRAER CATEGORIA
 	=============================================*/
 	if(isset($_POST["idCategoriaEdit"])){
-
 		$traerCategoria = new AjaxCategoria();
 		$traerCategoria -> idCategoria = $_POST["idCategoriaEdit"];
 		$traerCategoria -> ajaxTraerCategoria();
-
 	}
 
 	/*=============================================

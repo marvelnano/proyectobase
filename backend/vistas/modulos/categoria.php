@@ -44,10 +44,48 @@
             <tr>
               <th style="width:10px">#</th>
               <th>Descripción</th>
+              <th>Imágen</th>
               <th>Estado</th>
               <th>Acciones</th>
             </tr>
           </thead>
+
+          <tbody>
+            <?php
+            $item = null;
+            $valor = null;
+
+            $categorias = ControladorCategoria::ctrMostrarCategoria($item, $valor);
+            
+             foreach ($categorias as $key => $value){
+
+              echo ' <tr>
+                      <td>'.($key+1).'</td>
+                      <td>'.$value["descripcion"].'</td>';
+
+                      if($value["imagen"] != ""){
+                      echo '<td><button class="btn btnVerImagen" idCategoria="'.$value["idcategoria"].'" data-toggle="modal" data-target="#modalVerImagen"><img src="'.$value["imagen"].'" class="img-thumbnail" width="40px"></button></td>';
+                      }else{
+                        echo '<td><img src="vistas/img/categorias/default/anonymous.png" class="img-thumbnail" width="40px"></td>';
+                      }
+
+                      if($value["estado"] != 0){
+                        echo '<td><button class="btn btn-success btn-xs btnActivar" idCategoria="'.$value["idcategoria"].'" estadoCategoria="0">Activado</button></td>';
+                      }else{
+                        echo '<td><button class="btn btn-danger btn-xs btnActivar" idCategoria="'.$value["idcategoria"].'" estadoCategoria="1">Desactivado</button></td>';
+                      } 
+
+                      echo '<td>
+                        <div class="btn-group">                              
+                          <button class="btn btn-warning btnEditarCategoria" idCategoria="'.$value["idcategoria"].'" data-toggle="modal" data-target="#modalEditarCategoria"><i class="fa fa-user-edit"></i></button>
+                          <!--<button class="btn btn-danger btnEliminarCategoria" idCategoria="'.$value["idcategoria"].'" imagenCategoria="'.$value["imagen"].'"><i class="fa fa-times"></i></button>-->
+                        </div>  
+                      </td>
+                    </tr>';            
+             }
+            ?>
+          </tbody>
+
         </table>
       </div>
 
@@ -66,7 +104,7 @@
 <div id="modalAgregarCategoria" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-
+      <form role="form" method="post" enctype="multipart/form-data">        
         <!--=====================================
         //note: CABEZA DEL MODAL
         ======================================-->
@@ -88,8 +126,17 @@
             ======================================-->
             <div class="form-group row">
               <label for="descripcion" class="col-sm-3 col-form-label">Descripcion</label>
-              <input type="text" name="descripcion" class="col-sm-9 form-control form-control-sm validarcategoria descripcion" placeholder="Ingresar Descripción">
-			  
+              <input type="text" name="nuevaCategoria" class="col-sm-9 form-control form-control-sm descripcion" placeholder="Ingresar Descripción">
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA SUBIR IMAGEN
+            ======================================-->
+            <div class="form-group row">
+              <label for="nuevaImagen" class="col-sm-3 col-form-label">SUBIR FOTO</label>
+              <input type="file" class="col-sm-9 form-control form-control-sm nuevaImagen" name="nuevaImagen" placeholder="Elegir imagen">
+              <p class="help-block">Peso Máximo de la foto 2 MB</p>
+              <img src="vistas/img/categorias/default/anonymous.png" class="img-thumbnail" width="100px">
             </div>
 
           </div>
@@ -100,9 +147,14 @@
         ======================================-->
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
-          <button type="button" class="btn btn-primary guardarCategoria" >Agregar</button>
+          <button type="submit" class="btn btn-primary" >Agregar</button>
         </div>
 
+        <?php
+          $crearCategoria = new ControladorCategoria();
+          $crearCategoria -> ctrCrearCategoria();
+        ?>
+      </form>
     </div>
   </div>
 </div>
@@ -114,7 +166,7 @@
 <div id="modalEditarCategoria" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-
+      <form role="form" method="post" enctype="multipart/form-data">
         <!--=====================================
         //note: CABEZA DEL MODAL
         ======================================-->
@@ -136,9 +188,19 @@
             ======================================-->
             <div class="form-group row">
               <label for="descripcion" class="col-sm-3 col-form-label">Descripcion</label>
-              <input type="text" name="descripcion" class="col-sm-9 form-control form-control-sm validarcategoria descripcion" placeholder="Ingresar Descripción">
-              <input type="hidden" class="idCategoria">
-			  
+              <input type="text" name="editarCategoria" class="col-sm-9 form-control form-control-sm editarCategoria" placeholder="Ingresar Descripción">
+              <input type="hidden" class="idCategoria" name="idCategoria">			  
+            </div>
+
+            <!--=====================================
+            EDITAR SUBIR IMAGEN
+            ======================================-->
+            <div class="form-group row">
+              <label for="nuevaImagen" class="col-sm-3 col-form-label">SUBIR FOTO</label>
+              <input type="file" class="col-sm-9 form-control form-control-sm nuevaImagen" name="editarImagen" placeholder="Elegir Imagen">
+              <p class="help-block">Peso Máximo de la imagen 2 MB</p>
+              <img src="vistas/img/categorias/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+              <input type="hidden" name="imagenActual" class="imagenActual">
             </div>
 
           </div>
@@ -149,9 +211,48 @@
         ======================================-->
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
-          <button type="button" class="btn btn-primary guardarCambiosCategoria" >Guardar cambios</button>
+          <button type="submit" class="btn btn-primary" >Guardar cambios</button>
         </div>
 
+        <?php
+          $editarCategoria = new ControladorCategoria();
+          $editarCategoria -> ctrEditarCategoria();
+        ?>      
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--=====================================
+//tag: MODAL VER IMAGEN
+======================================-->
+
+<div id="modalVerImagen" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form role="form" method="post" enctype="multipart/form-data">
+        <!--=====================================
+        //note: CUERPO DEL MODAL
+        ======================================-->
+        <div class="modal-body">          
+          <div class="card-body">
+            <!--=====================================
+            VER IMAGEN
+            ======================================-->
+            <div class="form-group row">
+              <img src="vistas/img/categorias/default/anonymous.png" class="img-responsive previsualizar" width="100%" style="display: block;margin-left: auto; margin-right: auto;">
+            </div>
+
+          </div>
+        </div>
+
+        <!--=====================================
+        //note: PIE DEL MODAL
+        ======================================-->
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+        </div>      
+      </form>
     </div>
   </div>
 </div>

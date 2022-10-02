@@ -89,7 +89,16 @@
             <div class="form-group row">
               <label for="descripcion" class="col-sm-3 col-form-label">Descripcion</label>
               <input type="text" name="descripcion" class="col-sm-9 form-control form-control-sm validarproducto descripcion" placeholder="Ingresar Descripción">
-			  
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA SUBIR IMAGEN
+            ======================================-->
+            <div class="form-group row">
+              <label for="nuevaFoto" class="col-sm-3 col-form-label">SUBIR FOTO</label>
+              <input type="file" class="col-sm-9 form-control form-control-sm nuevaFoto" name="nuevaFoto" placeholder="Elegir Foto">
+              <p class="help-block">Peso Máximo de la foto 2 MB</p>
+              <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="100px">
             </div>
 
           </div>
@@ -138,7 +147,16 @@
               <label for="descripcion" class="col-sm-3 col-form-label">Descripcion</label>
               <input type="text" name="descripcion" class="col-sm-9 form-control form-control-sm validarproducto descripcion" placeholder="Ingresar Descripción">
               <input type="hidden" class="idProducto">
-			  
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA SUBIR IMAGEN
+            ======================================-->
+            <div class="form-group row">
+              <label for="nuevaFoto" class="col-sm-3 col-form-label">SUBIR FOTO</label>
+              <input type="file" class="col-sm-9 form-control form-control-sm nuevaFoto" name="nuevaFoto" placeholder="Elegir Foto">
+              <p class="help-block">Peso Máximo de la foto 2 MB</p>
+              <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="100px">
             </div>
 
           </div>

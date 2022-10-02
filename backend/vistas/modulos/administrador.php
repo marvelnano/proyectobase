@@ -16,7 +16,7 @@ return;
 
 <!-- Content Wrapper. Contenido de la Página -->
 <div class="content-wrapper">
-  <!-- Content Header (Cabecera de Página) -->
+  <!-- tag: Content Header (Cabecera de Página) -->
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -33,7 +33,7 @@ return;
     </div><!-- /.container-fluid -->
   </section>
 
-  <!-- Main content -->
+  <!-- tag: Main content -->
   <section class="content">
 
     <!-- Default box -->
@@ -109,7 +109,7 @@ return;
 </div>
 
 <!--=====================================
-MODAL AGREGAR Administrador
+//tag: MODAL AGREGAR Administrador
 ======================================-->
 
 <div id="modalAgregarPerfil" class="modal fade">
@@ -117,7 +117,7 @@ MODAL AGREGAR Administrador
     <div class="modal-content">
       <form role="form" method="post" enctype="multipart/form-data">
         <!--=====================================
-        CABEZA DEL MODAL
+        //note: CABEZA DEL MODAL
         ======================================-->
         <div class="modal-header" style="background-color: #3c8dbc; color:white">
           <h4 class="modal-title">Agregar Administrador</h4>
@@ -127,7 +127,7 @@ MODAL AGREGAR Administrador
         </div>
 
         <!--=====================================
-        CUERPO DEL MODAL
+        //note: CUERPO DEL MODAL
         ======================================-->
         <div class="modal-body">
           
@@ -172,7 +172,7 @@ MODAL AGREGAR Administrador
               </div>
             </div>
 
-            <!-- ENTRADA PARA LOS PERFILES -->
+            <!-- tag: ENTRADA PARA LOS PERFILES -->
             <div class="form-group row">
               <!--<div class="input-group">
                 <div class="input-group-prepend">
@@ -201,7 +201,7 @@ MODAL AGREGAR Administrador
               </select>
             </div>
 
-            <!-- ENTRADA PARA SUBIR FOTO -->
+            <!-- tag: ENTRADA PARA SUBIR FOTO -->
             <div class="form-group row">
               <label for="nuevaFoto" class="col-sm-3 col-form-label">SUBIR FOTO</label>
               <input type="file" class="col-sm-9 form-control form-control-sm nuevaFoto" name="nuevaFoto" placeholder="Elegir Foto">
@@ -212,7 +212,7 @@ MODAL AGREGAR Administrador
         </div>
 
         <!--=====================================
-        PIE DEL MODAL
+        //note: PIE DEL MODAL
         ======================================-->
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
@@ -233,7 +233,7 @@ MODAL AGREGAR Administrador
 </div>
 
 <!--=====================================
-MODAL EDITAR Administrador
+//tag: MODAL EDITAR Administrador
 ======================================-->
 
 <div id="modalEditarPerfil" class="modal fade">
@@ -243,7 +243,7 @@ MODAL EDITAR Administrador
     <form method="post" enctype="multipart/form-data">
 
       <!--=====================================
-      CABEZA DEL MODAL
+      //note: CABEZA DEL MODAL
       ======================================-->
       <div class="modal-header" style="background-color: #3c8dbc; color:white">
         <h4 class="modal-title">Editar Perfil</h4>
@@ -253,7 +253,7 @@ MODAL EDITAR Administrador
       </div>
 
       <!--=====================================
-      CUERPO DEL MODAL
+      //note: CUERPO DEL MODAL
       ======================================-->
       <div class="modal-body">        
         <div class="card-body">
@@ -298,7 +298,7 @@ MODAL EDITAR Administrador
             </div>
           </div>
 
-          <!-- EDITAR LOS PERFILES -->
+          <!-- tag: EDITAR LOS PERFILES -->
           <div class="form-group row">
             <!--<div class="input-group">
               <div class="input-group-prepend">
@@ -311,7 +311,7 @@ MODAL EDITAR Administrador
               </select>
             </div>-->
 
-            <input type="hidden" class="idTema">
+            <input type="hidden" class="idPerfil">
             <label for="nivel" class="col-sm-3 col-form-label">Perfil</label>
             <select class="col-sm-9 form-control form-control-sm seleccionarPerfil" name="editarPerfil">
               <option value="">Selecionar Perfil</option>
@@ -329,7 +329,7 @@ MODAL EDITAR Administrador
             </select>
           </div>
 
-          <!-- EDITAR SUBIR FOTO -->
+          <!-- tag: EDITAR SUBIR FOTO -->
           <div class="form-group row">
             <label for="nuevaFoto" class="col-sm-3 col-form-label">SUBIR FOTO</label>
             <!-- <input type="file" class="col-sm-9 form-control form-control-sm  fotoActual" placeholder="Elegir Foto"> -->
@@ -342,7 +342,7 @@ MODAL EDITAR Administrador
       </div>
 
       <!--=====================================
-      PIE DEL MODAL
+      //note: PIE DEL MODAL
       ======================================-->
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
@@ -350,10 +350,8 @@ MODAL EDITAR Administrador
       </div>
 
       <?php
-
         $editarPerfil = new ControladorAdministradores();
         $editarPerfil -> ctrEditarPerfil();
-
       ?>
 
     </form>

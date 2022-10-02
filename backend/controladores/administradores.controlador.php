@@ -2,6 +2,9 @@
 
 class ControladorAdministradores{
 
+	/*=============================================
+	//tag: INGRESO ADMINISTRADORES
+	=============================================*/
     public function ctrIngresoAdministrador(){
 
 		//echo "email: ".$_POST["ingEmail"];
@@ -45,7 +48,7 @@ class ControladorAdministradores{
 	}
 	
 	/*=============================================
-	MOSTRAR ADMINISTRADORES
+	//tag: MOSTRAR ADMINISTRADORES
 	=============================================*/
 
 	static public function ctrMostrarAdministradores($item, $valor){
@@ -58,7 +61,7 @@ class ControladorAdministradores{
 	}
 
 	/*=============================================
-	REGISTRO DE PERFIL
+	//tag: REGISTRO DE PERFIL
 	=============================================*/
 
 	static public function ctrCrearUsuario(){
@@ -69,7 +72,7 @@ class ControladorAdministradores{
 			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])){
 
 			   	/*=============================================
-				VALIDAR IMAGEN
+				//note: VALIDAR IMAGEN
 				=============================================*/
 
 				$ruta = "";
@@ -81,15 +84,14 @@ class ControladorAdministradores{
 					$nuevoAncho = 500;
 					$nuevoAlto = 500;
 
-
 					/*=============================================
-					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+					//note: DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
 					=============================================*/
 
 					if($_FILES["nuevaFoto"]["type"] == "image/jpeg"){
 
 						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						//note: GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
 						$aleatorio = mt_rand(100,999);
@@ -109,7 +111,7 @@ class ControladorAdministradores{
 					if($_FILES["nuevaFoto"]["type"] == "image/png"){
 
 						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						//note: GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
 						$aleatorio = mt_rand(100,999);
@@ -173,7 +175,7 @@ class ControladorAdministradores{
 	}
 
 	/*=============================================
-	EDITAR PERFIL
+	//tag: EDITAR PERFIL
 	=============================================*/
 
 	static public function ctrEditarPerfil(){
@@ -183,7 +185,7 @@ class ControladorAdministradores{
 			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"])){
 
 				/*=============================================
-				VALIDAR IMAGEN
+				//note: VALIDAR IMAGEN
 				=============================================*/
 
 				$ruta = $_POST["fotoActual"];
@@ -196,27 +198,23 @@ class ControladorAdministradores{
 					$nuevoAlto = 500;
 
 					/*=============================================
-					PRIMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
+					//note: PRIMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
 					=============================================*/
 
 					if(!empty($_POST["fotoActual"])){
-
 						unlink($_POST["fotoActual"]);
-
 					}else{
-
 						mkdir($directorio, 0755);
-
 					}	
 
 					/*=============================================
-					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+					//note: DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
 					=============================================*/
 
 					if($_FILES["editarFoto"]["type"] == "image/jpeg"){
 
 						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						//note: GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
 						$aleatorio = mt_rand(100,999);
@@ -236,7 +234,7 @@ class ControladorAdministradores{
 					if($_FILES["editarFoto"]["type"] == "image/png"){
 
 						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						//note: GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
 						$aleatorio = mt_rand(100,999);
@@ -300,7 +298,7 @@ class ControladorAdministradores{
 							   "foto" => $ruta);
 				//echo'<script> alert("id1 "+"'.$datos["id"].'");</script>';
 				$respuesta = ModeloAdministradores::mdlEditarPerfil($tabla, $datos);
-				echo "respuesta: ".$respuesta;
+				//echo "respuesta: ".$respuesta;
 				if($respuesta === "ok"){
 
 					echo'<script>
@@ -347,7 +345,7 @@ class ControladorAdministradores{
 	}
 
 	/*=============================================
-	ELIMINAR PERFIL
+	//tag: ELIMINAR PERFIL
 	=============================================*/
 
 	static public function ctrEliminarPerfil(){
@@ -392,7 +390,7 @@ class ControladorAdministradores{
 	}
 	
 	/*=============================================
-	MOSTRAR USUARIOS
+	//tag: MOSTRAR USUARIOS
 	=============================================*/
 	static public function ctrMostrarUsuarios($item, $valor){
 		$tabla = "usuario";
@@ -401,7 +399,7 @@ class ControladorAdministradores{
 	}
 
 	/*=============================================
-	REGISTRO DE NUEVO USUARIO
+	//tag: REGISTRO DE NUEVO USUARIO
 	=============================================*/
 	static public function ctrRegistroUsuario(){
 		if(isset($_POST["regNombres"])){
@@ -409,7 +407,7 @@ class ControladorAdministradores{
 			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["regPassword"])){
 
 			   	/*=============================================
-				VALIDAR IMAGEN
+				//note: VALIDAR IMAGEN
 				=============================================*/
 				$ruta = "";
 				if(isset($_FILES["nuevaFoto"]["tmp_name"]) && !empty($_FILES["nuevaFoto"]["tmp_name"])){
@@ -418,12 +416,12 @@ class ControladorAdministradores{
 					$nuevoAlto = 500;
 
 					/*=============================================
-					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+					//note: DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
 					=============================================*/
 
 					if($_FILES["nuevaFoto"]["type"] == "image/jpeg"){
 						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						//note: GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 						$aleatorio = mt_rand(100,999);
 						$ruta = "vistas/img/perfiles/".$aleatorio.".jpg";
@@ -435,7 +433,7 @@ class ControladorAdministradores{
 
 					if($_FILES["nuevaFoto"]["type"] == "image/png"){
 						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						//note: GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 						$aleatorio = mt_rand(100,999);
 						$ruta = "vistas/img/perfiles/".$aleatorio.".png";
@@ -489,13 +487,13 @@ class ControladorAdministradores{
 	}
 
 	/*=============================================
-	EDITAR USUARIO
+	//tag: EDITAR USUARIO
 	=============================================*/
 	static public function ctrEditarUsuario(){		
 		if(isset($_POST["idUsuario"])){
 			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"])){
 				/*=============================================
-				VALIDAR IMAGEN
+				//note: VALIDAR IMAGEN
 				=============================================*/
 				$ruta = $_POST["fotoActual"];
 				if(isset($_FILES["editarFoto"]["tmp_name"]) && !empty($_FILES["editarFoto"]["tmp_name"])){
@@ -504,7 +502,7 @@ class ControladorAdministradores{
 					$nuevoAlto = 500;
 
 					/*======================================================
-					PRIMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
+					//note: PRIMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
 					======================================================*/
 					if(!empty($_POST["fotoActual"])){
 						unlink($_POST["fotoActual"]);
@@ -513,11 +511,11 @@ class ControladorAdministradores{
 					}	
 
 					/*========================================================================
-					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+					//note: DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
 					========================================================================*/
 					if($_FILES["editarFoto"]["type"] == "image/jpeg"){
 						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						//note: GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 						$aleatorio = mt_rand(100,999);
 						$ruta = "vistas/img/perfiles/".$aleatorio.".jpg";
@@ -529,7 +527,7 @@ class ControladorAdministradores{
 
 					if($_FILES["editarFoto"]["type"] == "image/png"){
 						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						//note: GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 						$aleatorio = mt_rand(100,999);
 						$ruta = "vistas/img/perfiles/".$aleatorio.".png";

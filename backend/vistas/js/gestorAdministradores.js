@@ -1,5 +1,5 @@
 /*=============================================
-ACTIVAR PERFIL
+//tag: ACTIVAR PERFIL
 =============================================*/
 $(".tablaPerfiles").on("click", ".btnActivar", function(){
 	var idPerfil = $(this).attr("idPerfil");
@@ -35,7 +35,7 @@ $(".tablaPerfiles").on("click", ".btnActivar", function(){
 });
 
 /*=============================================
-SUBIENDO LA FOTO DEL PERFIL
+//tag: SUBIENDO LA FOTO DEL PERFIL
 =============================================*/
 $(".nuevaFoto").change(function(){
   var imagen = this.files[0];  
@@ -71,7 +71,7 @@ $(".nuevaFoto").change(function(){
 });
 
 /*=============================================
-EDITAR PERFIL
+//tag: EDITAR PERFIL
 =============================================*/
 $(".tablaPerfiles").on("click", ".btnEditarPerfil", function(){
   var idPerfil = $(this).attr("idPerfil");    
@@ -101,7 +101,7 @@ $(".tablaPerfiles").on("click", ".btnEditarPerfil", function(){
 });
 
 /*=============================================
-ELIMINAR USUARIO
+//tag: ELIMINAR USUARIO
 =============================================*/
 $(".tablaPerfiles").on("click", ".btnEliminarPerfil", function(){
   var idPerfil = $(this).attr("idPerfil");

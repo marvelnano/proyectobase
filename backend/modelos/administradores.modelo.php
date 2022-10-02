@@ -5,7 +5,7 @@ require_once "conexion.php";
 class ModeloAdministradores{
 
 	/*=============================================
-	MOSTRAR USUARIOS
+	//tag: MOSTRAR USUARIOS
 	=============================================*/
 	static public function mdlMostrarUsuarios($tabla, $item, $valor){
 		$conexion = new Conexion();
@@ -33,7 +33,7 @@ class ModeloAdministradores{
 	}
 
 	/*=============================================
-	MOSTRAR ADMINISTRADORES
+	//tag: MOSTRAR ADMINISTRADORES
 	=============================================*/
 	static public function mdlMostrarAdministradores($tabla, $item, $valor){
 		$conexion = new Conexion();
@@ -61,7 +61,7 @@ class ModeloAdministradores{
 	}
 
 	/*=============================================
-	ACTUALIZAR PERFIL
+	//tag: ACTUALIZAR PERFIL
 	=============================================*/
 	static public function mdlActualizarPerfil($tabla, $item1, $valor1, $item2, $valor2){
 		$conexion = new Conexion();
@@ -81,7 +81,7 @@ class ModeloAdministradores{
 	}
 
 	/*=============================================
-	REGISTRO DE USUARIO
+	//tag: REGISTRO DE USUARIO
 	=============================================*/
 	static public function mdlIngresarUsuario($tabla, $datos){
 		$conexion = new Conexion();
@@ -109,7 +109,7 @@ class ModeloAdministradores{
 	}
 
 	/*=============================================
-	EDITAR PERFIL
+	//tag: EDITAR PERFIL
 	=============================================*/
 	static public function mdlEditarPerfil($tabla, $datos){
 		$conexion = new Conexion();
@@ -136,7 +136,7 @@ class ModeloAdministradores{
 	}
 
 	/*=============================================
-	ELIMINAR PERFIL
+	//tag: ELIMINAR PERFIL
 	=============================================*/
 
 	static public function mdlEliminarPerfil($tabla, $datos){
