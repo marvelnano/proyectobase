@@ -12,10 +12,10 @@
 			$conexion = new Conexion();
 
 			if($item != null){
-				$stmt = $conexion->conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+				$stmt = $conexion->conectar()->prepare("SELECT idconsumidor, descripcion, imagen FROM $tabla WHERE $item = :$item");
 				$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 				$stmt -> execute();
-				return $stmt -> fetchAll();
+				return $stmt -> fetch();
 			}else{
 				$stmt = $conexion->conectar()->prepare("SELECT * FROM $tabla ORDER BY idconsumidor");
 				$stmt -> execute();
@@ -33,9 +33,10 @@
 			$conexion = new Conexion();
 
 			$stmt = $conexion->conectar()->prepare("INSERT INTO $tabla(descripcion, estado, usuariocrea, fechacrea) 
-			VALUES (:descripcion, 1, '20220001', NOW())");
+			VALUES (:descripcion, :imagen, 1, '20220001', NOW())");
 
 			$stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);    
+			$stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
 			if($stmt->execute()){
 				return "ok";
 			}else{
@@ -76,11 +77,12 @@
 			//echo "idconsumidorEd: ".$datos["idconsumidor"];
 			$conexion = new Conexion();
 
-			$stmt = $conexion->conectar()->prepare("UPDATE $tabla SET descripcion = :descripcion, usuariomodifica = '20220002', 
+			$stmt = $conexion->conectar()->prepare("UPDATE $tabla SET descripcion = :descripcion, imagen = :imagen, usuariomodifica = '20220002', 
 				fechamodifica = NOW()   
 			WHERE idconsumidor  = :idconsumidor");		
 			
 			$stmt -> bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
+			$stmt -> bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
 			$stmt -> bindParam(":idconsumidor", $datos["idconsumidor"], PDO::PARAM_INT);
 
 			if($stmt->execute()){
