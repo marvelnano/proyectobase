@@ -44,12 +44,49 @@
             <tr>
               <th style="width:10px">#</th>
               <th>Descripción</th>
+              <th>Imágen</th>
               <th>Estado</th>
               <th>Acciones</th>
             </tr>
           </thead>
+
+          <tbody>
+            <?php
+              $item = null;
+              $valor = null;
+
+              $consumidores = ControladorConsumidor::ctrMostrarConsumidor($item, $valor);
+              
+                foreach ($consumidores as $key => $value){
+
+                echo ' <tr>
+                        <td>'.($key+1).'</td>
+                        <td>'.$value["descripcion"].'</td>';
+
+                        if($value["imagen"] != ""){
+                        echo '<td><button class="btn btnVerImgConsumidor" idConsumidor="'.$value["idconsumidor"].'" data-toggle="modal" data-target="#modalVerImgConsumidor"><img src="'.$value["imagen"].'" class="img-thumbnail" width="40px"></button></td>';
+                        }else{
+                          echo '<td><img src="vistas/img/consumidores/default/anonymous.png" class="img-thumbnail" width="40px"></td>';
+                        }
+
+                        if($value["estado"] != 0){
+                          echo '<td><button class="btn btn-success btn-xs btnActivar" idConsumidor="'.$value["idconsumidor"].'" estadoConsumidor="0">Activado</button></td>';
+                        }else{
+                          echo '<td><button class="btn btn-danger btn-xs btnActivar" idConsumidor="'.$value["idconsumidor"].'" estadoConsumidor="1">Desactivado</button></td>';
+                        } 
+
+                        echo '<td>
+                          <div class="btn-group">                              
+                            <button class="btn btn-warning btnEditarConsumidor" idConsumidor="'.$value["idconsumidor"].'" data-toggle="modal" data-target="#modalEditarConsumidor"><i class="fa fa-user-edit"></i></button>
+                            <!--<button class="btn btn-danger btnEliminarConsumidor" idConsumidor="'.$value["idconsumidor"].'" imagenConsumidor="'.$value["imagen"].'"><i class="fa fa-times"></i></button>-->
+                          </div>  
+                        </td>
+                      </tr>';            
+                }
+            ?>
+          </tbody>
         </table>
-      </div>
+      </div>      
 
       <!-- <div class="card-footer">
         Footer
@@ -66,7 +103,7 @@
 <div id="modalAgregarConsumidor" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-
+      <form role="form" method="post" enctype="multipart/form-data"> 
         <!--=====================================
         //note: CABEZA DEL MODAL
         ======================================-->
@@ -88,17 +125,17 @@
             ======================================-->
             <div class="form-group row">
               <label for="descripcion" class="col-sm-3 col-form-label">Descripcion</label>
-              <input type="text" name="descripcion" class="col-sm-9 form-control form-control-sm validarconsumidor descripcion" placeholder="Ingresar Descripción">
+              <input type="text" name="nuevoConsumidor" class="col-sm-9 form-control form-control-sm descripcion" placeholder="Ingresar Descripción">
             </div>
 
             <!--=====================================
             ENTRADA PARA SUBIR IMAGEN
             ======================================-->
             <div class="form-group row">
-              <label for="nuevaFoto" class="col-sm-3 col-form-label">SUBIR FOTO</label>
-              <input type="file" class="col-sm-9 form-control form-control-sm nuevaFoto" name="nuevaFoto" placeholder="Elegir Foto">
+              <label for="nuevaImgConsumidor" class="col-sm-3 col-form-label">SUBIR FOTO</label>
+              <input type="file" class="col-sm-9 form-control form-control-sm nuevaImgConsumidor" name="nuevaImgConsumidor" placeholder="Elegir Foto">
               <p class="help-block">Peso Máximo de la foto 2 MB</p>
-              <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="100px">
+              <img src="vistas/img/consumidores/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
             </div>
 
           </div>
@@ -109,9 +146,14 @@
         ======================================-->
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
-          <button type="button" class="btn btn-primary guardarConsumidor" >Agregar</button>
+          <button type="submit" class="btn btn-primary" >Agregar</button>
         </div>
 
+        <?php
+          $crearConsumodor = new ControladorConsumidor();
+          $crearConsumodor -> ctrCrearConsumidor();
+        ?>
+      </form>
     </div>
   </div>
 </div>
@@ -123,7 +165,7 @@
 <div id="modalEditarConsumidor" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-
+      <form role="form" method="post" enctype="multipart/form-data">
         <!--=====================================
         //note: CABEZA DEL MODAL
         ======================================-->
@@ -145,18 +187,19 @@
             ======================================-->
             <div class="form-group row">
               <label for="descripcion" class="col-sm-3 col-form-label">Descripcion</label>
-              <input type="text" name="descripcion" class="col-sm-9 form-control form-control-sm validarconsumidor descripcion" placeholder="Ingresar Descripción">
-              <input type="hidden" class="idConsumidor">			  
+              <input type="text" name="editarConsumidor" class="col-sm-9 form-control form-control-sm editarConsumidor" placeholder="Ingresar Descripción">
+              <input type="hidden" class="idConsumidor" name="idConsumidor">			  
             </div>
 
             <!--=====================================
             ENTRADA PARA SUBIR IMAGEN
             ======================================-->
             <div class="form-group row">
-              <label for="nuevaFoto" class="col-sm-3 col-form-label">SUBIR FOTO</label>
-              <input type="file" class="col-sm-9 form-control form-control-sm nuevaFoto" name="nuevaFoto" placeholder="Elegir Foto">
+              <label for="nuevaImgConsumidor" class="col-sm-3 col-form-label">SUBIR FOTO</label>
+              <input type="file" class="col-sm-9 form-control form-control-sm nuevaImgConsumidor" name="editarImg" placeholder="Elegir Foto">
               <p class="help-block">Peso Máximo de la foto 2 MB</p>
-              <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="100px">
+              <img src="vistas/img/consumidores/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+              <input type="hidden" name="imgActual" class="imgActual">
             </div>
 
           </div>
@@ -167,9 +210,48 @@
         ======================================-->
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
-          <button type="button" class="btn btn-primary guardarCambiosConsumidor" >Guardar cambios</button>
+          <button type="submit" class="btn btn-primary" >Guardar cambios</button>
         </div>
 
+        <?php
+          $editarConsumidor = new ControladorConsumidor();
+          $editarConsumidor -> ctrEditarConsumidor();
+        ?>      
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--=====================================
+//tag: MODAL VER IMAGEN
+======================================-->
+
+<div id="modalVerImgConsumidor" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form role="form" method="post" enctype="multipart/form-data">
+        <!--=====================================
+        //note: CUERPO DEL MODAL
+        ======================================-->
+        <div class="modal-body">          
+          <div class="card-body">
+            <!--=====================================
+            VER IMAGEN
+            ======================================-->
+            <div class="form-group row">
+              <img src="vistas/img/consumidores/default/anonymous.png" class="img-responsive previsualizar" width="100%" style="display: block;margin-left: auto; margin-right: auto;">
+            </div>
+
+          </div>
+        </div>
+
+        <!--=====================================
+        //note: PIE DEL MODAL
+        ======================================-->
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+        </div>      
+      </form>
     </div>
   </div>
 </div>

@@ -52,37 +52,37 @@
 
           <tbody>
             <?php
-            $item = null;
-            $valor = null;
+              $item = null;
+              $valor = null;
 
-            $categorias = ControladorCategoria::ctrMostrarCategoria($item, $valor);
-            
-             foreach ($categorias as $key => $value){
+              $categorias = ControladorCategoria::ctrMostrarCategoria($item, $valor);
+              
+              foreach ($categorias as $key => $value){
 
-              echo ' <tr>
-                      <td>'.($key+1).'</td>
-                      <td>'.$value["descripcion"].'</td>';
+                echo ' <tr>
+                        <td>'.($key+1).'</td>
+                        <td>'.$value["descripcion"].'</td>';
 
-                      if($value["imagen"] != ""){
-                      echo '<td><button class="btn btnVerImagen" idCategoria="'.$value["idcategoria"].'" data-toggle="modal" data-target="#modalVerImagen"><img src="'.$value["imagen"].'" class="img-thumbnail" width="40px"></button></td>';
-                      }else{
-                        echo '<td><img src="vistas/img/categorias/default/anonymous.png" class="img-thumbnail" width="40px"></td>';
-                      }
+                        if($value["imagen"] != ""){
+                        echo '<td><button class="btn btnVerImagen" idCategoria="'.$value["idcategoria"].'" data-toggle="modal" data-target="#modalVerImagen"><img src="'.$value["imagen"].'" class="img-thumbnail" width="40px"></button></td>';
+                        }else{
+                          echo '<td><img src="vistas/img/categorias/default/anonymous.png" class="img-thumbnail" width="40px"></td>';
+                        }
 
-                      if($value["estado"] != 0){
-                        echo '<td><button class="btn btn-success btn-xs btnActivar" idCategoria="'.$value["idcategoria"].'" estadoCategoria="0">Activado</button></td>';
-                      }else{
-                        echo '<td><button class="btn btn-danger btn-xs btnActivar" idCategoria="'.$value["idcategoria"].'" estadoCategoria="1">Desactivado</button></td>';
-                      } 
+                        if($value["estado"] != 0){
+                          echo '<td><button class="btn btn-success btn-xs btnActivar" idCategoria="'.$value["idcategoria"].'" estadoCategoria="0">Activado</button></td>';
+                        }else{
+                          echo '<td><button class="btn btn-danger btn-xs btnActivar" idCategoria="'.$value["idcategoria"].'" estadoCategoria="1">Desactivado</button></td>';
+                        } 
 
-                      echo '<td>
-                        <div class="btn-group">                              
-                          <button class="btn btn-warning btnEditarCategoria" idCategoria="'.$value["idcategoria"].'" data-toggle="modal" data-target="#modalEditarCategoria"><i class="fa fa-user-edit"></i></button>
-                          <!--<button class="btn btn-danger btnEliminarCategoria" idCategoria="'.$value["idcategoria"].'" imagenCategoria="'.$value["imagen"].'"><i class="fa fa-times"></i></button>-->
-                        </div>  
-                      </td>
-                    </tr>';            
-             }
+                        echo '<td>
+                          <div class="btn-group">                              
+                            <button class="btn btn-warning btnEditarCategoria" idCategoria="'.$value["idcategoria"].'" data-toggle="modal" data-target="#modalEditarCategoria"><i class="fa fa-user-edit"></i></button>
+                            <!--<button class="btn btn-danger btnEliminarCategoria" idCategoria="'.$value["idcategoria"].'" imagenCategoria="'.$value["imagen"].'"><i class="fa fa-times"></i></button>-->
+                          </div>  
+                        </td>
+                      </tr>';            
+              }
             ?>
           </tbody>
 
@@ -134,9 +134,9 @@
             ======================================-->
             <div class="form-group row">
               <label for="nuevaImagen" class="col-sm-3 col-form-label">SUBIR FOTO</label>
-              <input type="file" class="col-sm-9 form-control form-control-sm nuevaImagen" name="nuevaImagen" placeholder="Elegir imagen">
+              <input type="file" class="col-sm-9 form-control form-control-sm nuevaImagen" name="nuevaImagen" placeholder="Elegir Foto">
               <p class="help-block">Peso Máximo de la foto 2 MB</p>
-              <img src="vistas/img/categorias/default/anonymous.png" class="img-thumbnail" width="100px">
+              <img src="vistas/img/categorias/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
             </div>
 
           </div>
@@ -197,7 +197,7 @@
             ======================================-->
             <div class="form-group row">
               <label for="nuevaImagen" class="col-sm-3 col-form-label">SUBIR FOTO</label>
-              <input type="file" class="col-sm-9 form-control form-control-sm nuevaImagen" name="editarImagen" placeholder="Elegir Imagen">
+              <input type="file" class="col-sm-9 form-control form-control-sm nuevaImagen" name="editarImagen" placeholder="Elegir Foto">
               <p class="help-block">Peso Máximo de la imagen 2 MB</p>
               <img src="vistas/img/categorias/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
               <input type="hidden" name="imagenActual" class="imagenActual">

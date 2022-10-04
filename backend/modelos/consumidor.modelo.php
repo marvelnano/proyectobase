@@ -32,7 +32,7 @@
 		static public function mdlIngresarConsumidor($tabla, $datos){
 			$conexion = new Conexion();
 
-			$stmt = $conexion->conectar()->prepare("INSERT INTO $tabla(descripcion, estado, usuariocrea, fechacrea) 
+			$stmt = $conexion->conectar()->prepare("INSERT INTO $tabla(descripcion, imagen, estado, usuariocrea, fechacrea) 
 			VALUES (:descripcion, :imagen, 1, '20220001', NOW())");
 
 			$stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);    
@@ -79,7 +79,7 @@
 
 			$stmt = $conexion->conectar()->prepare("UPDATE $tabla SET descripcion = :descripcion, imagen = :imagen, usuariomodifica = '20220002', 
 				fechamodifica = NOW()   
-			WHERE idconsumidor  = :idconsumidor");		
+				WHERE idconsumidor  = :idconsumidor");		
 			
 			$stmt -> bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
 			$stmt -> bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);

@@ -23,11 +23,10 @@
 		=============================================*/
 
 		static public function ctrCrearCategoria(){
-			//echo 'llego a categoria: ';
-			//$time = time();
+			///$time = time();
 			//echo date("dmY_His", $time);
 			if(isset($_POST["nuevaCategoria"])){
-				echo 'capo categoria: '.$_POST["nuevaCategoria"];
+				//echo 'capo categoria: '.$_POST["nuevaCategoria"];
 				/*=============================================
 				//note: VALIDAR IMAGEN
 				=============================================*/				

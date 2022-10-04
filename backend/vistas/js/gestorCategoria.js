@@ -96,7 +96,7 @@ function validarCategoria(micategoria){
        dataType: "json",
        success:function(respuesta){
            if(respuesta.length != 0){
-               $(".validarcategoria").after('<div class="alert alert-warning">Este categoria ya existe en la base de datos</div>');
+               $(".validarcategoria").after('<div class="alert alert-warning">Esta categoria ya existe en la base de datos</div>');
                $(".validarcategoria").val("");
                resultado = false;
                  return false;				

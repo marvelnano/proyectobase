@@ -1,37 +1,4 @@
 //TODO: Template Javascript
-/*=============================================
-//tag: CARGAR LA TABLA DINÁMICA DE CONSUMIDOR	
-=============================================*/
-$(".tablaConsumidor").DataTable({
-    "ajax": "ajax/tablaConsumidor.ajax.php",
-    "deferRender": true,
-    "retrieve": true,
-    "processing": true,
-    "language": {
-        "sProcessing":     "Procesando...",
-       "sLengthMenu":     "Mostrar _MENU_ registros",
-       "sZeroRecords":    "No se encontraron resultados",
-       "sEmptyTable":     "Ningún dato disponible en esta tabla",
-       "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
-       "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
-       "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-       "sInfoPostFix":    "",
-       "sSearch":         "Buscar:",
-       "sUrl":            "",
-       "sInfoThousands":  ",",
-       "sLoadingRecords": "Cargando...",
-       "oPaginate": {
-           "sFirst":    "Primero",
-           "sLast":     "Último",
-           "sNext":     "Siguiente",
-           "sPrevious": "Anterior"
-       },
-       "oAria": {
-           "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-           "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-       }
-   }
-});
 
 /*=============================================
 //tag: ACTIVAR CONSUMIDOR
@@ -72,6 +39,42 @@ $('.tablaConsumidor tbody').on("click", ".btnActivar", function(){
 });
 
 /*=============================================
+//tag: SUBIENDO LA IMAGEN DEL CONSUMIDOR
+=============================================*/
+$(".nuevaImgConsumidor").change(function(){
+    var imagen = this.files[0];  
+  
+    /*=============================================
+      VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
+      =============================================*/
+      if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
+        $(".nuevaImgConsumidor").val("");
+         swal({
+            title: "Error al subir la imagen",
+            text: "¡La imagen debe estar en formato JPG o PNG!",
+            type: "error",
+            confirmButtonText: "¡Cerrar!"
+          });
+      }else if(imagen["size"] > 2000000){
+        $(".nuevaImgConsumidor").val("");
+         swal({
+            title: "Error al subir la imagen",
+            text: "¡La imagen no debe pesar más de 2MB!",
+            type: "error",
+            confirmButtonText: "¡Cerrar!"
+          });
+      }else{
+        var datosImagen = new FileReader;
+        datosImagen.readAsDataURL(imagen);
+  
+        $(datosImagen).on("load", function(event){
+          var rutaImagen = event.target.result;
+          $(".previsualizar").attr("src", rutaImagen);
+        })
+      }
+  });
+
+/*=============================================
 //tag: REVISAR SI CONSUMIDOR YA EXISTE
 =============================================*/
 function validarConsumidor(miconsumidor){
@@ -106,50 +109,6 @@ function validarConsumidor(miconsumidor){
 };
 
 /*=============================================
-//tag: GUARDAR CONSUMIDOR
-=============================================*/
-$(".guardarConsumidor").click(function(){
-   //validarConsumidor($(".descripcion").val());	
-
-   /*=============================================
-   //note: PREGUNTAMOS SI LOS CAMPOS OBLIGATORIOS ESTÁN LLENOS
-   =============================================*/
-   //alert("llegó a guardar");
-   if($(".descripcion").val() != "" ){
-       agregarMiConsumidor();
-   }else{
-       toastr.error("Llenar todos los campos obligatorios");
-       return;
-   }
-});
-
-function agregarMiConsumidor(){
-   /*=============================================
-   //note: ALMACENAMOS TODOS LOS CAMPOS DE CONSUMIDOR
-   =============================================*/
-   var descripcion = $(".descripcion").val();//.toUpperCase()
-   var datosConsumidor = new FormData();
-   datosConsumidor.append("descripcion", descripcion);
-
-   $.ajax({
-       url:"ajax/consumidor.ajax.php",
-       method: "POST",
-       data: datosConsumidor,
-       cache: false,
-       contentType: false,
-       processData: false,
-       success: function(respuesta){
-           // console.log("respuesta", respuesta);
-           if(respuesta === "ok"){					
-               toastr.success("Datos se guardaron correctamente.","Aviso del Sistema:");
-               $(".tablaConsumidor").DataTable().ajax.reload();
-               $("#modalAgregarConsumidor").modal('hide');
-           }			
-       }
-   })	
-};
-
-/*=============================================
 //tag: EDITAR CONSUMIDOR
 =============================================*/
 $('.tablaConsumidor tbody').on("click", ".btnEditarConsumidor", function(){	
@@ -166,60 +125,40 @@ $('.tablaConsumidor tbody').on("click", ".btnEditarConsumidor", function(){
        contentType: false,
        processData: false,
        dataType: "json",
-       beforeSend: function () {
-           //alert("dentro de editar: "+datos["idConsumidor"]);
-       },
        success: function(respuesta){			
            /* console.log("respuesta", respuesta); */
-           $("#modalEditarConsumidor .idConsumidor").val(respuesta[0]["idconsumidor"]);
-           $("#modalEditarConsumidor .descripcion").val(respuesta[0]["descripcion"]);
-           
-           /*=============================================
-           //note: CAPTURAMOS CAMBIOS DE Consumidor
-           =============================================*/	
-           $(".guardarCambiosConsumidor").click(function(){
-               //validarConsumidor($("#modalEditarConsumidor .descripcion").val());
-
-               //alert("llego a editar todo: "+$("#modalEditarConsumidor .idConsumidor").val());
-               /*=============================================
-               //note: PREGUNTAMOS SI LOS CAMPOS OBLIGATORIOS ESTÁN LLENOS
-               =============================================*/
-               if($("#modalEditarConsumidor .descripcion").val() != "" ){
-                   editarMiConsumidor();	
-               }else{
-                   toastr.error("Llenar todos los campos obligatorios");
-                   return;
-               }
-           })
+           $("#modalEditarConsumidor .idConsumidor").val(respuesta["idconsumidor"]);
+           $("#modalEditarConsumidor .editarConsumidor").val(respuesta["descripcion"]);
+           $("#modalEditarConsumidor .imgActual").val(respuesta["imagen"]);
+           if(respuesta["imagen"] != ""){
+                $("#modalEditarConsumidor .previsualizar").attr("src", respuesta["imagen"]);
+            }
        }
    })
 });
 
-function editarMiConsumidor(){
-    /*=============================================
-    //note: GUARDAR CAMBIOS DE Consumidor
-    =============================================*/
-    //alert("editar: "+$("#modalEditarConsumidor .idConsumidor").val());
-    var idConsumidor = $("#modalEditarConsumidor .idConsumidor").val();
-    var descripcionConsumidor = $("#modalEditarConsumidor .descripcion").val();//.toUpperCase()
-
-    var datosConsumidorEd = new FormData();
-    datosConsumidorEd.append("idConsumidorEd", idConsumidor);
-    datosConsumidorEd.append("descripcionConsumidorEd", descripcionConsumidor);
-
+/*=============================================
+//tag: VER IAMGEN
+=============================================*/
+$('.tablaConsumidor tbody').on("click", ".btnVerImgConsumidor", function(){	
+    var idConsumidor = $(this).attr("idConsumidor");
+    //alert("llego a editar: "+idConsumidor);
+    var datos = new FormData();
+    datos.append("idConsumidorEdit", idConsumidor);
+    
     $.ajax({
         url:"ajax/consumidor.ajax.php",
         method: "POST",
-        data: datosConsumidorEd,
+        data: datos,
         cache: false,
         contentType: false,
         processData: false,
-        success: function(respuesta){									
-            if(respuesta === "ok"){
-                toastr.success("Datos se actualizaron correctamente.","Aviso del Sistema:");
-                $(".tablaConsumidor").DataTable().ajax.reload();
-                $("#modalEditarConsumidor").modal('hide');
+        dataType: "json",
+        success: function(respuesta){			
+            // console.log("respuesta", respuesta); 
+            if(respuesta["imagen"] != ""){
+                $("#modalVerImgConsumidor .previsualizar").attr("src", respuesta["imagen"]);
             }
         }
-    })	
-};
+    })
+ });

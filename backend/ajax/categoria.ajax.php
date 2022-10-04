@@ -70,8 +70,7 @@
 
 			$respuesta = ControladorCategoria::ctrEditarCategoria($datos);	
 			echo $respuesta;
-		}
-		
+		}		
 
 	}
 
