@@ -73,10 +73,10 @@
 		}
 
 		/*=============================================
-		//tag: EDITAR CONSUMIDOR
+		//fixme: EDITAR CONSUMIDOR
 		=============================================*/	
 
-		public $idConsumidorEd;
+		/*public $idConsumidorEd;
 		public $descripcionEd;
 
 		public function ajaxEditarConsumidor(){
@@ -87,8 +87,7 @@
 
 			$respuesta = ControladorConsumidor::ctrEditarConsumidor($datos);	
 			echo $respuesta;
-		}
-		
+		}*/		
 
 	}
 
@@ -140,9 +139,9 @@
 	}
 
 	/*=============================================
-	//note: EDITAR CONSUMIDOR
+	//fixme: EDITAR CONSUMIDOR
 	=============================================*/
-	if(isset($_POST["idConsumidorEd"])){
+	/*if(isset($_POST["idConsumidorEd"])){
 
 		$editarConsumidor = new AjaxConsumidor();
 		$editarConsumidor -> idConsumidorEd = $_POST["idConsumidorEd"];
@@ -150,5 +149,5 @@
 
 		$editarConsumidor -> ajaxEditarConsumidor();
 
-	}
+	}*/
 

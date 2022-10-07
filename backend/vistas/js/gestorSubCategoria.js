@@ -1,18 +1,18 @@
 //TODO: Template Javascript
 
 /*=============================================
-//tag: ACTIVAR CONSUMIDOR
+//tag: ACTIVAR SUBCATEGORIA
 =============================================*/
-$('.tablaConsumidor tbody').on("click", ".btnActivar", function(){
-   var idConsumidor = $(this).attr("idConsumidor");
-   var estadoConsumidor = $(this).attr("estadoConsumidor");
+$('.tablaSubCategoria tbody').on("click", ".btnActivar", function(){
+   var idSubCategoria = $(this).attr("idSubCategoria");
+   var estadoSubCategoria = $(this).attr("estadoSubCategoria");
 
    var datos = new FormData();
-    datos.append("activarId", idConsumidor);
-     datos.append("activarConsumidor", estadoConsumidor);
+    datos.append("activarId", idSubCategoria);
+     datos.append("activarSubCategoria", estadoSubCategoria);
 
      $.ajax({
-       url:"ajax/consumidor.ajax.php",
+       url:"ajax/subcategoria.ajax.php",
        method: "POST",
        data: datos,
        cache: false,
@@ -23,32 +23,32 @@ $('.tablaConsumidor tbody').on("click", ".btnActivar", function(){
        }
      })
    
-     //alert("estado: "+estadoConsumidor)
+     //alert("estado: "+estadoSubCategoria)
 
-   if(estadoConsumidor == 0){
+   if(estadoSubCategoria == 0){
          $(this).removeClass('btn-success');
          $(this).addClass('btn-danger');
          $(this).html('Desactivado');
-         $(this).attr('estadoConsumidor',1);
+         $(this).attr('estadoSubCategoria',1);
      }else{
          $(this).addClass('btn-success');
          $(this).removeClass('btn-danger');
          $(this).html('Activado');
-         $(this).attr('estadoConsumidor',0);
+         $(this).attr('estadoSubCategoria',0);
      }
 });
 
 /*=============================================
-//tag: SUBIENDO LA IMAGEN DEL CONSUMIDOR
+//tag: SUBIENDO LA IMAGEN DEL SUBCATEGORIA
 =============================================*/
-$(".nuevaImgConsumidor").change(function(){
+$(".nuevaImgSubCat").change(function(){
     var imagen = this.files[0];  
   
     /*=============================================
       VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
       =============================================*/
       if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
-        $(".nuevaImgConsumidor").val("");
+        $(".nuevaImgSubCat").val("");
          swal({
             title: "Error al subir la imagen",
             text: "¡La imagen debe estar en formato JPG o PNG!",
@@ -56,7 +56,7 @@ $(".nuevaImgConsumidor").change(function(){
             confirmButtonText: "¡Cerrar!"
           });
       }else if(imagen["size"] > 2000000){
-        $(".nuevaImgConsumidor").val("");
+        $(".nuevaImgSubCat").val("");
          swal({
             title: "Error al subir la imagen",
             text: "¡La imagen no debe pesar más de 2MB!",
@@ -75,19 +75,19 @@ $(".nuevaImgConsumidor").change(function(){
   });
 
 /*=============================================
-//fixme: REVISAR SI CONSUMIDOR YA EXISTE
+//fixme: REVISAR SI SUBCATEGORIA YA EXISTE
 =============================================*/
-/*function validarConsumidor(miconsumidor){
+/*function validarSubCategoria(misubcategoria){
    $(".alert").remove();
 
-   var consumidor = miconsumidor;
+   var subcategoria = misubcategoria;
    var resultado = 0;
 
    var datos = new FormData();
-   datos.append("validarConsumidor", consumidor);
+   datos.append("validarSubCategoria", subcategoria);
 
    $.ajax({
-       url:"ajax/consumidor.ajax.php",
+       url:"ajax/subcategoria.ajax.php",
        method:"POST",
        data: datos,
        cache: false,
@@ -96,8 +96,8 @@ $(".nuevaImgConsumidor").change(function(){
        dataType: "json",
        success:function(respuesta){
            if(respuesta.length != 0){
-               $(".validarconsumidor").after('<div class="alert alert-warning">Este consumidor ya existe en la base de datos</div>');
-               $(".validarconsumidor").val("");
+               $(".validarsubcategoria").after('<div class="alert alert-warning">Esta subcategoria ya existe en la base de datos</div>');
+               $(".validarsubcategoria").val("");
                resultado = false;
                  return false;				
            }else{
@@ -109,16 +109,16 @@ $(".nuevaImgConsumidor").change(function(){
 };*/
 
 /*=============================================
-//tag: EDITAR CONSUMIDOR
+//tag: EDITAR SUBCATEGORIA
 =============================================*/
-$('.tablaConsumidor tbody').on("click", ".btnEditarConsumidor", function(){	
-   var idConsumidor = $(this).attr("idConsumidor");
-   //alert("llego a editar: "+idConsumidor);
+$('.tablaSubCategoria tbody').on("click", ".btnEditarSubCategoria", function(){	
+   var idSubCategoria = $(this).attr("idSubCategoria");
+   //alert("llego a editar: "+idSubCategoria);
    var datos = new FormData();
-   datos.append("idConsumidorEdit", idConsumidor);
+   datos.append("idSubCategoriaEdit", idSubCategoria);
    
    $.ajax({
-       url:"ajax/consumidor.ajax.php",
+       url:"ajax/subcategoria.ajax.php",
        method: "POST",
        data: datos,
        cache: false,
@@ -126,12 +126,13 @@ $('.tablaConsumidor tbody').on("click", ".btnEditarConsumidor", function(){
        processData: false,
        dataType: "json",
        success: function(respuesta){			
-           /* console.log("respuesta", respuesta); */
-           $("#modalEditarConsumidor .idConsumidor").val(respuesta["idconsumidor"]);
-           $("#modalEditarConsumidor .editarConsumidor").val(respuesta["descripcion"]);
-           $("#modalEditarConsumidor .imgActual").val(respuesta["imagen"]);
+           // console.log("respuesta", respuesta); 
+           $("#modalEditarSubCategoria .idSubCategoria").val(respuesta["idsubcategoria"]);
+           $("#modalEditarSubCategoria .seleccionarCategoria").val(respuesta["idcategoria"]);
+           $("#modalEditarSubCategoria .editarSubCategoria").val(respuesta["descripcion"]);
+           $("#modalEditarSubCategoria .imgSubCatActual").val(respuesta["imagen"]);
            if(respuesta["imagen"] != ""){
-                $("#modalEditarConsumidor .previsualizar").attr("src", respuesta["imagen"]);
+                $("#modalEditarSubCategoria .previsualizar").attr("src", respuesta["imagen"]);
             }
        }
    })
@@ -140,14 +141,14 @@ $('.tablaConsumidor tbody').on("click", ".btnEditarConsumidor", function(){
 /*=============================================
 //tag: VER IAMGEN
 =============================================*/
-$('.tablaConsumidor tbody').on("click", ".btnVerImgConsumidor", function(){	
-    var idConsumidor = $(this).attr("idConsumidor");
-    //alert("llego a editar: "+idConsumidor);
+$('.tablaSubCategoria tbody').on("click", ".btnVerImagen", function(){	
+    var idSubCategoria = $(this).attr("idSubCategoria");
+    //alert("llego a editar: "+idSubCategoria);
     var datos = new FormData();
-    datos.append("idConsumidorEdit", idConsumidor);
+    datos.append("idSubCategoriaEdit", idSubCategoria);
     
     $.ajax({
-        url:"ajax/consumidor.ajax.php",
+        url:"ajax/subcategoria.ajax.php",
         method: "POST",
         data: datos,
         cache: false,
@@ -157,7 +158,7 @@ $('.tablaConsumidor tbody').on("click", ".btnVerImgConsumidor", function(){
         success: function(respuesta){			
             // console.log("respuesta", respuesta); 
             if(respuesta["imagen"] != ""){
-                $("#modalVerImgConsumidor .previsualizar").attr("src", respuesta["imagen"]);
+                $("#modalVerImgSubCat .previsualizar").attr("src", respuesta["imagen"]);
             }
         }
     })

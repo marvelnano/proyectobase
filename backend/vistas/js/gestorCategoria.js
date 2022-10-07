@@ -75,9 +75,9 @@ $(".nuevaImagen").change(function(){
   });
 
 /*=============================================
-//tag: REVISAR SI CATEGORIA YA EXISTE
+//fixme: REVISAR SI CATEGORIA YA EXISTE
 =============================================*/
-function validarCategoria(micategoria){
+/*function validarCategoria(micategoria){
    $(".alert").remove();
 
    var categoria = micategoria;
@@ -106,7 +106,7 @@ function validarCategoria(micategoria){
        }
    })	   
    return resultado;
-};
+};*/
 
 /*=============================================
 //tag: EDITAR CATEGORIA

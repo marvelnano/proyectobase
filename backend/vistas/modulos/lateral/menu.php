@@ -242,6 +242,15 @@
                                     </a>
                                 </li>
                             </ul>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="subcategoria" class="nav-link">
+                                    <i class="fa fa-th-list nav-icon"></i>
+                                    <p>sub Categorías</p>
+                                    </a>
+                                </li>
+                            </ul>
                             
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">

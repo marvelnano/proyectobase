@@ -56,10 +56,10 @@
 		}
 
 		/*=============================================
-		//tag: EDITAR CATEGORIA
+		//fixme: EDITAR CATEGORIA
 		=============================================*/	
 
-		public $idCategoriaEd;
+		/*public $idCategoriaEd;
 		public $descripcionEd;
 
 		public function ajaxEditarCategoria(){
@@ -70,7 +70,7 @@
 
 			$respuesta = ControladorCategoria::ctrEditarCategoria($datos);	
 			echo $respuesta;
-		}		
+		}*/		
 
 	}
 
@@ -109,9 +109,9 @@
 	}
 
 	/*=============================================
-	//note: EDITAR CATEGORIA
+	//fixme: EDITAR CATEGORIA
 	=============================================*/
-	if(isset($_POST["idCategoriaEd"])){
+	/*if(isset($_POST["idCategoriaEd"])){
 
 		$editarCategoria = new AjaxCategoria();
 		$editarCategoria -> idCategoriaEd = $_POST["idCategoriaEd"];
@@ -119,5 +119,5 @@
 
 		$editarCategoria -> ajaxEditarCategoria();
 
-	}
+	}*/
 
