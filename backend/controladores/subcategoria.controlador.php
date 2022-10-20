@@ -86,13 +86,13 @@
 
 				$tabla = "subcategoria";
 
-				$datosCategoria = array(
+				$datosSubCategoria = array(
 					"idcategoria"=>$_POST["nuevaCategoria"],
 					"descripcion"=>$_POST["nuevaSubCategoria"],
 					"imagen"=>$ruta
 				);	
 
-				$respuesta = ModeloSubCategoria::mdlIngresarSubCategoria($tabla, $datosCategoria);
+				$respuesta = ModeloSubCategoria::mdlIngresarSubCategoria($tabla, $datosSubCategoria);
 				
 				if($respuesta == "ok"){
 					echo '<script>
@@ -189,14 +189,14 @@
 
 				$tabla = "subcategoria";
 
-				$datosCategoria = array(
+				$datosSubCategoria = array(
 					"idsubcategoria"=> $_POST["idSubCategoria"],
-					"idcategoria"=> $_POST["idCategoria"],
-					"descripcion"=> $_POST["editarCategoria"],
+					"idcategoria"=> $_POST["editarCategoria"],
+					"descripcion"=> $_POST["editarSubCategoria"],
 					"imagen"=> $ruta
 				);
 
-				$respuesta = ModeloSubCategoria::mdlEditarSubCategoria($tabla, $datosCategoria);
+				$respuesta = ModeloSubCategoria::mdlEditarSubCategoria($tabla, $datosSubCategoria);
 				
 				if($respuesta === "ok"){
 					echo'<script>

@@ -29,7 +29,7 @@
 		public $activarId;
 
 		public function ajaxActivarSubCategoria(){
-			$tabla = "categoria";
+			$tabla = "subcategoria";
 
 			$item1 = "estado";
 			$valor1 = $this->activarSubCategoria;

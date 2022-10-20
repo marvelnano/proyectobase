@@ -124,7 +124,7 @@
           <div class="card-body">
 
             <!--=====================================
-            ENTRADA PARA LA CATEGORIA
+            ENTRADA PARA LA SUBCATEGORIA
             ======================================-->
             <div class="form-group row">
               <label for="nivel" class="col-sm-3 col-form-label">Categoría</label>
@@ -205,7 +205,7 @@
           <div class="card-body">
 
             <!--=====================================
-            ENTRADA PARA LA CATEGORIA
+            ENTRADA PARA LA SUBCATEGORIA
             ======================================-->
             <div class="form-group row">
               <input type="hidden" class="idSubCategoria" name="idSubCategoria">	
