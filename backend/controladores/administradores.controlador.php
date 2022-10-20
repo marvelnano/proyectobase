@@ -145,7 +145,7 @@ class ControladorAdministradores{
 				if($respuesta == "ok"){
 					echo '<script>
 						Swal.fire({
-							type: "success",
+							icon: "success",
 							title: "¡El usuario ha sido guardado correctamente!",
 							showConfirmButton: true,
 							confirmButtonText: "Cerrar"
@@ -160,15 +160,15 @@ class ControladorAdministradores{
 
 				echo '<script>
 					Swal.fire({
-						type: "error",
+						icon: "error",
 						title: "¡El perfil no puede ir vacío o llevar caracteres especiales!",
 						showConfirmButton: true,
 						confirmButtonText: "Cerrar"
-						}).then(function(result){
-							if(result.value){							
-								window.location = "administrador";
-							}
-						});		
+					}).then(function(result){
+						if(result.value){							
+							window.location = "administrador";
+						}
+					});		
 				</script>';
 			}
 		}
@@ -203,9 +203,9 @@ class ControladorAdministradores{
 
 					if(!empty($_POST["fotoActual"])){
 						unlink($_POST["fotoActual"]);
-					}else{
+					}/*else{
 						mkdir($directorio, 0755);
-					}	
+					}*/
 
 					/*=============================================
 					//note: DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
@@ -262,23 +262,18 @@ class ControladorAdministradores{
 						$encriptar = crypt($_POST["editarPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 
 					}else{
-
 						echo'<script>
-
-						Swal.fire({
-									  type: "error",
-									  title: "¡La contraseña no puede ir vacía o llevar caracteres especiales!",
-									  showConfirmButton: true,
-									  confirmButtonText: "Cerrar"
-									  }).then(function(result) {
-										if (result.value) {
-
-										window.location = "administrador";
-
-										}
-									})
-
-						  	</script>';
+							Swal.fire({
+								icon: "error",
+								title: "¡La contraseña no puede ir vacía o llevar caracteres especiales!",
+								showConfirmButton: true,
+								confirmButtonText: "Cerrar"
+							}).then(function(result) {
+								if (result.value) {
+									window.location = "administrador";
+								}
+							})
+						</script>';
 
 					}
 
@@ -307,13 +302,11 @@ class ControladorAdministradores{
 						  title: "El perfil ha sido editado correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
-						  }).then(function(result) {
-									if (result.value) {
-
-									window.location = "administrador";
-
-									}
-								})
+						}).then(function(result) {
+							if (result.value) {
+							window.location = "administrador";
+							}
+						})
 					</script>';
 
 				}
@@ -322,20 +315,16 @@ class ControladorAdministradores{
 			}else{
 
 				echo'<script>
-
-				Swal.fire({
-						  type: "error",
-						  title: "¡El nombre no puede ir vacío o llevar caracteres especiales!",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result) {
-							if (result.value) {
-
+					Swal.fire({
+						icon: "error",
+						title: "¡El nombre no puede ir vacío o llevar caracteres especiales!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+					}).then(function(result) {
+						if (result.value) {
 							window.location = "administrador";
-
-							}
-						})
-
+						}
+					})
 			  	</script>';
 
 			}
@@ -349,40 +338,30 @@ class ControladorAdministradores{
 	=============================================*/
 
 	static public function ctrEliminarPerfil(){
-
 		if(isset($_GET["idPerfil"])){
-
 			$tabla ="usuario";
 			$datos = $_GET["idPerfil"];
 
 			if($_GET["fotoPerfil"] != ""){
-
-				unlink($_GET["fotoPerfil"]);
-			
+				unlink($_GET["fotoPerfil"]);			
 			}
 
 			$respuesta = ModeloAdministradores::mdlEliminarPerfil($tabla, $datos);
 
 			if($respuesta == "ok"){
-
 				echo'<script>
-
-				Swal.fire({
-					  type: "success",
-					  title: "El perfil ha sido borrado correctamente",
-					  showConfirmButton: true,
-					  confirmButtonText: "Cerrar",
-					  closeOnConfirm: false
-					  }).then(function(result) {
-								if (result.value) {
-
-								window.location = "administrador";
-
-								}
-							})
-
+					Swal.fire({
+						icon: "success",
+					  	title: "El perfil ha sido borrado correctamente",
+					  	showConfirmButton: true,
+					  	confirmButtonText: "Cerrar",
+					  	closeOnConfirm: false
+					}).then(function(result) {
+						if (result.value) {
+							window.location = "administrador";
+						}
+					})
 				</script>';
-
 			}		
 
 		}
@@ -458,7 +437,7 @@ class ControladorAdministradores{
 				if($respuesta == "ok"){
 					echo '<script>
 						Swal.fire({
-							type: "success",
+							icon: "success",
 							title: "¡El usuario ha sido guardado correctamente!",
 							showConfirmButton: true,
 							confirmButtonText: "Cerrar"
@@ -472,15 +451,15 @@ class ControladorAdministradores{
 			}else{
 				echo '<script>
 					Swal.fire({
-						type: "error",
+						icon: "error",
 						title: "¡El perfil no puede ir vacío o llevar caracteres especiales!",
 						showConfirmButton: true,
 						confirmButtonText: "Cerrar"
-						}).then(function(result){
-							if(result.value){							
-								window.location = "usuario";
-							}
-						});		
+					}).then(function(result){
+						if(result.value){							
+							window.location = "usuario";
+						}
+					});		
 				</script>';
 			}
 		}
@@ -506,9 +485,9 @@ class ControladorAdministradores{
 					======================================================*/
 					if(!empty($_POST["fotoActual"])){
 						unlink($_POST["fotoActual"]);
-					}else{
+					}/*else{
 						mkdir($directorio, 0755);
-					}	
+					}*/	
 
 					/*========================================================================
 					//note: DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
@@ -545,17 +524,15 @@ class ControladorAdministradores{
 					}else{
 						echo'<script>
 							Swal.fire({
-									type: "error",
-									title: "¡La contraseña no puede ir vacía o llevar caracteres especiales!",
-									showConfirmButton: true,
-									confirmButtonText: "Cerrar"
-									}).then(function(result) {
-									if (result.value) {
-
+								icon: "error",
+								title: "¡La contraseña no puede ir vacía o llevar caracteres especiales!",
+								showConfirmButton: true,
+								confirmButtonText: "Cerrar"
+							}).then(function(result) {
+								if (result.value) {
 									window.location = "administrador";
-
-									}
-								})
+								}
+							})
 						</script>';
 					}
 				}else{
@@ -574,32 +551,30 @@ class ControladorAdministradores{
 				echo "respuesta: ".$respuesta;
 				if($respuesta === "ok"){
 					echo'<script>
-					Swal.fire({
+						Swal.fire({
 						  icon: "success",
 						  title: "El usuario ha sido editado correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
-						  }).then(function(result) {
-									if (result.value) {
-									window.location = "usuario";
-									}
-								})
+						}).then(function(result) {
+							if (result.value) {
+							window.location = "usuario";
+							}
+						})
 					</script>';
 				}
 			}else{
 				echo'<script>
 					Swal.fire({
-						type: "error",
+						icon: "error",
 						title: "¡El nombre no puede ir vacío o llevar caracteres especiales!",
 						showConfirmButton: true,
 						confirmButtonText: "Cerrar"
-						}).then(function(result) {
-							if (result.value) {
-
-							window.location = "usuario";
-
-							}
-						})
+					}).then(function(result) {
+						if (result.value) {
+						window.location = "usuario";
+						}
+					})
 			  	</script>';
 			}
 		}

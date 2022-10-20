@@ -95,17 +95,17 @@
 				$respuesta = ModeloSubCategoria::mdlIngresarSubCategoria($tabla, $datosSubCategoria);
 				
 				if($respuesta == "ok"){
-					echo '<script>
+					echo'<script>
 						Swal.fire({
-							type: "success",
-							title: "¡La subcategoría ha sido guardada correctamente!",
+							icon: "success",
+							title: "La subcategoría ha sido editada correctamente",
 							showConfirmButton: true,
 							confirmButtonText: "Cerrar"
-						}).then(function(result){
-							if(result.value){							
-								window.location = "subcategoria";
+						}).then(function(result) {
+							if (result.value) {
+							window.location = "subcategoria";
 							}
-						});	
+						})
 					</script>';
 				}	
 				
@@ -200,11 +200,11 @@
 				
 				if($respuesta === "ok"){
 					echo'<script>
-					Swal.fire({
-						icon: "success",
-						title: "La subcategoría ha sido editada correctamente",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
+						Swal.fire({
+							icon: "success",
+							title: "La subcategoría ha sido editada correctamente",
+							showConfirmButton: true,
+							confirmButtonText: "Cerrar"
 						}).then(function(result) {
 							if (result.value) {
 							window.location = "subcategoria";

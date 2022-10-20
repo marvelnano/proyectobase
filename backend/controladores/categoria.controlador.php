@@ -94,17 +94,17 @@
 				$respuesta = ModeloCategoria::mdlIngresarCategoria($tabla, $datosCategoria);
 				
 				if($respuesta == "ok"){
-					echo '<script>
+					echo'<script>
 						Swal.fire({
-							type: "success",
-							title: "¡La categoría ha sido guardada correctamente!",
+							icon: "success",
+							title: "La categoría ha sido editada correctamente",
 							showConfirmButton: true,
 							confirmButtonText: "Cerrar"
-						}).then(function(result){
-							if(result.value){							
-								window.location = "categoria";
+						}).then(function(result) {
+							if (result.value) {
+							window.location = "categoria";
 							}
-						});	
+						})
 					</script>';
 				}	
 				
@@ -198,11 +198,11 @@
 				
 				if($respuesta === "ok"){
 					echo'<script>
-					Swal.fire({
-						icon: "success",
-						title: "La categoría ha sido editada correctamente",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
+						Swal.fire({
+							icon: "success",
+							title: "La categoría ha sido editada correctamente",
+							showConfirmButton: true,
+							confirmButtonText: "Cerrar"
 						}).then(function(result) {
 							if (result.value) {
 							window.location = "categoria";
