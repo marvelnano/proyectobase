@@ -40,9 +40,9 @@
 					$nuevoAncho = 500;
 					$nuevoAlto = 500;
 
-					/*=============================================
+					/*===============================================================================
 					//note: DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
-					=============================================*/
+					===============================================================================*/
 
 					if($_FILES["nuevaImgSubCat"]["type"] == "image/jpeg"){
 
@@ -98,7 +98,7 @@
 					echo'<script>
 						Swal.fire({
 							icon: "success",
-							title: "La subcategoría ha sido editada correctamente",
+							title: "La subcategoría ha sido creado correctamente",
 							showConfirmButton: true,
 							confirmButtonText: "Cerrar"
 						}).then(function(result) {
@@ -133,9 +133,9 @@
 					$nuevoAncho = 500;
 					$nuevoAlto = 500;
 
-					/*=============================================
+					/*===========================================================
 					//note: PRIMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
-					=============================================*/
+					===========================================================*/
 
 					if(!empty($_POST["imgSubCatActual"])){
 						unlink($_POST["imgSubCatActual"]);
@@ -143,9 +143,9 @@
 						mkdir($directorio, 0755);
 					}*/
 
-					/*=============================================
+					/*===============================================================================
 					//note: DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
-					=============================================*/
+					===============================================================================*/
 
 					if($_FILES["editarImgSubCat"]["type"] == "image/jpeg"){
 
