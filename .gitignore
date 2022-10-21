@@ -26,7 +26,15 @@
 # ls -al (Ver todos los archivos y directorios de la carpeta actual)
 # rm -rf .git (se elimina archivo .git y ya no estará vinculado al repositorio)
 
-## Como cambiar y eliminar ramas (https://www.youtube.com/watch?v=j0U9jBmP3LM)
+## Actualizar repositorio desde carpeta local
+# git init
+# git remote add origin https://github.com/marvelnano/angularjsGasto.git
+# git add .
+# git commit -m "comentario"
+# git push -u origin master -f (-f para forzar en caso de error)
+
+## Como crear, cambiar y eliminar ramas (https://www.youtube.com/watch?v=j0U9jBmP3LM)
+# git checkout -b nombrerama
 # git branch (lista todas las ramas)
 # git checkout nombrerama (cambia a la rama seleccionada)
 # git checkout master (nos cambiamos a la rama master, antes de eliminar otra rama)
