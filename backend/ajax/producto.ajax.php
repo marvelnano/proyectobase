@@ -42,23 +42,6 @@
 		}
 
 		/*=============================================
-		//tag: GUARDAR Y EDITAR PRODUCTO
-		=============================================*/	
-
-		public $descripcion;
-
-		public function  ajaxCrearProducto(){
-			//echo "antes de ir al controlador: ".$this->descripcion;
-			$datosCab = array(
-				"descripcion"=>$this->descripcion
-				);
-
-			$respuesta = ControladorProducto::ctrCrearProducto($datosCab);
-
-			echo $respuesta;
-		}
-
-		/*=============================================
 		//tag: TRAER PRODUCTO
 		=============================================*/	
 
@@ -73,10 +56,10 @@
 		}
 
 		/*=============================================
-		//tag: EDITAR PRODUCTO
+		//fixme: EDITAR PRODUCTO
 		=============================================*/	
 
-		public $idProductoEd;
+		/*public $idProductoEd;
 		public $descripcionEd;
 
 		public function ajaxEditarProducto(){
@@ -87,7 +70,7 @@
 
 			$respuesta = ControladorProducto::ctrEditarProducto($datos);	
 			echo $respuesta;
-		}
+		}*/
 		
 
 	}
@@ -118,17 +101,6 @@
 	}
 
 	/*=============================================
-	//note: CREAR PRODUCTO
-	=============================================*/
-	if(isset($_POST["descripcion"])){
-		//echo "ruc: ".$_POST["descripcion"];
-		$producto = new AjaxProducto();
-		$producto -> descripcion = $_POST["descripcion"];
-
-		$producto -> ajaxCrearProducto();
-	}
-
-	/*=============================================
 	//note: TRAER PRODUCTO
 	=============================================*/
 	if(isset($_POST["idProductoEdit"])){
@@ -140,9 +112,9 @@
 	}
 
 	/*=============================================
-	//note: EDITAR PRODUCTO
+	//fixme: EDITAR PRODUCTO
 	=============================================*/
-	if(isset($_POST["idProductoEd"])){
+	/*if(isset($_POST["idProductoEd"])){
 
 		$editarProducto = new AjaxProducto();
 		$editarProducto -> idProductoEd = $_POST["idProductoEd"];
@@ -150,5 +122,5 @@
 
 		$editarProducto -> ajaxEditarProducto();
 
-	}
+	}*/
 
