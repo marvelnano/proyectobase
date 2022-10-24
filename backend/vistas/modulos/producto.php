@@ -283,7 +283,7 @@
             ENTRADA PARA EL STOCK
             ======================================-->
             <div class="form-group row">
-              <label for="nuevoStock" class="col-sm-3 col-form-label">Descripcion</label>
+              <label for="nuevoStock" class="col-sm-3 col-form-label">Stock</label>
               <input type="number" name="nuevoStock" class="col-sm-9 form-control form-control-sm nuevoStock" placeholder="Ingresar Stock">
             </div>
 
@@ -481,7 +481,7 @@
             ENTRADA PARA EL STOCK
             ======================================-->
             <div class="form-group row">
-              <label for="editarStock" class="col-sm-3 col-form-label">Descripcion</label>
+              <label for="editarStock" class="col-sm-3 col-form-label">Stock</label>
               <input type="number" name="editarStock" class="col-sm-9 form-control form-control-sm editarStock" placeholder="Ingresar Stock">
             </div>
 
