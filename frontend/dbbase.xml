@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
+<!-- Active URL: http://localhost:83/sqldesigner/ -->
+<sql>
+<datatypes db="mysql">
+	<group label="Numeric" color="rgb(238,238,170)">
+		<type label="Integer" length="0" sql="INTEGER" quote=""/>
+	 	<type label="TINYINT" length="0" sql="TINYINT" quote=""/>
+	 	<type label="SMALLINT" length="0" sql="SMALLINT" quote=""/>
+	 	<type label="MEDIUMINT" length="0" sql="MEDIUMINT" quote=""/>
+	 	<type label="INT" length="0" sql="INT" quote=""/>
+		<type label="BIGINT" length="0" sql="BIGINT" quote=""/>
+		<type label="Decimal" length="1" sql="DECIMAL" re="DEC" quote=""/>
+		<type label="Single precision" length="0" sql="FLOAT" quote=""/>
+		<type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
+	</group>
+
+	<group label="Character" color="rgb(255,200,200)">
+		<type label="Char" length="1" sql="CHAR" quote="'"/>
+		<type label="Varchar" length="1" sql="VARCHAR" quote="'"/>
+		<type label="Text" length="0" sql="MEDIUMTEXT" re="TEXT" quote="'"/>
+		<type label="Binary" length="1" sql="BINARY" quote="'"/>
+		<type label="Varbinary" length="1" sql="VARBINARY" quote="'"/>
+		<type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'"/>
+	</group>
+
+	<group label="Date &amp; Time" color="rgb(200,255,200)">
+		<type label="Date" length="0" sql="DATE" quote="'"/>
+		<type label="Time" length="0" sql="TIME" quote="'"/>
+		<type label="Datetime" length="0" sql="DATETIME" quote="'"/>
+		<type label="Year" length="0" sql="YEAR" quote=""/>
+		<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
+	</group>
+	
+	<group label="Miscellaneous" color="rgb(200,200,255)">
+		<type label="ENUM" length="1" sql="ENUM" quote=""/>
+		<type label="SET" length="1" sql="SET" quote=""/>
+		<type label="Bit" length="0" sql="bit" quote=""/>
+	</group>
+</datatypes><table x="586" y="43" name="negocio">
+<row name="idnegocio" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="idubigeo" null="0" autoincrement="0">
+<datatype>CHAR(10)</datatype>
+<relation table="ubigeo" row="idubigeo" />
+</row>
+<row name="idrubronegocio" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<relation table="rubro_negocio" row="idrubronegocio" />
+</row>
+<row name="ruc" null="0" autoincrement="0">
+<datatype>VARCHAR(11)</datatype>
+</row>
+<row name="razon_social" null="0" autoincrement="0">
+<datatype>VARCHAR(250)</datatype>
+</row>
+<row name="direccion" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="celular" null="1" autoincrement="0">
+<datatype>VARCHAR(9)</datatype>
+<default>NULL</default></row>
+<row name="email" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="pagina_web" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idnegocio</part>
+</key>
+<comment>negocios que darán comisiones por conseguir usuarios.</comment>
+</table>
+<table x="330" y="287" name="rubro_negocio">
+<row name="idrubronegocio" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="descripcion" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idrubronegocio</part>
+</key>
+<comment>Sector del mercado en el que se desempeña el negocio.</comment>
+</table>
+<table x="26" y="463" name="nivel_usuario">
+<row name="idnivelusuario" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="descripcion" null="0" autoincrement="0">
+<datatype>VARCHAR(250)</datatype>
+</row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idnivelusuario</part>
+</key>
+</table>
+<table x="26" y="22" name="usuario">
+<row name="idusuario" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="idnivelusuario" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<relation table="nivel_usuario" row="idnivelusuario" />
+</row>
+<row name="dni" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="nombre_completo" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="foto" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="direccion" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="telefono_fijo" null="1" autoincrement="0">
+<datatype>VARCHAR(10)</datatype>
+<default>NULL</default></row>
+<row name="celular" null="1" autoincrement="0">
+<datatype>VARCHAR(9)</datatype>
+<default>NULL</default></row>
+<row name="email" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="usuario" null="0" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+</row>
+<row name="password" null="0" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+</row>
+<row name="clave_inicial" null="0" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+</row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idusuario</part>
+</key>
+</table>
+<table x="280" y="40" name="codigo_usuario_negocio">
+<row name="idcodigousuarionegocio" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="idusuario" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<relation table="usuario" row="idusuario" />
+</row>
+<row name="idnegocio" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<relation table="negocio" row="idnegocio" />
+</row>
+<row name="codigo" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idcodigousuarionegocio</part>
+</key>
+<comment>código único generado para que usuario le de a conocer a la empresa que viene de parte de nosotros.</comment>
+</table>
+<table x="265" y="780" name="plantilla_web_area_portfolio">
+<row name="idplantillawebareaportfolio" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="descripcion" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idplantillawebareaportfolio</part>
+</key>
+</table>
+<table x="837" y="739" name="plantilla_web_seccion">
+<row name="idplantillawebseccion" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="descripcion" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idplantillawebseccion</part>
+</key>
+</table>
+<table x="560" y="481" name="plantilla_web">
+<row name="idplantillaweb" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="idnegocio" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<relation table="negocio" row="idnegocio" />
+</row>
+<row name="idplantillawebseccion" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<relation table="plantilla_web_seccion" row="idplantillawebseccion" />
+</row>
+<row name="contenido" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="estado" null="1" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+<default>NULL</default></row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idplantillaweb</part>
+</key>
+</table>
+<table x="268" y="497" name="plantilla_web_portfolio">
+<row name="idplantillawebportfolio" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="idplantillaweb" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<relation table="plantilla_web" row="idplantillaweb" />
+</row>
+<row name="idplantillawebareaportfolio" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<relation table="plantilla_web_area_portfolio" row="idplantillawebareaportfolio" />
+</row>
+<row name="descripcion" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="imagen" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idplantillawebportfolio</part>
+</key>
+</table>
+<table x="856" y="42" name="ubigeo">
+<row name="idubigeo" null="0" autoincrement="0">
+<datatype>CHAR(10)</datatype>
+</row>
+<row name="idpais" null="1" autoincrement="0">
+<datatype>CHAR(4)</datatype>
+<default>NULL</default></row>
+<row name="parent" null="1" autoincrement="0">
+<datatype>CHAR(10)</datatype>
+<default>NULL</default></row>
+<row name="descripcion" null="1" autoincrement="0">
+<datatype>VARCHAR(150)</datatype>
+<default>NULL</default></row>
+<row name="estado" null="1" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+<default>NULL</default></row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idubigeo</part>
+</key>
+</table>
+<table x="857" y="289" name="proyecto">
+<row name="idproyecto" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="idubigeo" null="0" autoincrement="0">
+<datatype>CHAR(10)</datatype>
+<relation table="ubigeo" row="idubigeo" />
+</row>
+<row name="ruc" null="1" autoincrement="0">
+<datatype>VARCHAR(11)</datatype>
+<default>NULL</default></row>
+<row name="razonsocial" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="nombrecomercial" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="abreviatura" null="1" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+<default>NULL</default></row>
+<row name="email" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="telefono" null="1" autoincrement="0">
+<datatype>VARCHAR(15)</datatype>
+<default>NULL</default></row>
+<row name="web" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="direccion" null="1" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+<default>NULL</default></row>
+<row name="pass_firma" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="usuario_sol" null="1" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+<default>NULL</default></row>
+<row name="clave_sol" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="estado" null="1" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+<default>NULL</default></row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idproyecto</part>
+</key>
+</table>
+<table x="29" y="1001" name="categoria">
+<row name="idcategoria" null="0" autoincrement="0">
+<datatype>VARCHAR(6)</datatype>
+<relation table="subcategoria" row="idcategoria" />
+</row>
+<row name="descripcion" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="imagen" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idcategoria</part>
+</key>
+<comment>Polo, short, pantalón, saco, abrigo, perfume, colonia, crema, etc. </comment>
+</table>
+<table x="303" y="998" name="subcategoria">
+<row name="idsubcategoria" null="0" autoincrement="0">
+<datatype>VARCHAR(6)</datatype>
+</row>
+<row name="idcategoria" null="0" autoincrement="0">
+<datatype>VARCHAR(6)</datatype>
+</row>
+<row name="descripcion" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="imagen" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idsubcategoria</part>
+</key>
+<comment>Ropa, Perfumería, Dulcería </comment>
+</table>
+<table x="301" y="1253" name="consumidor">
+<row name="idconsumidor" null="0" autoincrement="0">
+<datatype>VARCHAR(6)</datatype>
+</row>
+<row name="descripcion" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="imagen" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idconsumidor</part>
+</key>
+<comment>Hombre, mujer, niño(a), embaraza, perro, gato, etc.</comment>
+</table>
+<table x="301" y="1491" name="medida">
+<row name="idmedida" null="0" autoincrement="0">
+<datatype>VARCHAR(6)</datatype>
+</row>
+<row name="descripcion" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idmedida</part>
+</key>
+<comment>S, X, L, XL, 250ml, 500ml, 750ml, 1Lt, etc.</comment>
+</table>
+<table x="648" y="1184" name="producto">
+<row name="idproducto" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="idnegocio" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<relation table="negocio" row="idnegocio" />
+</row>
+<row name="idsubcategoria" null="0" autoincrement="0">
+<datatype>VARCHAR(6)</datatype>
+<relation table="subcategoria" row="idsubcategoria" />
+</row>
+<row name="idconsumidor" null="0" autoincrement="0">
+<datatype>VARCHAR(6)</datatype>
+<relation table="consumidor" row="idconsumidor" />
+</row>
+<row name="idmedida" null="0" autoincrement="0">
+<datatype>VARCHAR(6)</datatype>
+<relation table="medida" row="idmedida" />
+</row>
+<row name="titulo" null="0" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+</row>
+<row name="descripcion" null="0" autoincrement="0">
+<datatype>VARCHAR(250)</datatype>
+</row>
+<row name="codigo_sku" null="1" autoincrement="0">
+<datatype>VARCHAR(15)</datatype>
+<default>NULL</default></row>
+<row name="precio_costo" null="0" autoincrement="0">
+<datatype>DECIMAL(10)</datatype>
+</row>
+<row name="precio_venta" null="0" autoincrement="0">
+<datatype>DECIMAL(10)</datatype>
+</row>
+<row name="stock" null="0" autoincrement="0">
+<datatype>DECIMAL(4)</datatype>
+</row>
+<row name="imagen" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="estado" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+</row>
+<row name="usuariocrea" null="0" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+</row>
+<row name="fechacrea" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="usuariomodifica" null="1" autoincrement="0">
+<datatype>VARCHAR(8)</datatype>
+<default>NULL</default></row>
+<row name="fechamodifica" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>idproducto</part>
+</key>
+</table>
+</sql>

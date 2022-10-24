@@ -1,4 +1,8 @@
 $(document).ready(function() {
+	$('.dt-responsive-producto').DataTable({
+        responsive: true
+	});
+
     $('.dt-responsive-perfil').DataTable({
         responsive: true
 	});

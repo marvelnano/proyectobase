@@ -109,10 +109,10 @@ $(".nuevaImgProducto").change(function(){
 };*/
 
 /*=============================================
-//tag: MOSTRAR SUBCATEGORIAS
+//tag: MOSTRAR SUBCATEGORIAS AL AGREGAR
 =============================================*/
-$('.seleccionarCategoriaX').on("change", function(){	
-    var idCategoria = $(".seleccionarCategoriaX").val();
+$('#modalAgregarProducto .seleccionarCategoriaX').on("change", function(){	
+    var idCategoria = $("#modalAgregarProducto .seleccionarCategoriaX").val();
     //alert("llego a change categoria: "+idCategoria);
     var datos = new FormData();
     datos.append("idCategoria", idCategoria);
@@ -135,20 +135,62 @@ $('.seleccionarCategoriaX').on("change", function(){
                     var subcategoria = item.descripcion;
                     var idsubcategoria = item.idsubcategoria;
 
-                    if($(".seleccionarSubCategoriaX").val() == idsubcategoria){
-                        $(".seleccionarSubCategoriaX").attr("value",idsubcategoria);
-                        $(".seleccionarSubCategoriaX").html(subcategoria);
+                    if($("#modalAgregarProducto .seleccionarSubCategoriaX").val() == idsubcategoria){
+                        $("#modalAgregarProducto .seleccionarSubCategoriaX").attr("value",idsubcategoria);
+                        $("#modalAgregarProducto .seleccionarSubCategoriaX").html(subcategoria);
                     }
 
-                    $(".seleccionarSubCategoriaX").append('<option value="'+idsubcategoria+'">'+subcategoria+'</option>');              
+                    $("#modalAgregarProducto .seleccionarSubCategoriaX").append('<option value="'+idsubcategoria+'">'+subcategoria+'</option>');              
                 }
             }else{
                 //alert('idCategoriaVacio: '+idCategoria);
-                $(".seleccionarSubCategoriaX").html('<option value="">Selecionar SubCategoría</option>');
+                $("#modalAgregarProducto .seleccionarSubCategoriaX").html('<option value="">Selecionar SubCategoría</option>');
             }
         }
     })
- });
+});
+
+/*=============================================
+//tag: MOSTRAR SUBCATEGORIAS AL EDITAR
+=============================================*/
+$('#modalEditarProducto .seleccionarCategoriaX').on("change", function(){	
+    var idCategoria = $("#modalEditarProducto .seleccionarCategoriaX").val();
+    //alert("llego a change categoria: "+idCategoria);
+    var datos = new FormData();
+    datos.append("idCategoria", idCategoria);
+    
+    $.ajax({
+        url:"ajax/subcategoria.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta){		
+            //console.log("respuesta", respuesta);
+            if(respuesta.length !== 0){
+                //alert('idCategoria: '+idCategoria);
+                respuesta.forEach(seleccionarSubCategoria);	
+
+                function seleccionarSubCategoria(item, index){
+                    var subcategoria = item.descripcion;
+                    var idsubcategoria = item.idsubcategoria;
+
+                    if($("#modalEditarProducto .seleccionarSubCategoriaX").val() == idsubcategoria){
+                        $("#modalEditarProducto .seleccionarSubCategoriaX").attr("value",idsubcategoria);
+                        $("#modalEditarProducto .seleccionarSubCategoriaX").html(subcategoria);
+                    }
+
+                    $("#modalEditarProducto .seleccionarSubCategoriaX").append('<option value="'+idsubcategoria+'">'+subcategoria+'</option>');              
+                }
+            }else{
+                //alert('idCategoriaVacio: '+idCategoria);
+                $("#modalEditarProducto .seleccionarSubCategoriaX").html('<option value="">Selecionar SubCategoría</option>');
+            }
+        }
+    })
+});
 
 /*=============================================
 //tag: EDITAR PRODUCTO
@@ -175,15 +217,16 @@ $('.tablaProducto tbody').on("click", ".btnEditarProducto", function(){
             $("#modalEditarProducto .seleccionarSubCategoriaX").val(respuesta["idsubcategoria"]);
             $("#modalEditarProducto .seleccionarConsumidor").val(respuesta["idconsumidor"]);
             $("#modalEditarProducto .seleccionarMedida").val(respuesta["idmedida"]);
-            $("#modalEditarProducto .titulo").val(respuesta["titulo"]);
-            $("#modalEditarProducto .descripcion").val(respuesta["descripcion"]);
-            $("#modalEditarProducto .codigo_sku").val(respuesta["codigo_sku"]);
-            $("#modalEditarProducto .costo").val(respuesta["costo"]);
-            $("#modalEditarProducto .precio").val(respuesta["precio"]);
-            $("#modalEditarProducto .stock").val(respuesta["stock"]);
+            $("#modalEditarProducto .editarTitulo").val(respuesta["titulo"]);
+            $("#modalEditarProducto .editarDescripcion").val(respuesta["descripcion"]);
+            $("#modalEditarProducto .editarCodigoSku").val(respuesta["codigo_sku"]);
+            $("#modalEditarProducto .editarPrecioCosto").val(respuesta["precio_costo"]);
+            $("#modalEditarProducto .editarPrecioVenta").val(respuesta["precio_venta"]);
+            $("#modalEditarProducto .editarStock").val(respuesta["stock"]);
             if(respuesta["imagen"] != ""){
                 $("#modalEditarProducto .previsualizar").attr("src", respuesta["imagen"]);
             }
+            //$("#modalEditarProducto .seleccionarSubCategoriaX").val("").trigger("chosen:updated");
         }
     })
 });

@@ -21,7 +21,7 @@
 		//tag: CREAR PRODUCTO
 		=============================================*/
 
-		static public function ctrCrearProducto($datos){
+		static public function ctrCrearProducto(){
 			///$time = time();
 			//echo date("dmY_His", $time);
 			if(isset($_POST["nuevoTitulo"])){
@@ -93,8 +93,8 @@
 					"titulo"		=>$_POST["nuevoTitulo"],
 					"descripcion"	=>$_POST["nuevaDescripcion"],
 					"codigo_sku"	=>$_POST["nuevoCodigoSku"],
-					"costo"			=>$_POST["nuevoCosto"],
-					"precio"		=>$_POST["nuevoPrecio"],
+					"precio_costo"	=>$_POST["nuevoPrecioCosto"],
+					"precio_venta"	=>$_POST["nuevoPrecioVenta"],
 					"stock"			=>$_POST["nuevoStock"],
 					"imagen"		=>$ruta
 				);	
@@ -124,7 +124,7 @@
 		//tag: EDITAR PRODUCTO
 		=============================================*/
 
-		static public function ctrEditarProducto($datos){
+		static public function ctrEditarProducto(){
 			if(isset($_POST["idProducto"])){		
 				
 				/*=============================================
@@ -205,8 +205,8 @@
 					"titulo"		=> $_POST["editarTitulo"],
 					"descripcion"	=> $_POST["editarDescripcion"],
 					"codigo_sku"	=> $_POST["editarCodigoSku"],
-					"costo"			=> $_POST["editarCosto"],
-					"precio"		=> $_POST["editarPrecio"],
+					"precio_costo"	=> $_POST["editarPrecioCosto"],
+					"precio_venta"	=> $_POST["editarPrecioVenta"],
 					"stock"			=> $_POST["editarStock"],
 					"imagen"		=> $ruta
 				);

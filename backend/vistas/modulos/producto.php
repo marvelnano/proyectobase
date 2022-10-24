@@ -39,7 +39,7 @@
       </div>
 
       <div class="card-body">        
-        <table class="table table-responsive table-bordered table-striped dt-responsive tablaProducto">
+        <table class="table table-responsive table-bordered table-striped dt-responsive-producto tablaProducto">
           <thead>
             <tr>
               <th style="width:10px">#</th>
@@ -54,6 +54,7 @@
               <th>Costo</th>
               <th>Precio</th>
               <th>Stock</th>
+              <th>Imágen</th>
               <th>Estado</th>
               <th>Acciones</th>
             </tr>
@@ -78,8 +79,8 @@
                           <td>'.$value["titulo"].'</td>
                           <td>'.$value["descripcion"].'</td>
                           <td>'.$value["codigo_sku"].'</td>
-                          <td>'.$value["costo"].'</td>
-                          <td>'.$value["precio"].'</td>
+                          <td>'.$value["precio_costo"].'</td>
+                          <td>'.$value["precio_venta"].'</td>
                           <td>'.$value["stock"].'</td>';
 
                           if($value["imagen"] != ""){
@@ -126,7 +127,7 @@
 <div id="modalAgregarProducto" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-
+      <form role="form" method="post" enctype="multipart/form-data">  
         <!--=====================================
         //note: CABEZA DEL MODAL
         ======================================-->
@@ -147,8 +148,8 @@
             ENTRADA PARA EL NEGOCIO
             ======================================-->
             <div class="form-group row">
-              <label for="nivel" class="col-sm-3 col-form-label">Negocio</label>
-              <select class="col-sm-9 form-control form-control-sm  seleccionarNegocio" name="nuevoNegocio">
+              <label for="nuevoNegocio" class="col-sm-3 col-form-label">Negocio</label>
+              <select class="col-sm-9 form-control form-control-sm seleccionarNegocio" name="nuevoNegocio">
                 <option value="">Selecionar Negocio</option>
                 <?php
                   $item = null; //campo
@@ -166,8 +167,8 @@
             ENTRADA PARA LA CATEGORIA
             ======================================-->
             <div class="form-group row">
-              <label for="nivel" class="col-sm-3 col-form-label">Categoría</label>
-              <select class="col-sm-9 form-control form-control-sm  seleccionarCategoriaX" name="nuevaCategoria">
+              <label for="nuevaCategoria" class="col-sm-3 col-form-label">Categoría</label>
+              <select class="col-sm-9 form-control form-control-sm seleccionarCategoriaX" name="nuevaCategoria">
                 <option value="">Selecionar Categoría</option>
                 <?php
                   $item = null; //campo
@@ -185,8 +186,8 @@
             ENTRADA PARA LA SUBCATEGORIA
             ======================================-->
             <div class="form-group row">
-              <label for="nivel" class="col-sm-3 col-form-label">SubCategoría</label>
-              <select class="col-sm-9 form-control form-control-sm  seleccionarSubCategoriaX" name="nuevaSubCategoria">
+              <label for="nuevaSubCategoria" class="col-sm-3 col-form-label">SubCategoría</label>
+              <select class="col-sm-9 form-control form-control-sm seleccionarSubCategoriaX" name="nuevaSubCategoria">
                 <option value="">Selecionar SubCategoría</option>
                 <?php
                   /*$item = null; //campo
@@ -204,8 +205,8 @@
             ENTRADA PARA EL CONSUMIDOR
             ======================================-->
             <div class="form-group row">
-              <label for="nivel" class="col-sm-3 col-form-label">Consumidor</label>
-              <select class="col-sm-9 form-control form-control-sm  seleccionarConsumidor" name="nuevoConsumidor">
+              <label for="nuevoConsumidor" class="col-sm-3 col-form-label">Consumidor</label>
+              <select class="col-sm-9 form-control form-control-sm seleccionarConsumidor" name="nuevoConsumidor">
                 <option value="">Selecionar Consumidor</option>
                 <?php
                   $item = null; //campo
@@ -223,8 +224,8 @@
             ENTRADA PARA LA MEDIDA
             ======================================-->
             <div class="form-group row">
-              <label for="nivel" class="col-sm-3 col-form-label">Medida</label>
-              <select class="col-sm-9 form-control form-control-sm  seleccionarMedida" name="nuevaMedida">
+              <label for="nuevaMedida" class="col-sm-3 col-form-label">Medida</label>
+              <select class="col-sm-9 form-control form-control-sm seleccionarMedida" name="nuevaMedida">
                 <option value="">Selecionar Medida</option>
                 <?php
                   $item = null; //campo
@@ -239,11 +240,51 @@
             </div>
 
             <!--=====================================
+            ENTRADA PARA EL TITULO
+            ======================================-->
+            <div class="form-group row">
+              <label for="nuevoTitulo" class="col-sm-3 col-form-label">Título</label>
+              <input type="text" name="nuevoTitulo" class="col-sm-9 form-control form-control-sm nuevoTitulo" placeholder="Ingresar Título">
+            </div>
+
+            <!--=====================================
             ENTRADA PARA LA DESCRIPCION
             ======================================-->
             <div class="form-group row">
-              <label for="descripcion" class="col-sm-3 col-form-label">Descripcion</label>
-              <input type="text" name="descripcion" class="col-sm-9 form-control form-control-sm descripcion" placeholder="Ingresar Descripción">
+              <label for="nuevaDescripcion" class="col-sm-3 col-form-label">Descripcion</label>
+              <input type="text" name="nuevaDescripcion" class="col-sm-9 form-control form-control-sm nuevaDescripcion" placeholder="Ingresar Descripción">
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA EL CODIGO SKU
+            ======================================-->
+            <div class="form-group row">
+              <label for="nuevoCodigoSku" class="col-sm-3 col-form-label">Código SKU</label>
+              <input maxlength="15" type="text" name="nuevoCodigoSku" class="col-sm-9 form-control form-control-sm nuevoCodigoSku" placeholder="Ingresar Código SKU">
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA EL COSTO
+            ======================================-->
+            <div class="form-group row">
+              <label for="nuevoPrecioCosto" class="col-sm-3 col-form-label">Costo</label>
+              <input type="number" name="nuevoPrecioCosto" class="col-sm-9 form-control form-control-sm nuevoPrecioCosto" placeholder="Ingresar Precio Costo">
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA EL PRECIO
+            ======================================-->
+            <div class="form-group row">
+              <label for="nuevoPrecioVenta" class="col-sm-3 col-form-label">Precio</label>
+              <input type="number" name="nuevoPrecioVenta" class="col-sm-9 form-control form-control-sm nuevoPrecioVenta" placeholder="Ingresar Precio Venta">
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA EL STOCK
+            ======================================-->
+            <div class="form-group row">
+              <label for="nuevoStock" class="col-sm-3 col-form-label">Descripcion</label>
+              <input type="number" name="nuevoStock" class="col-sm-9 form-control form-control-sm nuevoStock" placeholder="Ingresar Stock">
             </div>
 
             <!--=====================================
@@ -253,7 +294,7 @@
               <label for="nuevaImgProducto" class="col-sm-3 col-form-label">SUBIR FOTO</label>
               <input type="file" class="col-sm-9 form-control form-control-sm nuevaImgProducto" name="nuevaImgProducto" placeholder="Elegir Foto">
               <p class="help-block">Peso Máximo de la foto 2 MB</p>
-              <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="100px">
+              <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
             </div>
 
           </div>
@@ -264,9 +305,14 @@
         ======================================-->
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
-          <button type="button" class="btn btn-primary guardarProducto" >Agregar</button>
+          <button type="submit" class="btn btn-primary" >Agregar</button>
         </div>
 
+        <?php
+          $crearProducto = new ControladorProducto();
+          $crearProducto -> ctrCrearProducto();
+        ?>
+      </form>
     </div>
   </div>
 </div>
@@ -278,7 +324,7 @@
 <div id="modalEditarProducto" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-
+      <form role="form" method="post" enctype="multipart/form-data">  
         <!--=====================================
         //note: CABEZA DEL MODAL
         ======================================-->
@@ -296,22 +342,158 @@
           <div class="card-body">
 
             <!--=====================================
-            EDITAR LA DESCRIPCION
+            ENTRADA PARA EL NEGOCIO
             ======================================-->
             <div class="form-group row">
-              <label for="descripcion" class="col-sm-3 col-form-label">Descripcion</label>
-              <input type="text" name="descripcion" class="col-sm-9 form-control form-control-sm validarproducto descripcion" placeholder="Ingresar Descripción">
-              <input type="hidden" class="idProducto">
+            <input type="hidden" class="idProducto" name="idProducto">	
+              <label for="editarNegocio" class="col-sm-3 col-form-label">Negocio</label>
+              <select class="col-sm-9 form-control form-control-sm seleccionarNegocio" name="editarNegocio">
+                <option value="">Selecionar Negocio</option>
+                <?php
+                  $item = null; //campo
+                  $valor = null; //contenido del campo
+                  $negocios = ControladorNegocio::ctrMostrarNegocios($item, $valor);
+
+                  foreach ($negocios as $key => $value) {
+                    echo '<option value="' . $value["idnegocio"] . '">' . $value["razon_social"] . '</option>';
+                  }
+                ?>
+              </select>
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA LA CATEGORIA
+            ======================================-->
+            <div class="form-group row">
+              <label for="editarCategoria" class="col-sm-3 col-form-label">Categoría</label>
+              <select class="col-sm-9 form-control form-control-sm seleccionarCategoriaX" name="editarCategoria">
+                <option value="">Selecionar Categoría</option>
+                <?php
+                  $item = null; //campo
+                  $valor = null; //contenido del campo
+                  $categorias = ControladorCategoria::ctrMostrarCategoria($item, $valor);
+
+                  foreach ($categorias as $key => $value) {
+                    echo '<option value="' . $value["idcategoria"] . '">' . $value["descripcion"] . '</option>';
+                  }
+                ?>
+              </select>
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA LA SUBCATEGORIA
+            ======================================-->
+            <div class="form-group row">
+              <label for="editarSubCategoria" class="col-sm-3 col-form-label">SubCategoría</label>
+              <select class="col-sm-9 form-control form-control-sm seleccionarSubCategoriaX" name="editarSubCategoria">
+                <option value="">Selecionar SubCategoría</option>
+                <?php
+                  $item = null; //campo
+                  $valor = null; //contenido del campo
+                  $subcategorias = ControladorSubCategoria::ctrMostrarSubCategoria($item, $valor);
+
+                  foreach ($subcategorias as $key => $value) {
+                    echo '<option value="' . $value["idsubcategoria"] . '">' . $value["descripcion"] . '</option>';
+                  }
+                ?>
+              </select>
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA EL CONSUMIDOR
+            ======================================-->
+            <div class="form-group row">
+              <label for="editarConsumidor" class="col-sm-3 col-form-label">Consumidor</label>
+              <select class="col-sm-9 form-control form-control-sm seleccionarConsumidor" name="editarConsumidor">
+                <option value="">Selecionar Consumidor</option>
+                <?php
+                  $item = null; //campo
+                  $valor = null; //contenido del campo
+                  $consumidores = ControladorConsumidor::ctrMostrarConsumidor($item, $valor);
+
+                  foreach ($consumidores as $key => $value) {
+                    echo '<option value="' . $value["idconsumidor"] . '">' . $value["descripcion"] . '</option>';
+                  }
+                ?>
+              </select>
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA LA MEDIDA
+            ======================================-->
+            <div class="form-group row">
+              <label for="editarMedida" class="col-sm-3 col-form-label">Medida</label>
+              <select class="col-sm-9 form-control form-control-sm seleccionarMedida" name="editarMedida">
+                <option value="">Selecionar Medida</option>
+                <?php
+                  $item = null; //campo
+                  $valor = null; //contenido del campo
+                  $medidas = ControladorMedida::ctrMostrarMedida($item, $valor);
+
+                  foreach ($medidas as $key => $value) {
+                    echo '<option value="' . $value["idmedida"] . '">' . $value["descripcion"] . '</option>';
+                  }
+                ?>
+              </select>
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA EL TITULO
+            ======================================-->
+            <div class="form-group row">
+              <label for="editarTitulo" class="col-sm-3 col-form-label">Título</label>
+              <input type="text" name="editarTitulo" class="col-sm-9 form-control form-control-sm editarTitulo" placeholder="Ingresar Título">
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA LA DESCRIPCION
+            ======================================-->
+            <div class="form-group row">
+              <label for="editarDescripcion" class="col-sm-3 col-form-label">Descripcion</label>
+              <input type="text" name="editarDescripcion" class="col-sm-9 form-control form-control-sm editarDescripcion" placeholder="Ingresar Descripción">
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA EL CODIGO SKU
+            ======================================-->
+            <div class="form-group row">
+              <label for="editarCodigoSku" class="col-sm-3 col-form-label">Código SKU</label>
+              <input maxlength="15" type="text" name="editarCodigoSku" class="col-sm-9 form-control form-control-sm editarCodigoSku" placeholder="Ingresar Código SKU">
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA EL COSTO
+            ======================================-->
+            <div class="form-group row">
+              <label for="editarPrecioCosto" class="col-sm-3 col-form-label">Costo</label>
+              <input type="number" name="editarPrecioCosto" class="col-sm-9 form-control form-control-sm editarPrecioCosto" placeholder="Ingresar Precio Costo">
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA EL PRECIO
+            ======================================-->
+            <div class="form-group row">
+              <label for="editarPrecioVenta" class="col-sm-3 col-form-label">Precio</label>
+              <input type="number" name="editarPrecioVenta" class="col-sm-9 form-control form-control-sm editarPrecioVenta" placeholder="Ingresar Precio Venta">
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA EL STOCK
+            ======================================-->
+            <div class="form-group row">
+              <label for="editarStock" class="col-sm-3 col-form-label">Descripcion</label>
+              <input type="number" name="editarStock" class="col-sm-9 form-control form-control-sm editarStock" placeholder="Ingresar Stock">
             </div>
 
             <!--=====================================
             ENTRADA PARA SUBIR IMAGEN
             ======================================-->
             <div class="form-group row">
-              <label for="nuevaImgProducto" class="col-sm-3 col-form-label">SUBIR FOTO</label>
+              <label for="editarImgProducto" class="col-sm-3 col-form-label">SUBIR FOTO</label>
               <input type="file" class="col-sm-9 form-control form-control-sm nuevaImgProducto" name="editarImgProducto" placeholder="Elegir Foto">
               <p class="help-block">Peso Máximo de la foto 2 MB</p>
-              <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="100px">
+              <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+              <input type="hidden" name="imgProductoActual" class="imgProductoActual">
             </div>
 
           </div>
@@ -322,9 +504,14 @@
         ======================================-->
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
-          <button type="button" class="btn btn-primary guardarCambiosProducto" >Guardar cambios</button>
+          <button type="submit" class="btn btn-primary" >Guardar cambios</button>
         </div>
 
+        <?php
+          $editarProducto = new ControladorProducto();
+          $editarProducto -> ctrEditarProducto();
+        ?>
+      </form>
     </div>
   </div>
 </div>
