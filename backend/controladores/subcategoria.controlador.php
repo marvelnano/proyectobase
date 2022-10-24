@@ -19,6 +19,17 @@
 		}
 
 		/*=============================================
+		//tag: MOSTRAR SUBCATEGORIAS POR CATEGORIA
+		=============================================*/
+
+		static public function ctrMostrarSubCategoriaXCategoria($item, $valor){
+			$tabla = "subcategoria";
+
+			$respuesta = ModeloSubCategoria::mdlMostrarSubCategoriaXCategoria($tabla, $item, $valor);
+			return $respuesta;
+		}
+
+		/*=============================================
 		//tag: CREAR SUBCATEGORIA
 		=============================================*/
 

@@ -35,6 +35,23 @@
 		}
 
 		/*=============================================
+		//tag: MOSTRAR SUBCATEGORIAS POR CATEGORIA
+		=============================================*/
+		static public function mdlMostrarSubCategoriaXCategoria($tabla, $item, $valor){
+			$conexion = new Conexion();
+
+			if($item != null){
+				$stmt = $conexion->conectar()->prepare("SELECT * FROM $tabla WHERE idcategoria = :$item");
+				$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+				$stmt -> execute();
+				return $stmt -> fetchAll();
+			}
+
+			$stmt = null;
+			$conexion = null;
+		}
+
+		/*=============================================
 		//tag: CREAR SUBCATEGORIA
 		=============================================*/
 		static public function mdlIngresarSubCategoria($tabla, $datos){

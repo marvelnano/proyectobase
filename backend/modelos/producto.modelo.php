@@ -12,8 +12,8 @@
 			$conexion = new Conexion();
 
 			if($item != null){
-				$stmt = $conexion->conectar()->prepare("p.idproducto, n.idnegocio, n.razon_social, sc.idsubcategoria, sc.descripcion subcategoria,
-					cat.idcategoria, cat.descripcion categoria, c.idconsumidor, c.descripcion consumidor, m.idmedida, m.descripcion medida,
+				$stmt = $conexion->conectar()->prepare("SELECT p.idproducto, n.idnegocio, n.razon_social, cat.idcategoria, cat.descripcion categoria,
+					sc.idsubcategoria, sc.descripcion subcategoria, c.idconsumidor, c.descripcion consumidor, m.idmedida, m.descripcion medida,
 					p.titulo, p.descripcion, p.codigo_sku, p.costo, p.precio, p.stock, p.imagen, p.estado 
 					FROM $tabla p
 					INNER JOIN subcategoria sc on sc.idsubcategoria = p.idsubcategoria 
@@ -26,8 +26,8 @@
 				$stmt -> execute();
 				return $stmt -> fetch();
 			}else{
-				$stmt = $conexion->conectar()->prepare("p.idproducto, n.idnegocio, n.razon_social, sc.idsubcategoria, sc.descripcion subcategoria,
-					cat.idcategoria, cat.descripcion categoria, c.idconsumidor, c.descripcion consumidor, m.idmedida, m.descripcion medida,
+				$stmt = $conexion->conectar()->prepare("SELECT p.idproducto, n.idnegocio, n.razon_social, cat.idcategoria, cat.descripcion categoria,
+					sc.idsubcategoria, sc.descripcion subcategoria, c.idconsumidor, c.descripcion consumidor, m.idmedida, m.descripcion medida,
 					p.titulo, p.descripcion, p.codigo_sku, p.costo, p.precio, p.stock, p.imagen, p.estado 
 					FROM $tabla p
 					INNER JOIN subcategoria sc on sc.idsubcategoria = p.idsubcategoria 

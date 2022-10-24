@@ -1,11 +1,11 @@
 <?php
   //TODO: Template Módulo
   if($_SESSION["perfil"] != "Administrador"){
-  echo '<script>
-  window.location = "inicio";
-  </script>';
+    echo '<script>
+    window.location = "inicio";
+    </script>';
 
-  return;
+    return;
   }
 ?> 
 
@@ -282,7 +282,6 @@
             <div class="form-group row">
               <img src="vistas/img/subcategorias/default/anonymous.png" class="img-responsive previsualizar" width="100%" style="display: block;margin-left: auto; margin-right: auto;">
             </div>
-
           </div>
         </div>
 

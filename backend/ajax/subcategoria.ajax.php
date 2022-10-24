@@ -8,6 +8,20 @@
 	class AjaxSubCategoria{
 
 		/*=============================================
+		//tag: MOSTRAR SUBCATEGORIAS POR CATEGORIA
+		=============================================*/	
+
+		public $idCategoria;
+
+		public function ajaxMostrarSubCategoriaXCategoria(){
+			$item = "idcategoria";
+			$valor = $this->idCategoria;
+
+			$respuesta = ControladorSubCategoria::ctrMostrarSubCategoriaXCategoria($item, $valor);
+			echo json_encode($respuesta);
+		}
+
+		/*=============================================
 		//tag: VALIDAR NO REPETIR SUBCATEGORIA
 		=============================================*/	
 
@@ -106,6 +120,15 @@
 		$traerSubCategoria = new AjaxSubCategoria();
 		$traerSubCategoria -> idSubCategoria = $_POST["idSubCategoriaEdit"];
 		$traerSubCategoria -> ajaxTraerSubCategoria();
+	}
+
+	/*=============================================
+	//note: MOSTRAR SUBCATEGORIAS POR CATEGORIA
+	=============================================*/
+	if(isset($_POST["idCategoria"])){
+		$traerSubCategorias = new AjaxSubCategoria();
+		$traerSubCategorias -> idCategoria = $_POST["idCategoria"];
+		$traerSubCategorias -> ajaxMostrarSubCategoriaXCategoria();
 	}
 
 	/*=============================================

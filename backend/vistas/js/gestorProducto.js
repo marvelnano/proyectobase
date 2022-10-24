@@ -1,37 +1,4 @@
 //TODO: Template Javascript
-/*=============================================
-//tag: CARGAR LA TABLA DINÁMICA DE PRODUCTO	
-=============================================*/
-$(".tablaProducto").DataTable({
-    "ajax": "ajax/tablaProducto.ajax.php",
-    "deferRender": true,
-    "retrieve": true,
-    "processing": true,
-    "language": {
-        "sProcessing":     "Procesando...",
-       "sLengthMenu":     "Mostrar _MENU_ registros",
-       "sZeroRecords":    "No se encontraron resultados",
-       "sEmptyTable":     "Ningún dato disponible en esta tabla",
-       "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
-       "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
-       "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-       "sInfoPostFix":    "",
-       "sSearch":         "Buscar:",
-       "sUrl":            "",
-       "sInfoThousands":  ",",
-       "sLoadingRecords": "Cargando...",
-       "oPaginate": {
-           "sFirst":    "Primero",
-           "sLast":     "Último",
-           "sNext":     "Siguiente",
-           "sPrevious": "Anterior"
-       },
-       "oAria": {
-           "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-           "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-       }
-   }
-});
 
 /*=============================================
 //tag: ACTIVAR PRODUCTO
@@ -42,39 +9,75 @@ $('.tablaProducto tbody').on("click", ".btnActivar", function(){
 
    var datos = new FormData();
     datos.append("activarId", idProducto);
-     datos.append("activarProducto", estadoProducto);
+    datos.append("activarProducto", estadoProducto);
 
-     $.ajax({
-       url:"ajax/producto.ajax.php",
-       method: "POST",
-       data: datos,
-       cache: false,
-       contentType: false,
-       processData: false,
-       success: function(respuesta){              
-           // console.log("respuesta", respuesta);
-       }
-     })
+    $.ajax({
+        url:"ajax/producto.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(respuesta){              
+            // console.log("respuesta", respuesta);
+        }
+    })
    
-     //alert("estado: "+estadoProducto)
+    //alert("estado: "+estadoProducto)
 
-   if(estadoProducto == 0){
-         $(this).removeClass('btn-success');
-         $(this).addClass('btn-danger');
-         $(this).html('Desactivado');
-         $(this).attr('estadoProducto',1);
-     }else{
-         $(this).addClass('btn-success');
-         $(this).removeClass('btn-danger');
-         $(this).html('Activado');
-         $(this).attr('estadoProducto',0);
-     }
+    if(estadoProducto == 0){
+        $(this).removeClass('btn-success');
+        $(this).addClass('btn-danger');
+        $(this).html('Desactivado');
+        $(this).attr('estadoProducto',1);
+    }else{
+        $(this).addClass('btn-success');
+        $(this).removeClass('btn-danger');
+        $(this).html('Activado');
+        $(this).attr('estadoProducto',0);
+    }
 });
 
 /*=============================================
-//tag: REVISAR SI PRODUCTO YA EXISTE
+//tag: SUBIENDO LA IMAGEN DEL PRODUCTO
 =============================================*/
-function validarProducto(miproducto){
+$(".nuevaImgProducto").change(function(){
+    var imagen = this.files[0];  
+  
+    /*=============================================
+      VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
+      =============================================*/
+      if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
+        $(".nuevaImgProducto").val("");
+         swal({
+            title: "Error al subir la imagen",
+            text: "¡La imagen debe estar en formato JPG o PNG!",
+            type: "error",
+            confirmButtonText: "¡Cerrar!"
+          });
+      }else if(imagen["size"] > 2000000){
+        $(".nuevaImgProducto").val("");
+         swal({
+            title: "Error al subir la imagen",
+            text: "¡La imagen no debe pesar más de 2MB!",
+            type: "error",
+            confirmButtonText: "¡Cerrar!"
+          });
+      }else{
+        var datosImagen = new FileReader;
+        datosImagen.readAsDataURL(imagen);
+  
+        $(datosImagen).on("load", function(event){
+          var rutaImagen = event.target.result;
+          $(".previsualizar").attr("src", rutaImagen);
+        })
+      }
+  });
+
+/*=============================================
+//fixme: REVISAR SI PRODUCTO YA EXISTE
+=============================================*/
+/*function validarProducto(miproducto){
    $(".alert").remove();
 
    var producto = miproducto;
@@ -103,51 +106,49 @@ function validarProducto(miproducto){
        }
    })	   
    return resultado;
-};
+};*/
 
 /*=============================================
-//tag: GUARDAR PRODUCTO
+//tag: MOSTRAR SUBCATEGORIAS
 =============================================*/
-$(".guardarProducto").click(function(){
-   //validarProducto($(".descripcion").val());	
+$('.seleccionarCategoriaX').on("change", function(){	
+    var idCategoria = $(".seleccionarCategoriaX").val();
+    //alert("llego a change categoria: "+idCategoria);
+    var datos = new FormData();
+    datos.append("idCategoria", idCategoria);
+    
+    $.ajax({
+        url:"ajax/subcategoria.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta){		
+            //console.log("respuesta", respuesta);
+            if(respuesta.length !== 0){
+                //alert('idCategoria: '+idCategoria);
+                respuesta.forEach(seleccionarSubCategoria);	
 
-   /*=============================================
-   //note: PREGUNTAMOS SI LOS CAMPOS OBLIGATORIOS ESTÁN LLENOS
-   =============================================*/
-   //alert("llegó a guardar");
-   if($(".descripcion").val() != "" ){
-       agregarMiProducto();
-   }else{
-       toastr.error("Llenar todos los campos obligatorios");
-       return;
-   }
-});
+                function seleccionarSubCategoria(item, index){
+                    var subcategoria = item.descripcion;
+                    var idsubcategoria = item.idsubcategoria;
 
-function agregarMiProducto(){
-   /*=============================================
-   //note: ALMACENAMOS TODOS LOS CAMPOS DE PRODUCTO
-   =============================================*/
-   var descripcion = $(".descripcion").val();//.toUpperCase()
-   var datosProducto = new FormData();
-   datosProducto.append("descripcion", descripcion);
+                    if($(".seleccionarSubCategoriaX").val() == idsubcategoria){
+                        $(".seleccionarSubCategoriaX").attr("value",idsubcategoria);
+                        $(".seleccionarSubCategoriaX").html(subcategoria);
+                    }
 
-   $.ajax({
-       url:"ajax/producto.ajax.php",
-       method: "POST",
-       data: datosProducto,
-       cache: false,
-       contentType: false,
-       processData: false,
-       success: function(respuesta){
-           // console.log("respuesta", respuesta);
-           if(respuesta === "ok"){					
-               toastr.success("Datos se guardaron correctamente.","Aviso del Sistema:");
-               $(".tablaProducto").DataTable().ajax.reload();
-               $("#modalAgregarProducto").modal('hide');
-           }			
-       }
-   })	
-};
+                    $(".seleccionarSubCategoriaX").append('<option value="'+idsubcategoria+'">'+subcategoria+'</option>');              
+                }
+            }else{
+                //alert('idCategoriaVacio: '+idCategoria);
+                $(".seleccionarSubCategoriaX").html('<option value="">Selecionar SubCategoría</option>');
+            }
+        }
+    })
+ });
 
 /*=============================================
 //tag: EDITAR PRODUCTO
@@ -159,67 +160,56 @@ $('.tablaProducto tbody').on("click", ".btnEditarProducto", function(){
    datos.append("idProductoEdit", idProducto);
    
    $.ajax({
-       url:"ajax/producto.ajax.php",
-       method: "POST",
-       data: datos,
-       cache: false,
-       contentType: false,
-       processData: false,
-       dataType: "json",
-       beforeSend: function () {
-           //alert("dentro de editar: "+datos["idProducto"]);
-       },
-       success: function(respuesta){			
-           /* console.log("respuesta", respuesta); */
-           $("#modalEditarProducto .idProducto").val(respuesta[0]["idproducto"]);
-           $("#modalEditarProducto .descripcion").val(respuesta[0]["descripcion"]);
-           
-           /*=============================================
-           //note: CAPTURAMOS CAMBIOS DE Producto
-           =============================================*/	
-           $(".guardarCambiosProducto").click(function(){
-               //validarProducto($("#modalEditarProducto .descripcion").val());
-
-               //alert("llego a editar todo: "+$("#modalEditarProducto .idProducto").val());
-               /*=============================================
-               //note: PREGUNTAMOS SI LOS CAMPOS OBLIGATORIOS ESTÁN LLENOS
-               =============================================*/
-               if($("#modalEditarProducto .descripcion").val() != "" ){
-                   editarMiProducto();	
-               }else{
-                   toastr.error("Llenar todos los campos obligatorios");
-                   return;
-               }
-           })
-       }
-   })
-});
-
-function editarMiProducto(){
-    /*=============================================
-    //note: GUARDAR CAMBIOS DE Producto
-    =============================================*/
-    //alert("editar: "+$("#modalEditarProducto .idProducto").val());
-    var idProducto = $("#modalEditarProducto .idProducto").val();
-    var descripcionProducto = $("#modalEditarProducto .descripcion").val();//.toUpperCase()
-
-    var datosProductoEd = new FormData();
-    datosProductoEd.append("idProductoEd", idProducto);
-    datosProductoEd.append("descripcionProductoEd", descripcionProducto);
-
-    $.ajax({
         url:"ajax/producto.ajax.php",
         method: "POST",
-        data: datosProductoEd,
+        data: datos,
         cache: false,
         contentType: false,
         processData: false,
-        success: function(respuesta){									
-            if(respuesta === "ok"){
-                toastr.success("Datos se actualizaron correctamente.","Aviso del Sistema:");
-                $(".tablaProducto").DataTable().ajax.reload();
-                $("#modalEditarProducto").modal('hide');
+        dataType: "json",
+        success: function(respuesta){			
+            // console.log("respuesta", respuesta);
+            $("#modalEditarProducto .idProducto").val(respuesta["idproducto"]);
+            $("#modalEditarProducto .seleccionarNegocio").val(respuesta["idnegocio"]);
+            $("#modalEditarProducto .seleccionarCategoriaX").val(respuesta["idcategoria"]);
+            $("#modalEditarProducto .seleccionarSubCategoriaX").val(respuesta["idsubcategoria"]);
+            $("#modalEditarProducto .seleccionarConsumidor").val(respuesta["idconsumidor"]);
+            $("#modalEditarProducto .seleccionarMedida").val(respuesta["idmedida"]);
+            $("#modalEditarProducto .titulo").val(respuesta["titulo"]);
+            $("#modalEditarProducto .descripcion").val(respuesta["descripcion"]);
+            $("#modalEditarProducto .codigo_sku").val(respuesta["codigo_sku"]);
+            $("#modalEditarProducto .costo").val(respuesta["costo"]);
+            $("#modalEditarProducto .precio").val(respuesta["precio"]);
+            $("#modalEditarProducto .stock").val(respuesta["stock"]);
+            if(respuesta["imagen"] != ""){
+                $("#modalEditarProducto .previsualizar").attr("src", respuesta["imagen"]);
             }
         }
-    })	
-};
+    })
+});
+
+/*=============================================
+//tag: VER IAMGEN
+=============================================*/
+$('.tablaProducto tbody').on("click", ".btnVerImagen", function(){	
+    var idProducto = $(this).attr("idProducto");
+    //alert("llego a editar: "+idSubCategoria);
+    var datos = new FormData();
+    datos.append("idProductoEdit", idProducto);
+    
+    $.ajax({
+        url:"ajax/producto.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta){			
+            // console.log("respuesta", respuesta); 
+            if(respuesta["imagen"] != ""){
+                $("#modalVerImgProducto .previsualizar").attr("src", respuesta["imagen"]);
+            }
+        }
+    })
+ });
