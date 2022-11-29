@@ -35,7 +35,7 @@
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1, $prod_id);
             $sql->execute();
-            return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado=$sql->fetch(PDO::FETCH_ASSOC);
         }
 
         /*public function insert_producto($cat_nom,$cat_obs){
