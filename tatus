@@ -1,0 +1,354 @@
+[33mcommit 1d76ebb4d7cebe5373bf0973797076346c006495[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Tue Nov 29 19:05:54 2022 -0500
+
+    armando el frontend en serio
+
+[33mcommit 2bb8d2f6a5cf28ebc93075276c446f2c223fa5e6[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Tue Nov 29 17:40:56 2022 -0500
+
+    update model de ws
+
+[33mcommit 2fcce9d628374b3dd991a24ff65af3a96dfcd437[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Tue Oct 25 17:57:52 2022 -0500
+
+    agregado webservice
+
+[33mcommit b2ca14237b2553edd8d2830a1311e34cfa0b7c58[m
+Merge: 86697bd 39e46a4
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Mon Oct 24 10:26:18 2022 -0500
+
+    Merge branch 'main' of https://github.com/marvelnano/proyectobase
+
+[33mcommit 86697bde80b63401eb092d44774e1fef216760a5[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Mon Oct 24 10:26:16 2022 -0500
+
+    cambio en etiqueta stock
+
+[33mcommit 39e46a4a318eebc83293b7c01dcb8eebf40ba6dc[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Mon Oct 24 10:18:49 2022 -0500
+
+    update db
+
+[33mcommit 27a62f890661de9cd8c423adcf74730bf761acdd[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Mon Oct 24 09:55:19 2022 -0500
+
+    terminado backend, agregadas varias modificaciones
+
+[33mcommit 5f9d1fac837b0e2fac565a3cd5483b3908321d2e[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Sun Oct 23 23:17:33 2022 -0500
+
+    modificando javascript y parte de la vista de producto
+
+[33mcommit 7696be6dae07b6fbc9806aaacbd3aced885dc1a4[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Fri Oct 21 19:10:13 2022 -0500
+
+    modificar ajax de producto
+
+[33mcommit 7231b8fea0012e4f5518d6781671d327038b59f6[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Fri Oct 21 17:38:31 2022 -0500
+
+    agregando controlador de producto
+
+[33mcommit e02be384549e661dafde753a385f07645c0e7d44[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Fri Oct 21 16:38:42 2022 -0500
+
+    subiendo el modelo de producto
+
+[33mcommit 74854035a22359162de8ad1254a13af491747654[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Fri Oct 21 15:09:50 2022 -0500
+
+    mas info sobre github
+
+[33mcommit 1339b8f9f50121d855c505901f10a2d8195d4cef[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Fri Oct 21 10:54:17 2022 -0500
+
+    agregando información sobre github
+
+[33mcommit 415446b6fbcfe78caad1a0ca1cc5f17977f4d9e5[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Fri Oct 21 09:37:37 2022 -0500
+
+    .
+
+[33mcommit 9d415c98d443a76594f1496d8509691c958d3380[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Thu Oct 20 15:49:08 2022 -0500
+
+    correcciones
+
+[33mcommit 8ad26791062e5c9ba85386a1006bfc18cf35086e[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Thu Oct 20 15:38:02 2022 -0500
+
+    correcciones en módulo subcategoría
+
+[33mcommit 6d87052ebc4e5b3699763f26c5a6636524f8aa34[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Fri Oct 7 17:27:00 2022 -0500
+
+    update de laptop
+
+[33mcommit a36a6b653131944de5299d3f4e3eb86cd8ff5d8a[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Fri Oct 7 17:09:57 2022 -0500
+
+    Creado módulo de subcategoría y update a la db
+
+[33mcommit 6328d6696e9a7f19c46a1a662aef600fb65d886c[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Fri Oct 7 12:53:11 2022 -0500
+
+    Se agregó tabla subcategoría
+
+[33mcommit 1a4ac921de575e552ee01cb108382d918242de9a[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Mon Oct 3 23:08:46 2022 -0500
+
+    Terminado modulo del consumidor
+
+[33mcommit 3f9c996ecba52150272afa7d9b9df62ce3fea758[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Mon Oct 3 19:06:10 2022 -0500
+
+    iniciando modulo de consumifor
+
+[33mcommit 04295bdf0dbd25d8f3db70f7289fdc3a83b7c48d[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Sat Oct 1 22:12:27 2022 -0500
+
+    elimine esto: mkdir($directorio, 0755) del metodo editar categoría
+
+[33mcommit ba6eb78e55a8d551d7de6d6dd664dc7e9694068c[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Sat Oct 1 22:06:55 2022 -0500
+
+    terminado modulo de categoría
+
+[33mcommit e12678001922354e57b177f3506c907a8480124a[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Thu Sep 29 16:15:50 2022 -0500
+
+    rm db
+
+[33mcommit 03b8f402d248e3f6081f2dd136d621eb31b3e4f6[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Thu Sep 29 16:06:01 2022 -0500
+
+    Cambios en archivos de tienda virtual
+
+[33mcommit 3c2ed8e9f2484e5a49ca09bf4afbdfb9abed90b4[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Thu Sep 29 12:53:05 2022 -0500
+
+    Creación de archivos para tienda virtual
+
+[33mcommit 71df2c69f9a05e912df0015f4c2ab378488861c5[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Thu Sep 29 09:24:35 2022 -0500
+
+    Configuraciones TODO en backend v1.0
+
+[33mcommit 48b92bf620719ccdea2007bcf7ecbd4bf4049edf[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Wed Sep 28 19:15:30 2022 -0500
+
+    estructurando frontend v1.1
+
+[33mcommit ab808adba703e96963e5548ad2adc5d1da581d6f[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Wed Sep 28 19:06:18 2022 -0500
+
+    armando estructura de frontend v1.0
+
+[33mcommit 5fa9c1e9e00040f013394cf0bcabe0612bb8b229[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Wed Sep 28 17:50:58 2022 -0500
+
+    reestructuración completa de proyecto, agregando frontend
+
+[33mcommit 14fc41989ce9e2d67ba01f149d9257cfeeda62da[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Wed Sep 28 10:42:13 2022 -0500
+
+    cambios en diseño crear
+
+[33mcommit 4b3757600130fd56b6fe837cdc2ede4b18a4bc55[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Wed Sep 28 08:44:17 2022 -0500
+
+    modificaciones al .gitignore
+
+[33mcommit d57a167feefb86f66554103061a131fa5abc5c82[m
+Author: Marvelnano <marvelnano@gmail.com>
+Date:   Wed Sep 28 07:50:50 2022 -0500
+
+    Delete ideas.sql
+
+[33mcommit ce9ca038dd168e5f95579a79bd2d541ea2a956a7[m
+Author: Marvelnano <marvelnano@gmail.com>
+Date:   Wed Sep 28 07:49:54 2022 -0500
+
+    Delete db directory
+
+[33mcommit 65028a5930ff90d324e6dddac1708668b67d991e[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Wed Sep 28 07:49:10 2022 -0500
+
+    ignorando archivos importantes
+
+[33mcommit 5915032d1d9e5ec446fb822fa19ec47fec3fa142[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Tue Sep 27 17:17:36 2022 -0500
+
+    mejoras en crear
+
+[33mcommit 54d39955f24ff24522d2129e072e593e05a27e64[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Tue Sep 27 17:10:37 2022 -0500
+
+    mejoras al módulo creador de módulos
+
+[33mcommit fe55a052d3ff20a404ee247c112ea75b27059a8a[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Tue Sep 27 15:04:30 2022 -0500
+
+    Creador de módulos casi terminado
+
+[33mcommit 11c888db13524551447e9ab12b8cd0bde9c06a02[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Mon Sep 26 22:29:28 2022 -0500
+
+    correciones en plantilla
+
+[33mcommit da2487ce474a8e6aca32d0e123c0f06c5e7c468d[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Mon Sep 26 19:12:00 2022 -0500
+
+    Archivos para crear toda la estructura de un módulo nuevo
+
+[33mcommit 2f0b464b91f4a6e225dad182ac6a81044189d17d[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Mon Sep 26 09:02:49 2022 -0500
+
+    update
+
+[33mcommit f77160a94edb03dc42c581d3fd56b303e9dc982b[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Mon Sep 26 09:01:19 2022 -0500
+
+    Subiendo archivo para descargar y configurar github y xampp
+
+[33mcommit b9b21aa41c01f8ffdba140d6bf80cfbb48ecbc39[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Sat Sep 24 21:11:45 2022 -0500
+
+    Dejando lista la estructura de mantenedores para la tienda virtual
+
+[33mcommit 27e21f706ab691aa0820e31f3c8804c95e065779[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Sat Sep 24 20:54:11 2022 -0500
+
+    Creando menú de tienda virtual
+
+[33mcommit 7b801d6dfd125f4d4df86eccea2131bb59e76286[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Sat Sep 24 20:45:16 2022 -0500
+
+    Creación de db base
+
+[33mcommit 30dc7ab452f3300a9e16848eea0a7dbdd6db24ca[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Fri Sep 23 23:26:10 2022 -0500
+
+    más cambios
+
+[33mcommit d12c628c3f12500c71511b42dfa2dc66eb348ba5[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Fri Sep 23 22:50:01 2022 -0500
+
+    modificando inicio
+
+[33mcommit 9b9e230c131b84747ef11f5132b89de7165fa5bf[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Fri Sep 23 22:48:01 2022 -0500
+
+    Cambiando Inicio
+
+[33mcommit 55739493271cd26028ac66116cea1b498449d2dc[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Fri Sep 23 22:41:35 2022 -0500
+
+    diseño db v1.0
+
+[33mcommit 6d2b8cc3534abbd918f1fe60a4f13ba0ffea0f27[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Fri Sep 23 21:36:15 2022 -0500
+
+    organizando db
+
+[33mcommit 87c9699cb793fef35a3e0811c453fd3cf58f4d4b[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Fri Sep 23 19:08:48 2022 -0500
+
+    Subiendo db base para continuar proyecto
+
+[33mcommit 59eae923488aa24a435e4472fcc9eb706209b45d[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Fri Sep 23 18:46:39 2022 -0500
+
+    Subiendo base para el proyecto
+
+[33mcommit 1fc349d844fea3985ab004d2f3fcb64b5c6cbcc8[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Thu Sep 22 21:37:20 2022 -0500
+
+    iniciando
+
+[33mcommit 18807cefea12034fbb4a05876e520d95e217426a[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Thu Sep 22 21:29:49 2022 -0500
+
+    segundo cambio desde linux
+
+[33mcommit edabd024849fab6063f088165655c8586e803256[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Thu Sep 22 21:13:56 2022 -0500
+
+    Cambio desde linux
+
+[33mcommit e7941b7f819fff993b815a7b7141bea2c9092031[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Thu Sep 22 20:04:32 2022 -0500
+
+    otro mas
+
+[33mcommit 5cb615bc4e74e6a2fb30f56fa170f791baae2d45[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Thu Sep 22 20:02:18 2022 -0500
+
+    Cambio
+
+[33mcommit ff167d1dd2365aab4d624c971c68ecb09c086b2d[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Thu Sep 22 19:56:36 2022 -0500
+
+    insertando párrafos
+
+[33mcommit 157704608db75de1bb107d3bd70b4b717a9699a9[m
+Author: marvelnano <marvelnano@gmail.com>
+Date:   Thu Sep 22 19:14:13 2022 -0500
+
+    Comienzo de proyecto
