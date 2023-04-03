@@ -1,0 +1,33 @@
+<app-menu></app-menu>
+<!-- Product section-->
+<section class="py-3">
+  <div class="container px-4 px-lg-5 my-4" >
+    <div>
+      <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item text-sm"><a href="" (click)="Listar()">Inicio</a></li>
+        <li class="breadcrumb-item text-sm active">Detalle</li>
+      </ol>
+    </div>
+    <div class="row gx-4 gx-lg-5 align-items-center">
+      <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{urlBackend+producto.imagen}}" alt="..." /></div>
+      <div class="col-md-6">
+        <div class="small mb-1">SKU: {{producto.codigo_sku}}</div>
+        <h1 class="display-5 fw-bolder">{{producto.titulo}}</h1>
+        <!-- <input type="text" [(ngModel)]="producto.titulo"> -->
+        <div class="fs-5 mb-5">
+          <!-- <span class="text-decoration-line-through">$45.00</span> -->
+          <span>S/.{{producto.precio_venta}}</span>
+        </div>
+        <p class="lead">{{producto.descripcion}}</p>
+        <div class="d-flex">
+          <div class="fs-5 mb-5"><span>Stock: {{producto.stock}}</span></div>
+          <!-- <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+          <button class="btn btn-outline-dark flex-shrink-0" type="button">
+              <i class="bi-cart-fill me-1"></i>
+              Add to cart
+          </button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
