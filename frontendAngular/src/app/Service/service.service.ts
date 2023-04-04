@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Producto } from '../Modelo/Producto';
+import { GlobalComponent } from 'src/app/global-component';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class ServiceService {
 
   constructor(private http:HttpClient) { }
 
-  Url = 'http://localhost:83/proyectobase/ws/controller/producto.php?op=';
+  Url = GlobalComponent.appUrlWS;
 
   getProductos(){
     return this.http.get<Producto[]>(this.Url+"GetAll");

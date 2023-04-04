@@ -5,14 +5,12 @@ import { Producto } from 'src/app/Modelo/Producto';
 import { GlobalComponent } from 'src/app/global-component';
 
 @Component({
-  selector: 'app-listar',
+  selector: 'listarProductos',
   templateUrl: './listar.component.html',
   styleUrls: ['./listar.component.css']
 })
 export class ListarComponent implements OnInit {
 
-  titulo = GlobalComponent.appTitulo;
-  subtitulo = GlobalComponent.appSubTitulo;
   urlBackend = GlobalComponent.appUrlBackend;
   //public productos: Array<any> = []
 

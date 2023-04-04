@@ -20,8 +20,8 @@ export class DetalleComponent implements OnInit {
     this.Editar();
   }
 
-  Listar(): void{
-    this.router.navigate(['listar']);
+  Inicio(): void{
+    this.router.navigate(['plantilla']);
   }
 
   Editar(){

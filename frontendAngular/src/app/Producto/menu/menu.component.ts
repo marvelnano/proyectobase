@@ -13,8 +13,8 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  Listar(){
-    this.router.navigate(['listar']);
+  Inicio(){
+    this.router.navigate(['plantilla']);
   }
 
 }

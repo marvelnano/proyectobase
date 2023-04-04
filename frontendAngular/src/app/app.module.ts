@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { ListarComponent } from './Producto/listar/listar.component';
 import { DetalleComponent } from './Producto/detalle/detalle.component';
 import { MenuComponent } from './Producto/menu/menu.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { ServiceService } from '../app/Service/service.service'
+import { ServiceService } from '../app/Service/service.service';
+import { PlantillaComponent } from './plantilla/plantilla.component'
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ServiceService } from '../app/Service/service.service'
     AppComponent,
     ListarComponent,
     DetalleComponent,
-    MenuComponent
+    MenuComponent,
+    PlantillaComponent
   ],
   imports: [
     BrowserModule,
