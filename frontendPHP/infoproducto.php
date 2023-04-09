@@ -9,7 +9,7 @@
 
         if(empty($detalleProd['idproducto'])){
             if(count($detalleProd) <= 0){
-                header("Location: http://localhost:83/frontendPHP/");
+                header("Location: ".appUrlFrontend."");
             }
         }
         
