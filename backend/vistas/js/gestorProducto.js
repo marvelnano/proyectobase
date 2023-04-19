@@ -222,7 +222,9 @@ $('.tablaProducto tbody').on("click", ".btnEditarProducto", function(){
             $("#modalEditarProducto .editarCodigoSku").val(respuesta["codigo_sku"]);
             $("#modalEditarProducto .editarPrecioCosto").val(respuesta["precio_costo"]);
             $("#modalEditarProducto .editarPrecioVenta").val(respuesta["precio_venta"]);
+            $("#modalEditarProducto .editarPrecioOferta").val(respuesta["precio_oferta"]);
             $("#modalEditarProducto .editarStock").val(respuesta["stock"]);
+            $("#modalEditarProducto .imgProductoActual").val(respuesta["imagen"]);
             if(respuesta["imagen"] != ""){
                 $("#modalEditarProducto .previsualizar").attr("src", respuesta["imagen"]);
             }

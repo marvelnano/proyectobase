@@ -34,9 +34,14 @@
                                         <div class="bi-star-fill"></div>
                                     </div> -->
                                     <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">S/. ' . ($value['precio_venta'] + 10) . '</span>
-                                    S/. ' . $value['precio_venta'] . '
                                     ';
+                                    if ($value['precio_oferta'] != 0) {
+                                        echo ' <span class="text-muted text-decoration-line-through">S/. ' . $value['precio_venta'] . '</span>
+                                        S/. ' . $value['precio_oferta'];
+                                    } else {
+                                        echo 'S/. ' . $value['precio_venta'];
+                                    }
+
                                     if ($value['estado'] == 0) {
                                         echo '<h5 class="fw-bolder text-danger">Agotado</h5>';
                                     } else {

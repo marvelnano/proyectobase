@@ -14,7 +14,7 @@
 			if($item != null){
 				$stmt = $conexion->conectar()->prepare("SELECT p.idproducto, n.idnegocio, n.razon_social, cat.idcategoria, cat.descripcion categoria,
 					sc.idsubcategoria, sc.descripcion subcategoria, c.idconsumidor, c.descripcion consumidor, m.idmedida, m.descripcion medida,
-					p.titulo, p.descripcion, p.codigo_sku, p.precio_costo, p.precio_venta, p.stock, p.imagen, p.estado 
+					p.titulo, p.descripcion, p.codigo_sku, p.precio_costo, p.precio_venta, p.precio_oferta, p.stock, p.imagen, p.estado 
 					FROM $tabla p
 					INNER JOIN subcategoria sc on sc.idsubcategoria = p.idsubcategoria 
 					INNER JOIN categoria cat on cat.idcategoria = sc.idcategoria
@@ -28,7 +28,7 @@
 			}else{
 				$stmt = $conexion->conectar()->prepare("SELECT p.idproducto, n.idnegocio, n.razon_social, cat.idcategoria, cat.descripcion categoria,
 					sc.idsubcategoria, sc.descripcion subcategoria, c.idconsumidor, c.descripcion consumidor, m.idmedida, m.descripcion medida,
-					p.titulo, p.descripcion, p.codigo_sku, p.precio_costo, p.precio_venta, p.stock, p.imagen, p.estado 
+					p.titulo, p.descripcion, p.codigo_sku, p.precio_costo, p.precio_venta, p.precio_oferta, p.stock, p.imagen, p.estado 
 					FROM $tabla p
 					INNER JOIN subcategoria sc on sc.idsubcategoria = p.idsubcategoria 
 					INNER JOIN categoria cat on cat.idcategoria = sc.idcategoria
@@ -51,21 +51,22 @@
 			$conexion = new Conexion();
 
 			$stmt = $conexion->conectar()->prepare("INSERT INTO $tabla(idnegocio, idsubcategoria, idconsumidor, idmedida, titulo, descripcion, codigo_sku,
-				precio_costo, precio_venta, stock, imagen, estado, usuariocrea, fechacrea) 
-				VALUES (:idnegocio, :idsubcategoria, :idconsumidor, :idmedida, :titulo, :descripcion, :codigo_sku, :precio_costo, :precio_venta, :stock, 
-				:imagen, 1, '20220001', NOW())");
+				precio_costo, precio_venta, precio_oferta, stock, imagen, estado, usuariocrea, fechacrea) 
+				VALUES (:idnegocio, :idsubcategoria, :idconsumidor, :idmedida, :titulo, :descripcion, :codigo_sku, :precio_costo, :precio_venta, :precio_oferta, 
+				:stock, :imagen, 1, '20220001', NOW())");
 
-			$stmt->bindParam(":idnegocio", $datos["idnegocio"], PDO::PARAM_STR);    
-			$stmt->bindParam(":idsubcategoria", $datos["idsubcategoria"], PDO::PARAM_STR); 
-			$stmt->bindParam(":idconsumidor", $datos["idconsumidor"], PDO::PARAM_STR); 
-			$stmt->bindParam(":idmedida", $datos["idmedida"], PDO::PARAM_STR); 
-			$stmt->bindParam(":titulo", $datos["titulo"], PDO::PARAM_STR); 
-			$stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR); 
-			$stmt->bindParam(":codigo_sku", $datos["codigo_sku"], PDO::PARAM_STR); 
-			$stmt->bindParam(":precio_costo", $datos["precio_costo"], PDO::PARAM_STR); 
-			$stmt->bindParam(":precio_venta", $datos["precio_venta"], PDO::PARAM_STR); 
-			$stmt->bindParam(":stock", $datos["stock"], PDO::PARAM_STR); 
-			$stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR); 
+			$stmt -> bindParam(":idnegocio", $datos["idnegocio"], PDO::PARAM_STR);    
+			$stmt -> bindParam(":idsubcategoria", $datos["idsubcategoria"], PDO::PARAM_STR); 
+			$stmt -> bindParam(":idconsumidor", $datos["idconsumidor"], PDO::PARAM_STR); 
+			$stmt -> bindParam(":idmedida", $datos["idmedida"], PDO::PARAM_STR); 
+			$stmt -> bindParam(":titulo", $datos["titulo"], PDO::PARAM_STR); 
+			$stmt -> bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR); 
+			$stmt -> bindParam(":codigo_sku", $datos["codigo_sku"], PDO::PARAM_STR); 
+			$stmt -> bindParam(":precio_costo", $datos["precio_costo"], PDO::PARAM_STR); 
+			$stmt -> bindParam(":precio_venta", $datos["precio_venta"], PDO::PARAM_STR); 
+			$stmt -> bindParam(":precio_oferta", $datos["precio_oferta"], PDO::PARAM_STR); 
+			$stmt -> bindParam(":stock", $datos["stock"], PDO::PARAM_STR); 
+			$stmt -> bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR); 
 			if($stmt->execute()){
 				return "ok";
 			}else{
@@ -108,8 +109,8 @@
 
 			$stmt = $conexion->conectar()->prepare("UPDATE $tabla SET idnegocio = :idnegocio, idsubcategoria = :idsubcategoria, 
 				idconsumidor = :idconsumidor, idmedida = :idmedida, titulo = :titulo, descripcion = :descripcion, 
-				codigo_sku = :codigo_sku, precio_costo = :precio_costo, precio_venta = :precio_venta, stock = :stock, imagen = :imagen,  
-				imagen = :imagen, usuariomodifica = '20220002', fechamodifica = NOW()   
+				codigo_sku = :codigo_sku, precio_costo = :precio_costo, precio_venta = :precio_venta, precio_oferta = :precio_oferta, 
+				stock = :stock, imagen = :imagen, imagen = :imagen, usuariomodifica = '20220002', fechamodifica = NOW()   
 				WHERE idproducto  = :idproducto");		
 			
 			$stmt -> bindParam(":idnegocio", $datos["idnegocio"], PDO::PARAM_STR);    
@@ -121,6 +122,7 @@
 			$stmt -> bindParam(":codigo_sku", $datos["codigo_sku"], PDO::PARAM_STR); 
 			$stmt -> bindParam(":precio_costo", $datos["precio_costo"], PDO::PARAM_STR); 
 			$stmt -> bindParam(":precio_venta", $datos["precio_venta"], PDO::PARAM_STR); 
+			$stmt -> bindParam(":precio_oferta", $datos["precio_oferta"], PDO::PARAM_STR); 
 			$stmt -> bindParam(":stock", $datos["stock"], PDO::PARAM_STR); 
 			$stmt -> bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
 			$stmt -> bindParam(":idproducto", $datos["idproducto"], PDO::PARAM_INT);

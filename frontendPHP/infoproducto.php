@@ -21,8 +21,14 @@
                 <div class="small mb-1">SKU: <?php echo $detalleProd['codigo_sku'];?></div>
                 <h1 class="display-5 fw-bolder"><?php echo $detalleProd['titulo'];?></h1>
                 <div class="fs-5 mb-5">
-                    <span class="text-decoration-line-through">S/. <?php echo ($detalleProd['precio_venta']+10);?></span>
-                    <span>S/. <?php echo $detalleProd['precio_venta'];?></span>
+                    <?php
+                        if($detalleProd['precio_oferta'] != 0){
+                            echo '<span class="text-decoration-line-through">S/. ' . $detalleProd['precio_venta'] . '</span>';
+                            echo 'S/. ' . $detalleProd['precio_oferta'];
+                        }else{
+                            echo 'S/. ' . $detalleProd['precio_venta'];
+                        }
+                    ?>
                 </div>
                 <p class="lead"><?php echo $detalleProd['descripcion'];?></p>
                 <div class="d-flex">

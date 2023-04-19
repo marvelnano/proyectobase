@@ -86,17 +86,18 @@
 				$tabla = "producto";
 
 				$datosProducto = array(
-					"idnegocio"		=>$_POST["nuevoNegocio"],
-					"idsubcategoria"=>$_POST["nuevaSubCategoria"],
-					"idconsumidor"	=>$_POST["nuevoConsumidor"],
-					"idmedida"		=>$_POST["nuevaMedida"],
-					"titulo"		=>$_POST["nuevoTitulo"],
-					"descripcion"	=>$_POST["nuevaDescripcion"],
-					"codigo_sku"	=>$_POST["nuevoCodigoSku"],
-					"precio_costo"	=>$_POST["nuevoPrecioCosto"],
-					"precio_venta"	=>$_POST["nuevoPrecioVenta"],
-					"stock"			=>$_POST["nuevoStock"],
-					"imagen"		=>$ruta
+					"idnegocio"		=> $_POST["nuevoNegocio"],
+					"idsubcategoria"=> $_POST["nuevaSubCategoria"],
+					"idconsumidor"	=> $_POST["nuevoConsumidor"],
+					"idmedida"		=> $_POST["nuevaMedida"],
+					"titulo"		=> $_POST["nuevoTitulo"],
+					"descripcion"	=> $_POST["nuevaDescripcion"],
+					"codigo_sku"	=> $_POST["nuevoCodigoSku"],
+					"precio_costo"	=> $_POST["nuevoPrecioCosto"],
+					"precio_venta"	=> $_POST["nuevoPrecioVenta"],
+					"precio_oferta"	=> $_POST["nuevoPrecioOferta"],
+					"stock"			=> $_POST["nuevoStock"],
+					"imagen"		=> $ruta
 				);	
 
 				$respuesta = ModeloProducto::mdlIngresarProducto($tabla, $datosProducto);
@@ -207,6 +208,7 @@
 					"codigo_sku"	=> $_POST["editarCodigoSku"],
 					"precio_costo"	=> $_POST["editarPrecioCosto"],
 					"precio_venta"	=> $_POST["editarPrecioVenta"],
+					"precio_oferta"	=> $_POST["editarPrecioOferta"],
 					"stock"			=> $_POST["editarStock"],
 					"imagen"		=> $ruta
 				);

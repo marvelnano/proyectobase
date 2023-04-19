@@ -5,7 +5,7 @@
             parent::set_names();
             $sql="SELECT p.idproducto, n.idnegocio, n.razon_social, cat.idcategoria, cat.descripcion categoria,
             sc.idsubcategoria, sc.descripcion subcategoria, c.idconsumidor, c.descripcion consumidor, m.idmedida, m.descripcion medida,
-            p.titulo, p.descripcion, p.codigo_sku, p.precio_costo, p.precio_venta, p.stock, p.imagen, p.estado 
+            p.titulo, p.descripcion, p.codigo_sku, p.precio_costo, p.precio_venta, p.precio_oferta, p.stock, p.imagen, p.estado 
             FROM producto p
             INNER JOIN subcategoria sc on sc.idsubcategoria = p.idsubcategoria 
             INNER JOIN categoria cat on cat.idcategoria = sc.idcategoria
@@ -23,7 +23,7 @@
             parent::set_names();
             $sql="SELECT p.idproducto, n.idnegocio, n.razon_social, cat.idcategoria, cat.descripcion categoria,
             sc.idsubcategoria, sc.descripcion subcategoria, c.idconsumidor, c.descripcion consumidor, m.idmedida, m.descripcion medida,
-            p.titulo, p.descripcion, p.codigo_sku, p.precio_costo, p.precio_venta, p.stock, p.imagen, p.estado 
+            p.titulo, p.descripcion, p.codigo_sku, p.precio_costo, p.precio_venta, p.precio_oferta, p.stock, p.imagen, p.estado 
             FROM producto p
             INNER JOIN subcategoria sc on sc.idsubcategoria = p.idsubcategoria 
             INNER JOIN categoria cat on cat.idcategoria = sc.idcategoria

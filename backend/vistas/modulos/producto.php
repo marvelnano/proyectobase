@@ -51,8 +51,9 @@
               <th>Titulo</th>
               <th>Descripción</th>
               <th>Código SKU</th>
-              <th>Costo</th>
-              <th>Precio</th>
+              <th>Precio Costo</th>
+              <th>Precio Venta</th>
+              <th>Precio Oferta</th>
               <th>Stock</th>
               <th>Imágen</th>
               <th>Estado</th>
@@ -81,6 +82,7 @@
                           <td>'.$value["codigo_sku"].'</td>
                           <td>'.$value["precio_costo"].'</td>
                           <td>'.$value["precio_venta"].'</td>
+                          <td>'.$value["precio_oferta"].'</td>
                           <td>'.$value["stock"].'</td>';
 
                           if($value["imagen"] != ""){
@@ -264,19 +266,27 @@
             </div>
 
             <!--=====================================
-            ENTRADA PARA EL COSTO
+            ENTRADA PARA EL PRECIO DE COSTO
             ======================================-->
             <div class="form-group row">
-              <label for="nuevoPrecioCosto" class="col-sm-3 col-form-label">Costo</label>
+              <label for="nuevoPrecioCosto" class="col-sm-3 col-form-label">Precio Costo</label>
               <input type="number" name="nuevoPrecioCosto" class="col-sm-9 form-control form-control-sm nuevoPrecioCosto" placeholder="Ingresar Precio Costo">
             </div>
 
             <!--=====================================
-            ENTRADA PARA EL PRECIO
+            ENTRADA PARA EL PRECIO DE VENTA
             ======================================-->
             <div class="form-group row">
-              <label for="nuevoPrecioVenta" class="col-sm-3 col-form-label">Precio</label>
+              <label for="nuevoPrecioVenta" class="col-sm-3 col-form-label">Precio Venta</label>
               <input type="number" name="nuevoPrecioVenta" class="col-sm-9 form-control form-control-sm nuevoPrecioVenta" placeholder="Ingresar Precio Venta">
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA EL PRECIO DE OFERTA
+            ======================================-->
+            <div class="form-group row">
+              <label for="nuevoPrecioOferta" class="col-sm-3 col-form-label">Precio Oferta</label>
+              <input type="number" name="nuevoPrecioOferta" class="col-sm-9 form-control form-control-sm nuevoPrecioOferta" placeholder="Ingresar Precio Oferta">
             </div>
 
             <!--=====================================
@@ -462,19 +472,27 @@
             </div>
 
             <!--=====================================
-            ENTRADA PARA EL COSTO
+            ENTRADA PARA EL PRECIO DE COSTO
             ======================================-->
             <div class="form-group row">
-              <label for="editarPrecioCosto" class="col-sm-3 col-form-label">Costo</label>
+              <label for="editarPrecioCosto" class="col-sm-3 col-form-label">Precio Costo</label>
               <input type="number" name="editarPrecioCosto" class="col-sm-9 form-control form-control-sm editarPrecioCosto" placeholder="Ingresar Precio Costo">
             </div>
 
             <!--=====================================
-            ENTRADA PARA EL PRECIO
+            ENTRADA PARA EL PRECIO DE VENTA
             ======================================-->
             <div class="form-group row">
-              <label for="editarPrecioVenta" class="col-sm-3 col-form-label">Precio</label>
+              <label for="editarPrecioVenta" class="col-sm-3 col-form-label">Precio Venta</label>
               <input type="number" name="editarPrecioVenta" class="col-sm-9 form-control form-control-sm editarPrecioVenta" placeholder="Ingresar Precio Venta">
+            </div>
+
+            <!--=====================================
+            ENTRADA PARA EL PRECIO DE OFERTA
+            ======================================-->
+            <div class="form-group row">
+              <label for="editarPrecioOferta" class="col-sm-3 col-form-label">Precio Oferta</label>
+              <input type="number" name="editarPrecioOferta" class="col-sm-9 form-control form-control-sm editarPrecioOferta" placeholder="Ingresar Precio Oferta">
             </div>
 
             <!--=====================================
@@ -490,7 +508,7 @@
             ======================================-->
             <div class="form-group row">
               <label for="editarImgProducto" class="col-sm-3 col-form-label">SUBIR FOTO</label>
-              <input type="file" class="col-sm-9 form-control form-control-sm nuevaImgProducto" name="editarImgProducto" placeholder="Elegir Foto">
+              <input type="file" class="col-sm-9 form-control form-control-sm editarImgProducto" name="editarImgProducto" placeholder="Elegir Foto">
               <p class="help-block">Peso Máximo de la foto 2 MB</p>
               <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
               <input type="hidden" name="imgProductoActual" class="imgProductoActual">
