@@ -52,11 +52,25 @@
                                 </div>
                             </div>
                             <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center">
-                                    <a class="btn btn-outline-dark mt-auto" href="'.appUrlFrontend.encrypt($value['idproducto']).'">Ver Detalle</a>
+                            ';
+                            if ($value['estado'] == 0) {
+                                echo '
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center">
+                                        <a class="btn btn-outline-dark mt-auto not-active">Ver Detalle</a>
+                                    </div>
                                 </div>
-                            </div>
+                                ';
+                            } else {
+                                echo '
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center">
+                                        <a class="btn btn-outline-dark mt-auto" href="'.appUrlFrontend.encrypt($value['idproducto']).'">Ver Detalle</a>
+                                    </div>
+                                </div>
+                                ';
+                            }
+                            echo '                            
                         </div>
                     </div>';
             endforeach;

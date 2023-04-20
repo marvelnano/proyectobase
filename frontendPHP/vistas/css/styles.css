@@ -11285,4 +11285,10 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+
+  /*Deshabilitar enlaces <a></a>*/
+  .not-active {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }
