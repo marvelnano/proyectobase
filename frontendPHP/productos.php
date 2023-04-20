@@ -52,6 +52,13 @@
                                 </div>
                             </div>
                             <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center">';
+                                    $textowp = 'Buen%20d%C3%ADa,%20me%20interesa%20conocer%20m%C3%A1s%20acerca%20del%20producto: '.$value['titulo'];
+                                    echo '
+                                    <a class="btn btn-outline-dark mt-auto " href="https://api.whatsapp.com/send?phone=51939463312&text='.$textowp.'" target="_blank">WhatsApp</a>
+                                </div>
+                            </div>                            
                             ';
                             if ($value['estado'] == 0) {
                                 echo '
