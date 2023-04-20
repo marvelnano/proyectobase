@@ -3,16 +3,7 @@
         public function get_producto(){
             $conectar= parent::conexion();
             parent::set_names();
-            $sql="SELECT p.idproducto, n.idnegocio, n.razon_social, cat.idcategoria, cat.descripcion categoria,
-            sc.idsubcategoria, sc.descripcion subcategoria, c.idconsumidor, c.descripcion consumidor, m.idmedida, m.descripcion medida,
-            p.titulo, p.descripcion, p.codigo_sku, p.precio_costo, p.precio_venta, p.precio_oferta, p.stock, p.imagen, p.estado 
-            FROM producto p
-            INNER JOIN subcategoria sc on sc.idsubcategoria = p.idsubcategoria 
-            INNER JOIN categoria cat on cat.idcategoria = sc.idcategoria
-            INNER JOIN consumidor c on c.idconsumidor = p.idconsumidor
-            INNER join negocio n on n.idnegocio = p.idnegocio
-            INNER JOIN medida m on m.idmedida = p.idmedida 
-            ORDER BY sc.idsubcategoria";
+            $sql="CALL obtenerProductos();";
             $sql=$conectar->prepare($sql);
             $sql->execute();
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
@@ -21,17 +12,7 @@
         public function get_producto_x_id($prod_id){
             $conectar= parent::conexion();
             parent::set_names();
-            $sql="SELECT p.idproducto, n.idnegocio, n.razon_social, cat.idcategoria, cat.descripcion categoria,
-            sc.idsubcategoria, sc.descripcion subcategoria, c.idconsumidor, c.descripcion consumidor, m.idmedida, m.descripcion medida,
-            p.titulo, p.descripcion, p.codigo_sku, p.precio_costo, p.precio_venta, p.precio_oferta, p.stock, p.imagen, p.estado 
-            FROM producto p
-            INNER JOIN subcategoria sc on sc.idsubcategoria = p.idsubcategoria 
-            INNER JOIN categoria cat on cat.idcategoria = sc.idcategoria
-            INNER JOIN consumidor c on c.idconsumidor = p.idconsumidor
-            INNER join negocio n on n.idnegocio = p.idnegocio
-            INNER JOIN medida m on m.idmedida = p.idmedida
-            WHERE p.estado=1 AND p.idproducto = ? 
-            ORDER BY sc.idsubcategoria";
+            $sql="CALL obtenerProductoPorId(?);";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1, $prod_id);
             $sql->execute();
