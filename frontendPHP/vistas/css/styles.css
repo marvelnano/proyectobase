@@ -3787,6 +3787,17 @@ textarea.form-control-lg {
   background-color: transparent;
 }
 
+/**submenu**/
+.navbar-nav .nav-item .dropdown-menu li {
+  position:relative;
+}
+
+.navbar-nav .nav-item .dropdown-menu li ul {
+  right:-140px;
+  top:0px;
+}
+/*****/
+
 .dropdown-menu.show {
   display: block;
 }

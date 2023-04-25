@@ -36,7 +36,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- summernote 
   <link rel="stylesheet" href="vistas/plugins/summernote/summernote-bs4.css">-->
 
-  <!-- Tempusdominus Bbootstrap 4 -->
+  <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="vistas/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 
   <!-- iCheck -->

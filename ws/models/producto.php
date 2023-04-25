@@ -19,6 +19,35 @@
             return $resultado=$sql->fetch(PDO::FETCH_ASSOC);
         }
 
+        public function get_categoria(){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="CALL obtenerCategorias();";
+            $sql=$conectar->prepare($sql);
+            $sql->execute();
+            return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        public function get_subcategoria_x_idcat($cat_id){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="CALL obtenerSubcategoriasPorCat(?);";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $cat_id);
+            $sql->execute();
+            return $resultado=$sql->fetch(PDO::FETCH_ASSOC);
+        }
+
+        public function get_producto_x_idsubcat($subcat_id){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="CALL obtenerProductoPorSubcat(?);";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $subcat_id);
+            $sql->execute();
+            return $resultado=$sql->fetch(PDO::FETCH_ASSOC);
+        }
+
         /*public function insert_producto($cat_nom,$cat_obs){
             $conectar= parent::conexion();
             parent::set_names();

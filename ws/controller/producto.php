@@ -11,13 +11,28 @@
 
     switch($_GET["op"]){
 
-        case "GetAll":
+        case "GetProdAll":
             $datos=$producto->get_producto();
             echo json_encode($datos);
         break;
 
-        case "GetId":
+        case "GetProdId":
             $datos=$producto->get_producto_x_id($body["idproducto"]);
+            echo json_encode($datos);
+        break;
+
+        case "GetCatAll":
+            $datos=$producto->get_categoria();
+            echo json_encode($datos);
+        break;
+
+        case "GetSubCatIdCat":
+            $datos=$producto->get_subcategoria_x_idcat($body["idcategoria"]);
+            echo json_encode($datos);
+        break;
+
+        case "GetProdIdSubCat":
+            $datos=$producto->get_producto_x_idsubcat($body["idsubcategoria"]);
             echo json_encode($datos);
         break;
 

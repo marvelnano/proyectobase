@@ -16,7 +16,7 @@
   <div class="container px-4 px-lg-5 my-3">
     <div>
       <ol class="breadcrumb float-sm-right">
-        <li class="breadcrumb-item text-sm"><a href="inicio">Inicio</a></li>
+        <li class="breadcrumb-item text-sm"><i class="fas fa-tachometer-alt"></i> <a href="inicio">Inicio</a></li>
         <li class="breadcrumb-item text-sm active">Detalle</li>
       </ol>
     </div>
@@ -37,11 +37,21 @@
         </div>
         <p class="lead"><?php echo $detalleProd['descripcion']; ?></p>
         <div class="d-flex">
-          <input disabled class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+          <!--<input disabled class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
           <button class="btn btn-outline-dark flex-shrink-0" type="button" disabled>
             <i class="bi-cart-fill me-1"></i>
             Agregar al carrito
-          </button>
+          </button>-->
+          <?php
+            $textowp = 'Buen%20d%C3%ADa,%20me%20interesa%20conocer%20m%C3%A1s%20acerca%20del%20producto: '.$detalleProd['titulo'];
+            echo '
+              <input disabled class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+              <a class="btn btn-outline-dark flex-shrink-0" href="https://api.whatsapp.com/send?phone=51939463312&text='.$textowp.'" target="_blank">
+                <i class="bi-cart-fill me-1"></i>
+                Realizar pedido
+              </a>
+            ';
+          ?>
         </div>
       </div>
     </div>
