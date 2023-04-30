@@ -15,6 +15,12 @@
 
     require_once "./controladores/producto.controlador.php";
     require_once "./funciones/funciones.php";    
+
+    $datosNegocio = ControladorProducto::datosNegocio($_SERVER['HTTP_HOST']);
+    $datosNegocio = json_decode($datosNegocio, true);
+
+    $numWhatsapp = $datosNegocio['celular'];
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

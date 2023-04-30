@@ -1,7 +1,7 @@
 $(document).ready(function() {
-	$('.dt-responsive').DataTable({
+	/*$('.dt-responsive').DataTable({
         responsive: true
-	});
+	});*/
 
 	$('.dt-responsive-producto').DataTable({
         responsive: true

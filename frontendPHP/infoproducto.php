@@ -46,7 +46,7 @@
             $textowp = 'Buen%20d%C3%ADa,%20me%20interesa%20conocer%20m%C3%A1s%20acerca%20del%20producto: '.$detalleProd['titulo'];
             echo '
               <input disabled class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-              <a class="btn btn-outline-dark flex-shrink-0" href="https://api.whatsapp.com/send?phone=51939463312&text='.$textowp.'" target="_blank">
+              <a class="btn btn-outline-dark flex-shrink-0" href="https://api.whatsapp.com/send?phone=51'.$numWhatsapp.'&text='.$textowp.'" target="_blank">
                 <i class="bi-cart-fill me-1"></i>
                 Realizar pedido
               </a>

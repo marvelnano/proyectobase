@@ -11,6 +11,11 @@
 
     switch($_GET["op"]){
 
+        case "GetNegocio":
+            $datos=$producto->get_negocio($body["web"]);
+            echo json_encode($datos);
+        break;
+
         case "GetProdAll":
             $datos=$producto->get_producto();
             echo json_encode($datos);

@@ -35,7 +35,7 @@
 					INNER JOIN consumidor c on c.idconsumidor = p.idconsumidor
 					INNER join negocio n on n.idnegocio = p.idnegocio
 					INNER JOIN medida m on m.idmedida = p.idmedida 
-					ORDER BY sc.idsubcategoria");
+					ORDER BY p.idproducto");
 				$stmt -> execute();
 				return $stmt -> fetchAll();
 			}

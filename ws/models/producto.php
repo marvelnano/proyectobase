@@ -1,5 +1,15 @@
 <?php
     class Producto extends Conectar{
+        public function get_negocio($web){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="CALL obtenerNegocio(?);";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $web);
+            $sql->execute();
+            return $resultado=$sql->fetch(PDO::FETCH_ASSOC);
+        }
+        
         public function get_producto(){
             $conectar= parent::conexion();
             parent::set_names();
