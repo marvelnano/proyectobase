@@ -4,5 +4,5 @@
     define('appUrlWS', 'http://localhost:83/proyectobase/ws/controller/producto.php?op=');
     define('appTitulo', 'Alissa Bazar');
     define('appTituloProd', 'Alissa Bazar');
-    define('appSubTitulo', 'Lista de productos en Stock');
+    define('appSubTitulo', 'Cada día es una ocasión especial');
 ?>

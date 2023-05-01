@@ -16,16 +16,16 @@
                         </li>
                         <li><a class="dropdown-item" href="#!">Populares</a></li>
                         <li><a class="dropdown-item" href="#!">Novedades</a></li>
-                        <!--<li>
+                        <li>
                             <hr class="dropdown-divider" />
                         </li>
                         <li>
-                            <a href="#">Subcategoria</a>
-                            <ul>
-                                <li><a href="#!">subcate1</a></li>
-                                <li><a href="#!">subcate2</a></li>
+                            <a class="dropdown-item dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Subcategoria</a>
+                            <ul class="" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#!">subcate1</a></li>
+                                <li><a class="dropdown-item" href="#!">subcate2</a></li>
                             </ul>
-                        </li>-->
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -37,17 +37,17 @@
                             foreach ($dataCat as $cat) :
                                 echo '
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="categoria'.$cat['idcategoria'].'" role="button" data-bs-toggle="dropdown" aria-expanded="false">'.$cat['descripcion'].'</a>
-                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><a class="dropdown-item" href="#!">subcate</a></li>
+                                        <a class="dropdown-item dropdown-toggle" id="navbarDropdown" href="categoria'.$cat['idcategoria'].'" role="button" data-bs-toggle="dropdown" aria-expanded="false">'.$cat['descripcion'].'</a>
+                                        <ul class="" aria-labelledby="navbarDropdown">';
+                                        $subcategorias = ControladorProducto::listarSubCategoriasXCat($cat['idcategoria']);
+                                        $dataSubCat = json_decode($subcategorias, true);
+                                        foreach ($dataSubCat as $subcat) :
+                                            echo '<li><a class="dropdown-item" href="#!">'.$subcat['descripcion'].'</a></li>';
+                                        endforeach;
+                                        echo '
                                         </ul>
                                     </li>
-                                ';
-                                /*$subcategorias = ControladorProducto::listarSubCategoriasXCat($cat['idcategoria']);
-                                $dataSubCat = json_decode($subcategorias, true);
-                                foreach ($dataSubCat as $subcat) :
-                                    echo 'subcat: ';
-                                endforeach;*/
+                                ';                                
                             endforeach;
                         ?>
                     </ul>

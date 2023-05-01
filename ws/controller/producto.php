@@ -17,7 +17,7 @@
         break;
 
         case "GetProdAll":
-            $datos=$producto->get_producto();
+            $datos=$producto->get_productos();
             echo json_encode($datos);
         break;
 
@@ -27,17 +27,17 @@
         break;
 
         case "GetCatAll":
-            $datos=$producto->get_categoria();
+            $datos=$producto->get_categorias();
             echo json_encode($datos);
         break;
 
         case "GetSubCatIdCat":
-            $datos=$producto->get_subcategoria_x_idcat($body["idcategoria"]);
+            $datos=$producto->get_subcategorias_x_idcat($body["idcategoria"]);
             echo json_encode($datos);
         break;
 
         case "GetProdIdSubCat":
-            $datos=$producto->get_producto_x_idsubcat($body["idsubcategoria"]);
+            $datos=$producto->get_productos_x_idsubcat($body["idsubcategoria"]);
             echo json_encode($datos);
         break;
 

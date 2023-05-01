@@ -10,7 +10,7 @@
             return $resultado=$sql->fetch(PDO::FETCH_ASSOC);
         }
         
-        public function get_producto(){
+        public function get_productos(){
             $conectar= parent::conexion();
             parent::set_names();
             $sql="CALL obtenerProductos();";
@@ -29,7 +29,7 @@
             return $resultado=$sql->fetch(PDO::FETCH_ASSOC);
         }
 
-        public function get_categoria(){
+        public function get_categorias(){
             $conectar= parent::conexion();
             parent::set_names();
             $sql="CALL obtenerCategorias();";
@@ -38,24 +38,24 @@
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        public function get_subcategoria_x_idcat($cat_id){
+        public function get_subcategorias_x_idcat($cat_id){
             $conectar= parent::conexion();
             parent::set_names();
             $sql="CALL obtenerSubcategoriasPorCat(?);";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1, $cat_id);
             $sql->execute();
-            return $resultado=$sql->fetch(PDO::FETCH_ASSOC);
+            return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        public function get_producto_x_idsubcat($subcat_id){
+        public function get_productos_x_idsubcat($subcat_id){
             $conectar= parent::conexion();
             parent::set_names();
-            $sql="CALL obtenerProductoPorSubcat(?);";
+            $sql="CALL obtenerProductosPorSubcat(?);";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1, $subcat_id);
             $sql->execute();
-            return $resultado=$sql->fetch(PDO::FETCH_ASSOC);
+            return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }
 
         /*public function insert_producto($cat_nom,$cat_obs){
