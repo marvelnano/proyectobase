@@ -25,6 +25,7 @@
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">' . $value['titulo'] . '</h5>
+                                    <h6 class="fw-bolder">Para ' . $value['consumidor'] . '</h6>
                                     <!-- Product reviews-->
                                     <!-- <div class="d-flex justify-content-center small text-warning mb-2">
                                         <div class="bi-star-fill"></div>
@@ -36,10 +37,10 @@
                                     <!-- Product price-->
                                     ';
                                     if ($value['precio_oferta'] != 0) {
-                                        echo ' <span class="text-muted text-decoration-line-through">S/. ' . $value['precio_venta'] . '</span>
-                                        S/. ' . $value['precio_oferta'];
+                                        echo '<span style="font-size: 1.8rem">S/. ' . $value['precio_oferta']. '</span>';
+                                        echo ' <span class="small text-muted text-decoration-line-through">S/. ' . $value['precio_venta'] . '</span>';
                                     } else {
-                                        echo 'S/. ' . $value['precio_venta'];
+                                        echo '<span style="font-size: 1.8rem">S/. ' . $value['precio_venta']. '</span>';
                                     }
 
                                     if ($value['estado'] == 0) {

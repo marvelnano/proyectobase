@@ -3788,14 +3788,51 @@ textarea.form-control-lg {
 }
 
 /**submenu**/
-.navbar-nav .nav-item .dropdown-menu li {
+.navbar .navbar-nav .dropdown-menu {
   position:relative;
+  /*position: relative;
+  top: 50px;
+  left: 0;
+  background-color: #f9f9f9;
+  display: none;*/
 }
 
-.navbar-nav .nav-item .dropdown-menu li ul {
+.navbar .navbar-nav .dropdown-menu li {
+  position:relative;
+  /*float: none;
+  width: 200px;*/
+}
+
+.navbar .navbar-nav .dropdown-menu a {
   right:-140px;
   top:0px;
+  /*line-height: 40px;*/
 }
+
+.navbar .nav-item:hover > .dropdown-menu {
+  display: block;
+}
+
+/*nav ul ul {
+  position: relative;
+  top: 50px;
+  left: 0;
+  background-color: #f9f9f9;
+  display: none;
+}
+
+nav ul ul li {
+  float: none;
+  width: 200px;
+}
+
+nav ul ul a {
+  line-height: 40px;
+}
+
+nav li:hover > ul {
+  display: block;
+}*/
 /*****/
 
 .dropdown-menu.show {
@@ -11303,4 +11340,17 @@ textarea.form-control-lg {
 .not-active {
   cursor: not-allowed;
   pointer-events: none;
+}
+
+/*Logo de fondo en la cabecera*/
+header {
+  padding-top: 13rem !important;
+  padding-bottom: 13rem !important;
+  /*max-height: 100%;
+  height: auto;*/
+  background-color: #000 !important;
+  background-image: url("../img/logo.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;  /* ajusta el tamaño de la imagen para cubrir todo el contenedor */
+  background-position: center !important; /* centra la imagen dentro del contenedor */
 }

@@ -28,13 +28,14 @@
         <div class="fs-5 mb-5">
           <?php
           if ($detalleProd['precio_oferta'] != 0) {
-            echo '<span class="text-decoration-line-through">S/. ' . $detalleProd['precio_venta'] . '</span>';
-            echo 'S/. ' . $detalleProd['precio_oferta'];
+            echo '<span style="font-size: 1.8rem">S/. ' . $detalleProd['precio_oferta']. '</span>';
+            echo ' <span class="small text-muted text-decoration-line-through">S/. ' . $detalleProd['precio_venta'] . '</span>';
           } else {
-            echo 'S/. ' . $detalleProd['precio_venta'];
+            echo '<span style="font-size: 1.8rem">S/. ' . $detalleProd['precio_venta']. '</span>';
           }
           ?>
         </div>
+        <div class="fw-bolder mb-1">Stock: <?php echo $detalleProd['stock']; ?></div>
         <p class="lead"><?php echo $detalleProd['descripcion']; ?></p>
         <div class="d-flex">
           <!--<input disabled class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />

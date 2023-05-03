@@ -32,7 +32,7 @@
         <meta name="author" content="" />
         <title><?php echo appTitulo ?></title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="vistas/assets/favicon.ico" />
         <!-- Font Awesome -->
         <link rel="stylesheet" href="vistas/plugins/fontawesome-free/css/all.min.css">
         <!-- Bootstrap icons-->
